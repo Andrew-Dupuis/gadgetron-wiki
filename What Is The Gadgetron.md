@@ -1,0 +1,9 @@
+The Gadgetron is a streaming data processing framework for medical image reconstruction. It has been developed to make it easier to prototype, test, and deploy new image reconstruction algorithms.
+
+The framework features a number of reconstruction applications that can be employed directly. Moreover, it contains a wide range of toolboxes with common data structures and algorithms designed for a much broader use. These toolboxes can be used within the streaming framework to create new dedicated reconstruction components or used as shared libraries in standalone (or third party) applications.
+
+This document serves as an introduction to the Gadgetron framework and provides some "getting started" examples of using it. A scientific paper is also available ([Magn Reson Med. 2013 Jun;69(6):1768-76](http://www.ncbi.nlm.nih.gov/pubmed/22791598)).
+
+Although the Gadgetron is a generic, multi-modality image reconstruction framework, it was initially developed to support the work of the authors in the field of advanced MRI reconstruction. Specifically to support work on fast image reconstruction, not only on traditional CPU architectures, but also using commodity graphics hardware (GPUs). Some examples that are made publicly available through the Gadgetron
+framework include fast (re)gridding on the GPU ([IEEE Trans Med Imaging. 2008 Apr;27(4):538-47](http://www.ncbi.nlm.nih.gov/pubmed/18390350)), Cartesian parallel
+imaging on the GPU ([Magn Reson Med. 2008 Mar;59(3):463-8](http://www.ncbi.nlm.nih.gov/pubmed/18306398)), and non-Cartesian parallel imaging on the GPU ([IEEE Trans Med Imaging. 2009 Dec;28(12):1974-85](http://www.ncbi.nlm.nih.gov/pubmed/19628452)).
