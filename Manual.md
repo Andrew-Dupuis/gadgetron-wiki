@@ -7,10 +7,10 @@
 
 * Compiling and Installing the Gadgetron
     * [[List of Dependencies]]
-    * [[Linux Installation]
-    * [[Mac Installation]
-    * [[Windows Installation]
-    * [[Gadgetron Hello World]
+    * [[Linux Installation]]
+    * [[Mac Installation]]
+    * [[Windows Installation]]
+    * [[Gadgetron Hello World]]
 
 * Framework Overview
     * [[Gadgetron Streaming Architecture]]
