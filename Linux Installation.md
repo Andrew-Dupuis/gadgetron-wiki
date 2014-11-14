@@ -19,21 +19,21 @@ Follow the instructions and add the following paths to your `~/.bashrc`::
 
     export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/intel/mkl/lib/intel64
 
-Next download, compile, and install ISMRMRD (there are more detailed instructions on the <http://ismrmrd.github.io/ismrmrd> website):
+Next download, compile, and install ISMRMRD (there are more detailed instructions on the <https://github.com/ismrmrd/ismrmrd> website):
 
-      git clone git://git.code.sf.net/p/ismrmrd/code ismrmrd-code
-      cd ismrmrd-code/
+      git clone https://github.com/ismrmrd/ismrmrd.git
+      cd ismrmrd/
       mkdir build
       cd build
       cmake ../
       make
       sudo make install
 
-Last command will install the library in `/usr/local/ismrmrd`.
+Last command will install the library in `/usr/local/`.
 
 Next download the Gadgetron source code. Either obtain a [release zip file](https://sourceforge.net/projects/gadgetron/files/) or use git:
 
-      git clone git://git.code.sf.net/p/gadgetron/gadgetron
+      git clone https://github.com/gadgetron/gadgetron.git
 
 Git users might want be "up to date" on the development branch
 
@@ -55,7 +55,7 @@ The final step is to add/modify a few environment variables in your
 `~/.bashrc` file:
 
     export GADGETRON_HOME=/usr/local/gadgetron
-    export ISMRMRD_HOME=/usr/local/ismrmrd
+    export ISMRMRD_HOME=/usr/local
     export PATH=$PATH:$GADGETRON_HOME/bin:$ISMRMRD_HOME/bin
     export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$GADGETRON_HOME/lib:$ISMRMRD_HOME/lib
 
@@ -64,4 +64,4 @@ Rename the example configuration file
 `GADGETRON_HOME/config/gadgetron.xml.example` to
 `GADGETRON_HOME/config/gadgetron.xml`
 
-You are now set up to run a simple example reconstruction as outlined in [Gadgetron Hello World].
+You are now set up to run a simple example reconstruction as outlined in [[Gadgetron Hello World]].
