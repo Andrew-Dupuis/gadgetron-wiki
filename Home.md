@@ -1,4 +1,4 @@
-<img src="Gadgetron.png">
+<img src="./Gadgetron.png">
 
 The Gadgetron is an open source medical image reconstruction framework.
 
