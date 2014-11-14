@@ -11,7 +11,7 @@ To install these components please follow the platform specific installation ins
 #### Optional libraries
 
 * ADAPTIVE Computing Environment (ACE). Available from <http://www.cs.wustl.edu/~schmidt/ACE.html>. The Gadgetron's streaming infrastructure depends on ACE, so without it you can only compile the toolboxes and standalone applications.
-* ISMRM Raw Data format (ISMRMRD). This is the MRI raw data format used in the streaming framework. Without this library installed you will not be able to reconstruct the provided MRI examples. The toolboxes can however still be used. Available from <http://ismrmrd.sourceforge.net>.
+* ISMRM Raw Data format (ISMRMRD). This is the MRI raw data format used in the streaming framework. Without this library installed you will not be able to reconstruct the provided MRI examples. The toolboxes can however still be used. Available from <http://ismrmrd.github.io>.
 * CodeSynthesis XSD. Available from <http://www.codesynthesis.com/products/xsd>. Required if you install the ISMRMRD.
 * HDF5. ISMRMRD uses the HDF5 file format for storing raw data and images. Available from <http://www.hdfgroup.org/HDF5>.
 * Armadillo. Available from <http://arma.sourceforge.net/>. A library providing linear algebra routines (BLAS/LAPACK). It is strongly recommended as without it much toolbox and gadget functionality will be unavailable. For Windows users we recommend to use the precompiled binaries we provide.

@@ -115,7 +115,7 @@ Although the Gadgetron is a generic, multi-modality image reconstruction framewo
 
 1.2.1. Version 1.1
 
-Version 1.1 contains multip bug fixes and optimizations and some major structural changes (especially in the MRI specific Gadgets). Most notably, the Gadgetron now uses the proposed ISMRM Raw Data format (http://ismrmrd.sourceforge.net) throught the MRI specific Gadgets. A non-exhaustive list of changes can be found below:
+Version 1.1 contains multip bug fixes and optimizations and some major structural changes (especially in the MRI specific Gadgets). Most notably, the Gadgetron now uses the proposed ISMRM Raw Data format (http://ismrmrd.github.io) throught the MRI specific Gadgets. A non-exhaustive list of changes can be found below:
 
 The GadgetMessageAcquisition, GadgetMessageImage, etc. used to describe raw data and MRI images have been replaced with the corresponding classes from the ISMRMRD library.
 
@@ -167,7 +167,7 @@ Boost C++ Libraries. Available from http://www.boost.org/.
 
 FFT3W Library for Fast Fourier Transforms. Available from http://www.fftw.org/.
 
-ISMRM Raw Data Library (http://ismrmrd.sourceforge.net).
+ISMRM Raw Data Library (http://ismrmrd.github.io).
 
 CodeSynthesis XSD (http://www.codesynthesis.com/products/xsd/).
 
@@ -207,7 +207,7 @@ user@mycomputer:~$ sudo apt-get install doxygen cmake \
  libhdf5-serial-dev h5utils hdf5-tools hdfview \
  libboost-system-dev libboost-thread-dev xsdcxx \
  libxerces-c-dev   
-First download, compile, and install ISMRMRD (there are more detailed instructions on the http://ismrmrd.sourceforge.net website):
+First download, compile, and install ISMRMRD (there are more detailed instructions on the http://ismrmrd.github.io website):
 
   git clone git://git.code.sf.net/p/ismrmrd/code ismrmrd-code
   cd ismrmrd-code/
@@ -339,9 +339,9 @@ tar -xzf xsd-3.3.0-i686-macosx.tar.bz2
 cd xsd-3.3.0-i686-macosx
 sudo cp bin/xsd /usr/local/bin/
 sudo cp -r libxsd/xsd /usr/local/include/
-More detailed instructions at http://ismrmrd.sourceforge.net.
+More detailed instructions at http://ismrmrd.github.io.
 
-Download, compile, and install ISMRMRD. Detailed instructions can be found at http://ismrmrd.sourceforge.net.
+Download, compile, and install ISMRMRD. Detailed instructions can be found at http://ismrmrd.github.io.
 
 git clone git://git.code.sf.net/p/ismrmrd/code ismrmrd-code
 cd ismrmrd-code/
@@ -521,7 +521,7 @@ Install CodeSynthesis XSD (http://www.codesynthesis.com/download/xsd/3.3/windows
 
 Remember to add the path to the XSD binaries to your PATH environment variable. E.g. C:\Program Files (x86)\CodeSynthesis XSD 3.3\bin\ and C:\Program Files (x86)\CodeSynthesis XSD 3.3\bin64\.
 
-Download, compile, and install the ISMRM Raw Data format. Detailed instructions are available at (http://ismrmrd.sourceforge.net).
+Download, compile, and install the ISMRM Raw Data format. Detailed instructions are available at (http://ismrmrd.github.io).
 
 From a git bash shell:
 
@@ -596,7 +596,7 @@ Some basic sample datasets are available from the Sourceforge website:
 
 https://sourceforge.net/projects/gadgetron/files/testdata/
 
-You will generally encounter two types of data in this manual: a) Simple array format described in Appendix A, Simple Array File Format and b) ISMRMRD HDF5 files which are described in more detail at http://ismrmrd.sourceforge.net. It is beyond the scope of this manual to explain the HDF5 file format, but we have added a small introductory section in the appendix (Appendix B, HDF5 Files).
+You will generally encounter two types of data in this manual: a) Simple array format described in Appendix A, Simple Array File Format and b) ISMRMRD HDF5 files which are described in more detail at http://ismrmrd.github.io. It is beyond the scope of this manual to explain the HDF5 file format, but we have added a small introductory section in the appendix (Appendix B, HDF5 Files).
 
 Download the file simple_gre.h5 from the website (on Linux simply type):
 
@@ -833,7 +833,7 @@ For a tutorial on how to make your own Gadget library see Section 2.3.3, “Maki
 
 2.1.1.1. Gadget XML Configuration
 
-In addition to defining a Gadget's behavior in response to a data package, it is also possible for the Gadgets to receive configuration information or parameters. The user can define the Gadgets behavior in response to configuration information by implementing the process_config function in the Gadget header file. The configuration information or parameters is typically transmitted in the beginning of the reconstruction process from the client (see Section 2.1.4, “Communication Sequence”). The configuration information can in principle be in any format (a given application can use a binary format or a text format defined for the specific purpose), but conventionally the parameters are transmitted in XML format and for the MRI Gadgets, the XML configuration is the XML header from the ISMRM Raw Data file. More details on this format and how to easily parse it with the included C++ XML data binding classes can be found at http://ismrmrd.sourceforge.net.
+In addition to defining a Gadget's behavior in response to a data package, it is also possible for the Gadgets to receive configuration information or parameters. The user can define the Gadgets behavior in response to configuration information by implementing the process_config function in the Gadget header file. The configuration information or parameters is typically transmitted in the beginning of the reconstruction process from the client (see Section 2.1.4, “Communication Sequence”). The configuration information can in principle be in any format (a given application can use a binary format or a text format defined for the specific purpose), but conventionally the parameters are transmitted in XML format and for the MRI Gadgets, the XML configuration is the XML header from the ISMRM Raw Data file. More details on this format and how to easily parse it with the included C++ XML data binding classes can be found at http://ismrmrd.github.io.
 
 An example of a parameter XML file for an MRI data sert is shown here:
 
@@ -2330,7 +2330,7 @@ One of the original motivations for creating the Gadgetron was to make a high th
 
 MRI data is processed in two different phases. In the first phase individual data (k-space) acquisitions are processed while in the second phase these acquisitions have been combined into images (which may still be in k-space). Correspondingly, there are two different types of Gadgets that dominate the MRI Gadgets; those who operate on individual acquisitions and those who operate on images. Naturally, there are also transitional Gadgets that operate on acquisitions but output images.
 
-The data header structures used by these MRI Gadgets are defined by the ISMRM Raw Data format (http://ismrmrd.sourceforge.net).
+The data header structures used by these MRI Gadgets are defined by the ISMRM Raw Data format (http://ismrmrd.github.io).
 
 Most MRI Gadgets inherit from Gadget2 as described in Section 2.1.1, “Gadgets”, i.e. they operate on two argument types, the main two base classes used are:
 
@@ -3303,7 +3303,7 @@ int AccumulatorGadget::process_config(ACE_Message_Block* mb)
 
   return GADGET_OK;
 }
-The main purpose of this function is to pull parameters out of the XML portion of the ISMRM Raw Data header in order to set up the buffer. As mentioned in Section 2.1.1.1, “Gadget XML Configuration”, the convention is to pass parameters into the Gadgets in XML format. To enable convenient parsing of these parameters, the ISMRMRD library includes a C++ class representation of the header. See http://ismrmrd.sourceforge.net for more details.
+The main purpose of this function is to pull parameters out of the XML portion of the ISMRM Raw Data header in order to set up the buffer. As mentioned in Section 2.1.1.1, “Gadget XML Configuration”, the convention is to pass parameters into the Gadgets in XML format. To enable convenient parsing of these parameters, the ISMRMRD library includes a C++ class representation of the header. See http://ismrmrd.github.io for more details.
 
 Now we are ready to receive and buffer data, which is done by the process function:
 

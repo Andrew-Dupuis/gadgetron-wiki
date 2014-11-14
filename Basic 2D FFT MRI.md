@@ -122,7 +122,7 @@ There are a few member variables to help us keep track of the buffer and the dat
     }
 
 The main purpose of this function is to pull parameters out of the XML portion of the ISMRM Raw Data header in order to set up the buffer. As mentioned in [Gadget XML Configuration](../Gadgetron%20Streaming%20Architecture/#sectiongadgetxmlconfiguration), the convention is to pass parameters into the Gadgets in XML format. To enable convenient parsing of these parameters, the
-ISMRMRD library includes a C++ class representation of the header. See <http://ismrmrd.sourceforge.net> for more details.
+ISMRMRD library includes a C++ class representation of the header. See <http://ismrmrd.github.io> for more details.
 
 Now we are ready to receive and buffer data, which is done by the `process` function:
 

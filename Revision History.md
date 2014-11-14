@@ -23,7 +23,7 @@ Much new functionality for systems without a GPU.
 
 ### Version 1.1
 
-Version 1.1 contains multiple bug fixes, optimizations and some structural changes. Most notably, the Gadgetron now uses the proposed ISMRM Raw Data format (<http://ismrmrd.sourceforge.net>) throughout the MRI specific Gadgets. A non-exhaustive list of changes can be found below:
+Version 1.1 contains multiple bug fixes, optimizations and some structural changes. Most notably, the Gadgetron now uses the proposed ISMRM Raw Data format (<http://ismrmrd.github.io>) throughout the MRI specific Gadgets. A non-exhaustive list of changes can be found below:
 
 -   The GadgetMessageAcquisition, GadgetMessageImage, etc. (previously used to describe MRI raw data and images) have been replaced with the corresponding classes from the ISMRMRD library.
 

@@ -136,7 +136,7 @@ Remember to add the path to the XSD binaries to your `PATH` environment variable
 
 ##Download, compile, and install the ISMRM Raw Data format. 
 
-Detailed instructions are available at (<http://ismrmrd.sourceforge.net>).    
+Detailed instructions are available at (<http://ismrmrd.github.io>).    
 
 From a git bash shell:
 
