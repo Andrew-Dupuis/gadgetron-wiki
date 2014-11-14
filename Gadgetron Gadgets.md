@@ -15,7 +15,7 @@ Most MRI Gadgets inherit from Gadget2 as described in [Gadgets](../Gadgetron%20S
     Gadget2< ISMRMRD::AcquisitionHeader, hoNDArray< std::complex<float> > >
     Gadget2< ISMRMRD::ImageHeader, hoNDArray< std::complex<float> > >
 
-As seen, they take a data array (which is typically of complex float type) and a header describing either the acquisition or the image. These headers are defined in [ismrmrd.h](http://ismrmrd.sourceforge.net/api/ismrmrd_8h_source.html) (from the ISMRM Raw Data format). The definition of [ISMRMRD::AcquisitionHeader](http://ismrmrd.sourceforge.net/api/struct_i_s_m_r_m_r_d_1_1_acquisition_header.html) looks like (abbreviated):
+As seen, they take a data array (which is typically of complex float type) and a header describing either the acquisition or the image. These headers are defined in [ismrmrd.h](http://ismrmrd.github.io/api/ismrmrd_8h_source.html) (from the ISMRM Raw Data format). The definition of [ISMRMRD::AcquisitionHeader](http://ismrmrd.github.io/api/struct_i_s_m_r_m_r_d_1_1_acquisition_header.html) looks like (abbreviated):
 
     struct EncodingCounters {
      uint16_t kspace_encode_step_1; 
@@ -60,7 +60,7 @@ As seen, they take a data array (which is typically of complex float type) and a
 
 It is a simple struct, which mainly serves the purpose of keeping track of a) the encoding properties of a given acquisition (phase ending number, etc.) and b) the spatial position and orientation that the data was acquired from. Different MRI systems have different conventions for how to label data, but in most cases one would be able to convert to this format.
 
-The [ISMRMRD::ImageHeader](http://ismrmrd.sourceforge.net/api/struct_i_s_m_r_m_r_d_1_1_image_header.html) data structure is also just a struct for keeping track of image labels, position, and orientation:
+The [ISMRMRD::ImageHeader](http://ismrmrd.github.io/api/struct_i_s_m_r_m_r_d_1_1_image_header.html) data structure is also just a struct for keeping track of image labels, position, and orientation:
 
     struct ImageHeader
     {
