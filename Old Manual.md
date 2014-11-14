@@ -151,7 +151,7 @@ http://gadgetron.sourceforge.net/latest/manual/gadgetron_manual.pdf
 
 API documentation (generated with Doxygen) is available from:
 
-http://gadgetron.sourceforge.net/latest/api/
+https://gadgetron.github.io/api_master//
 
 1.3.1. Dependencies
 

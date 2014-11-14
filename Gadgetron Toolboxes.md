@@ -2,9 +2,9 @@ The core reconstruction data structures and algorithms are made available throug
 
 ### <a name="sectionndarray" />NDArray
 
-Most image processing operations involve multi-dimensional arrays. Although the Gadgetron framework does not impose any specific array structure on the user, it does come with an abstract multi-dimensional array used throughout: the [NDArray](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1_n_d_array.html). It has a specific implementation for the CPU ([hoNDArray](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1ho_n_d_array.html)) and GPU ([cuNDArray](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1cu_n_d_array.html)). Sometimes (for very large datasets) it is necessary to store the arrays in host (CPU) memory while operations on the same array should, if possible, take place on the GPU. For this kind of array we provide the [hoCuNDArray](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1ho_cu_n_d_array.html).
+Most image processing operations involve multi-dimensional arrays. Although the Gadgetron framework does not impose any specific array structure on the user, it does come with an abstract multi-dimensional array used throughout: the [NDArray](https://gadgetron.github.io/api_master//class_gadgetron_1_1_n_d_array.html). It has a specific implementation for the CPU ([hoNDArray](https://gadgetron.github.io/api_master//class_gadgetron_1_1ho_n_d_array.html)) and GPU ([cuNDArray](https://gadgetron.github.io/api_master//class_gadgetron_1_1cu_n_d_array.html)). Sometimes (for very large datasets) it is necessary to store the arrays in host (CPU) memory while operations on the same array should, if possible, take place on the GPU. For this kind of array we provide the [hoCuNDArray](https://gadgetron.github.io/api_master//class_gadgetron_1_1ho_cu_n_d_array.html).
 
-The abstract class definition ([NDArray](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1_n_d_array.html)) looks like (abbreviated version):
+The abstract class definition ([NDArray](https://gadgetron.github.io/api_master//class_gadgetron_1_1_n_d_array.html)) looks like (abbreviated version):
 
     template <class T> class NDArray
     {
@@ -46,7 +46,7 @@ The abstract class definition ([NDArray](http://gadgetron.sourceforge.net/latest
       
     };
 
-The CPU version ([hoNDArray](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1ho_n_d_array.html)) would look like (abbreviated):
+The CPU version ([hoNDArray](https://gadgetron.github.io/api_master//class_gadgetron_1_1ho_n_d_array.html)) would look like (abbreviated):
 
     template <class T> class hoNDArray : public NDArray<T>
     {
@@ -59,7 +59,7 @@ The CPU version ([hoNDArray](http://gadgetron.sourceforge.net/latest/api/class_g
        virtual void deallocate_memory();
     };
 
-As is seen from the [NDArray](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1_n_d_array.html) class definition, this class has a no-argument constructor, which makes it suited for encapsulating in the [GadgetContainerMessage](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1_gadget_container_message.html) described in [Gadgets](../Gadgetron%20Streaming%20Architecture/#gadgetslink). The procedure for creating an array with complex float values would look something like this:
+As is seen from the [NDArray](https://gadgetron.github.io/api_master//class_gadgetron_1_1_n_d_array.html) class definition, this class has a no-argument constructor, which makes it suited for encapsulating in the [GadgetContainerMessage](https://gadgetron.github.io/api_master//class_gadgetron_1_1_gadget_container_message.html) described in [Gadgets](../Gadgetron%20Streaming%20Architecture/#gadgetslink). The procedure for creating an array with complex float values would look something like this:
 
     #include <hoNDArray.h>
     #include <complex>
@@ -74,9 +74,9 @@ As is seen from the [NDArray](http://gadgetron.sourceforge.net/latest/api/class_
 
     // Process data
 
-As common behaviour for all toolboxes, a runtime exception is thrown if an error is encountered. For the code snippet above, this could happen if the create method is passed an empty dimensions vector or one that exceeds the available amount of memory. The user can catch such exceptions if desired. For the streaming framework, the [Gadget](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1_gadget.html) base class will catch such exceptions thrown within the 'process' or 'process_config' methods.
+As common behaviour for all toolboxes, a runtime exception is thrown if an error is encountered. For the code snippet above, this could happen if the create method is passed an empty dimensions vector or one that exceeds the available amount of memory. The user can catch such exceptions if desired. For the streaming framework, the [Gadget](https://gadgetron.github.io/api_master//class_gadgetron_1_1_gadget.html) base class will catch such exceptions thrown within the 'process' or 'process_config' methods.
 
-To create an [NDArray](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1_n_d_array.html) contained in a [GadgetContainerMessage](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1_gadget_container_message.html) would look something like this:
+To create an [NDArray](https://gadgetron.github.io/api_master//class_gadgetron_1_1_n_d_array.html) contained in a [GadgetContainerMessage](https://gadgetron.github.io/api_master//class_gadgetron_1_1_gadget_container_message.html) would look something like this:
 
     GadgetContainerMessage< hoNDArray< std::complex<float> > >* m = 
       new GadgetContainerMessage< hoNDArray< std::complex<float> > >();
@@ -91,11 +91,11 @@ To create an [NDArray](http://gadgetron.sourceforge.net/latest/api/class_gadgetr
 
     m->release(); // Delete the message block and containing data
 
-As mentioned in [Gadgets](../Gadgetron%20Streaming%20Architecture/#gadgetslink), the [GadgetContainerMessage](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1_gadget_container_message_base.html) is a specialized version of the [ACE\_Message\_Block](http://www.dre.vanderbilt.edu/Doxygen/Stable/libace-doc/a00393.html) class from the ACE framework. Data is passed between Gadgets in the form of ACE\_Message\_Blocks and Gadgets have access to utility functions that allow them to test if a given [ACE\_Message\_Block](http://www.dre.vanderbilt.edu/Doxygen/Stable/libace-doc/a00393.html) is in fact a particular type of [GadgetContainerMessage](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1_gadget_container_message_base.html).
+As mentioned in [Gadgets](../Gadgetron%20Streaming%20Architecture/#gadgetslink), the [GadgetContainerMessage](https://gadgetron.github.io/api_master//class_gadgetron_1_1_gadget_container_message_base.html) is a specialized version of the [ACE\_Message\_Block](http://www.dre.vanderbilt.edu/Doxygen/Stable/libace-doc/a00393.html) class from the ACE framework. Data is passed between Gadgets in the form of ACE\_Message\_Blocks and Gadgets have access to utility functions that allow them to test if a given [ACE\_Message\_Block](http://www.dre.vanderbilt.edu/Doxygen/Stable/libace-doc/a00393.html) is in fact a particular type of [GadgetContainerMessage](https://gadgetron.github.io/api_master//class_gadgetron_1_1_gadget_container_message_base.html).
 
 #### GPU Support
 
-The [NDArray](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1_n_d_array.html) data structure has a GPU implementation [cuNDArray](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1cu_n_d_array.html) (abbreviated version of header below):
+The [NDArray](https://gadgetron.github.io/api_master//class_gadgetron_1_1_n_d_array.html) data structure has a GPU implementation [cuNDArray](https://gadgetron.github.io/api_master//class_gadgetron_1_1cu_n_d_array.html) (abbreviated version of header below):
 
     template <class T> class cuNDArray : public NDArray<T>
     {
@@ -136,19 +136,19 @@ It has a few extra `create` functions compared to the host (CPU) version of this
 
 #### Operators and utility functions
 
-For both the [hoNDArray](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1ho_n_d_array.html), [cuNDArray](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1cu_n_d_array.html), and [hoCuNDArray](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1ho_cu_n_d_array.html) we have defined a number of common array operations as C++ operators and overloaded functions. 
+For both the [hoNDArray](https://gadgetron.github.io/api_master//class_gadgetron_1_1ho_n_d_array.html), [cuNDArray](https://gadgetron.github.io/api_master//class_gadgetron_1_1cu_n_d_array.html), and [hoCuNDArray](https://gadgetron.github.io/api_master//class_gadgetron_1_1ho_cu_n_d_array.html) we have defined a number of common array operations as C++ operators and overloaded functions. 
 
-Element-wise operators for addition, subtraction, multiplication and division are defined in the header files [hoNDArray_operators.h](http://gadgetron.sourceforge.net/latest/api/ho_n_d_array__operators_8h.html), [cuNDArray_operators.h](http://gadgetron.sourceforge.net/latest/api/cu_n_d_array__operators_8h.html), and [hoCuNDArray_operators.h](http://gadgetron.sourceforge.net/latest/api/ho_cu_n_d_array__operators_8h.html) respectively. 
+Element-wise operators for addition, subtraction, multiplication and division are defined in the header files [hoNDArray_operators.h](https://gadgetron.github.io/api_master//ho_n_d_array__operators_8h.html), [cuNDArray_operators.h](https://gadgetron.github.io/api_master//cu_n_d_array__operators_8h.html), and [hoCuNDArray_operators.h](https://gadgetron.github.io/api_master//ho_cu_n_d_array__operators_8h.html) respectively. 
 
-Commonly used arithmetic element-wise array operations such as abs, sqrt, reciprocal, sgn, real, imag, and many others are defined in [hoNDArray_elemwise.h](http://gadgetron.sourceforge.net/latest/api/ho_n_d_array__elemwise_8h.html), [cuNDArray_elemwise.h](http://gadgetron.sourceforge.net/latest/api/cu_n_d_array__elemwise_8h.html), and [hoCuNDArray_elemwise.h](http://gadgetron.sourceforge.net/latest/api/ho_cu_n_d_array__elemwise_8h.html) respectively.
+Commonly used arithmetic element-wise array operations such as abs, sqrt, reciprocal, sgn, real, imag, and many others are defined in [hoNDArray_elemwise.h](https://gadgetron.github.io/api_master//ho_n_d_array__elemwise_8h.html), [cuNDArray_elemwise.h](https://gadgetron.github.io/api_master//cu_n_d_array__elemwise_8h.html), and [hoCuNDArray_elemwise.h](https://gadgetron.github.io/api_master//ho_cu_n_d_array__elemwise_8h.html) respectively.
 
-A BLAS interface to all [NDArray]((http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1_n_d_array.html)) derived classes is also available - as well as further helper functions. Please consult the [API](http://gadgetron.sourceforge.net/latest/api/files.html) file structure for an overview.
+A BLAS interface to all [NDArray]((https://gadgetron.github.io/api_master//class_gadgetron_1_1_n_d_array.html)) derived classes is also available - as well as further helper functions. Please consult the [API](https://gadgetron.github.io/api_master//files.html) file structure for an overview.
 
 Notice that the host (CPU) implementation of many of these utilities depend on [Armadillo](http://arma.sourceforge.net/) and the device (GPU) implementation depend on [Cuda](http://developer.nvidia.com/cuda-downloads)/[Cula](http://www.culatools.com/downloads/dense/). See [Linux Installation] [Mac Installation] [Windows Installation] for installation instructions.
 
 ### vector\_td
 
-The class [vector\_td](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1vector__td.html) provides a basic representation of one-, two-, three-, and four-dimensional vectors (positions). It is templetized with the datatype `T` and dimensionality `D`. For convenience we provide a set of typedefs to commonly encountered instances. A subset of the definitions provided in [vector_td.h](http://gadgetron.sourceforge.net/latest/api/vector__td_8h.html) is provided here (users should consult the actual class definition e.g. for additional often used constructors):
+The class [vector\_td](https://gadgetron.github.io/api_master//class_gadgetron_1_1vector__td.html) provides a basic representation of one-, two-, three-, and four-dimensional vectors (positions). It is templetized with the datatype `T` and dimensionality `D`. For convenience we provide a set of typedefs to commonly encountered instances. A subset of the definitions provided in [vector_td.h](https://gadgetron.github.io/api_master//vector__td_8h.html) is provided here (users should consult the actual class definition e.g. for additional often used constructors):
 
     template< class T, unsigned int D > class vector_td
     {
@@ -194,13 +194,13 @@ The class [vector\_td](http://gadgetron.sourceforge.net/latest/api/class_gadgetr
       typedef vector_td< T, 2 > Type;
     };
 
-A number of arithmetic and conditional operators on the [vector\_td](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1vector__td.html) are defined in [vector_td_operators.h](http://gadgetron.sourceforge.net/latest/api/vector__td__operators_8h.html). Similarly, the header [vector_td_utilities.h](http://gadgetron.sourceforge.net/latest/api/vector__td__utilities_8h.html) wraps common math functionality for the [vector\_td](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1vector__td.html) class. We encourage the reader to explore these header files to obtain an overview of the provided functionality.
+A number of arithmetic and conditional operators on the [vector\_td](https://gadgetron.github.io/api_master//class_gadgetron_1_1vector__td.html) are defined in [vector_td_operators.h](https://gadgetron.github.io/api_master//vector__td__operators_8h.html). Similarly, the header [vector_td_utilities.h](https://gadgetron.github.io/api_master//vector__td__utilities_8h.html) wraps common math functionality for the [vector\_td](https://gadgetron.github.io/api_master//class_gadgetron_1_1vector__td.html) class. We encourage the reader to explore these header files to obtain an overview of the provided functionality.
 
-The [vector\_td](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1vector__td.html) can be used in both host and device code. As an example of use it is contained in the interface of the non-Cartesian FFT described in [Non-Cartesian FFT](#sectionnoncartesianfft).
+The [vector\_td](https://gadgetron.github.io/api_master//class_gadgetron_1_1vector__td.html) can be used in both host and device code. As an example of use it is contained in the interface of the non-Cartesian FFT described in [Non-Cartesian FFT](#sectionnoncartesianfft).
 
 ### complext
 
-A complex number class, [complext](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1complext.html), which can be used in both host and device code is found in [complext.h](http://gadgetron.sourceforge.net/latest/api/complext_8h.html). It contains a substantial set of useful operators and functions similarly to what is found for the [vector\_td](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1vector__td.html) class.
+A complex number class, [complext](https://gadgetron.github.io/api_master//class_gadgetron_1_1complext.html), which can be used in both host and device code is found in [complext.h](https://gadgetron.github.io/api_master//complext_8h.html). It contains a substantial set of useful operators and functions similarly to what is found for the [vector\_td](https://gadgetron.github.io/api_master//class_gadgetron_1_1vector__td.html) class.
 
 ### Fourier Transforms
 
@@ -208,7 +208,7 @@ A complex number class, [complext](http://gadgetron.sourceforge.net/latest/api/c
 
 ##### FFT of an hoNDArray
 
-The Gadgetron uses the FFTW library for Cartesian fast Fourier transforms of [hoNDArray](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1ho_n_d_array.html) structures. Users can call the FFTW directly from their code, but to make things a little easier, we provide a simple wrapper class, [hoNDFFT](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1ho_n_d_f_f_t.html). Here is an abbreviated version:
+The Gadgetron uses the FFTW library for Cartesian fast Fourier transforms of [hoNDArray](https://gadgetron.github.io/api_master//class_gadgetron_1_1ho_n_d_array.html) structures. Users can call the FFTW directly from their code, but to make things a little easier, we provide a simple wrapper class, [hoNDFFT](https://gadgetron.github.io/api_master//class_gadgetron_1_1ho_n_d_f_f_t.html). Here is an abbreviated version:
 
     template <typename T> class EXPORTCPUCORE hoNDFFT
     {
@@ -232,7 +232,7 @@ The Gadgetron uses the FFTW library for Cartesian fast Fourier transforms of [ho
      virtual ~hoNDFFT();
     };
 
-The [hoNDFFT](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1ho_n_d_f_f_t.html) class thus provides simple wrapper functionality to perform FFTs of hoNDArrays along a specific dimension or along all dimensions. It performs *in place* FFTs and works on complex arrays of single or double precision.
+The [hoNDFFT](https://gadgetron.github.io/api_master//class_gadgetron_1_1ho_n_d_f_f_t.html) class thus provides simple wrapper functionality to perform FFTs of hoNDArrays along a specific dimension or along all dimensions. It performs *in place* FFTs and works on complex arrays of single or double precision.
 
 An important feature of this class is that it is a process wide singleton for the Gadgetron. As outlined in the definition above, the constructor and destructor are protected and it is not possible to allocate a new FFT object. The way to use the class is through the `instance` function:
 
@@ -240,17 +240,17 @@ An important feature of this class is that it is a process wide singleton for th
 
     hoNDFFT<float>::instance()->fft(...);
 
-The reason for this is that the FFTW planning routines are not thread safe. Multiple Gadgets (that each have their own thread of execution) may need to use FFTs and consequently the planning routines need to be protected with a mutex. All of this is handled inside the [hoNDFFT](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1ho_n_d_f_f_t.html) class and since it is a singleton only one thread can run the planning routines at any given time.
+The reason for this is that the FFTW planning routines are not thread safe. Multiple Gadgets (that each have their own thread of execution) may need to use FFTs and consequently the planning routines need to be protected with a mutex. All of this is handled inside the [hoNDFFT](https://gadgetron.github.io/api_master//class_gadgetron_1_1ho_n_d_f_f_t.html) class and since it is a singleton only one thread can run the planning routines at any given time.
 
 As mentioned it is possible for the users to call FFTW routines directly, and there may be some performance reasons for doing so (as opposed to using this wrapper), but please be aware of this thread safety issue when you design your Gadgets. If you want to be on the safe side, use the wrapper.
 
 ##### FFT of a cuNDArray
 
-Cartesian Fast Fourier Transform on the GPU is supported by wrapping Cuda's FFT routines with an interface similar to host version above. See the definition if the [cuNDFFT](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1cu_n_d_f_f_t.html) class.
+Cartesian Fast Fourier Transform on the GPU is supported by wrapping Cuda's FFT routines with an interface similar to host version above. See the definition if the [cuNDFFT](https://gadgetron.github.io/api_master//class_gadgetron_1_1cu_n_d_f_f_t.html) class.
 
 #### <a name="sectionnoncartesianfft" />Non-Cartesian FFT
 
-A dedicated GPU-implementation of the NUFFT - often referred to a gridding - is provided. The interface is defined by the [cuNFFT_plan](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1cu_n_f_f_t__plan.html) class in the header [cuNFFT.h](http://gadgetron.sourceforge.net/latest/api/cu_n_f_f_t_8h.html). The class definition is provided below in abbreviated form:
+A dedicated GPU-implementation of the NUFFT - often referred to a gridding - is provided. The interface is defined by the [cuNFFT_plan](https://gadgetron.github.io/api_master//class_gadgetron_1_1cu_n_f_f_t__plan.html) class in the header [cuNFFT.h](https://gadgetron.github.io/api_master//cu_n_f_f_t_8h.html). The class definition is provided below in abbreviated form:
 
     template< class REAL, unsigned int D, bool ATOMICS=false > 
     class EXPORTGPUNFFT cuNFFT_plan
@@ -332,11 +332,11 @@ A dedicated GPU-implementation of the NUFFT - often referred to a gridding - is 
     ...
     };
 
-After a [cuNFFT_plan](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1cu_n_f_f_t__plan.html) is created the `preprocess` function should be called with the desired trajectory. In the special case of radial sampling the header [radial_utilities.h](http://gadgetron.sourceforge.net/latest/api/radial__utilities_8h_source.html) defines some convenient functions to compute radial trajectories and corresponding density compensation weights. After preprocessing the NFFT can be executed through the `compute` function. The individual building blocks of the NFFT - convolution, FFT, and deapodization - are exposed in the public interface and hence available for use in custom algorithms.
+After a [cuNFFT_plan](https://gadgetron.github.io/api_master//class_gadgetron_1_1cu_n_f_f_t__plan.html) is created the `preprocess` function should be called with the desired trajectory. In the special case of radial sampling the header [radial_utilities.h](https://gadgetron.github.io/api_master//radial__utilities_8h_source.html) defines some convenient functions to compute radial trajectories and corresponding density compensation weights. After preprocessing the NFFT can be executed through the `compute` function. The individual building blocks of the NFFT - convolution, FFT, and deapodization - are exposed in the public interface and hence available for use in custom algorithms.
 
 It is often required to perform the NFFT on a number of different inputs. Particularly for small 1D and 2D arrays, the best performance is obtained if many transforms are executed concurrently in order to keep the device fully occupied. Two strategies can be combined:
 
--   The trajectory passed to the preprocess method is normally a one-dimension [cuNDArray](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1cu_n_d_array.html) containing normalized (to the range [-0.5;0.5]) non-Cartesian positions as [reald\<REAL,D\>](http://gadgetron.sourceforge.net/latest/api/struct_gadgetron_1_1reald.html) elements of precision REAL and dimensionality D. However, if the cuNDArray is two-dimensional, the latter dimension specifies that we wish to transform a number of frames with different trajectories concurrently.
+-   The trajectory passed to the preprocess method is normally a one-dimension [cuNDArray](https://gadgetron.github.io/api_master//class_gadgetron_1_1cu_n_d_array.html) containing normalized (to the range [-0.5;0.5]) non-Cartesian positions as [reald\<REAL,D\>](https://gadgetron.github.io/api_master//struct_gadgetron_1_1reald.html) elements of precision REAL and dimensionality D. However, if the cuNDArray is two-dimensional, the latter dimension specifies that we wish to transform a number of frames with different trajectories concurrently.
 
 -   If a number of transformations with identical trajectories are to be transformed, the input and output arrays to the compute methods can be any multiple of the Cartesian and non-Cartesian dimensions configured from the setup and preprocess methods. The images provided are consequently batch transformed.
 
@@ -346,29 +346,29 @@ A version of the cuNFFT implemented using atomic operations is available. It is 
 
 ### <a name="sectionlinearmatrixoperators" />Linear (Matrix) Operators
 
-A fundamental building block of most image reconstruction algorithms is the abstract class [linearOperator](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1linear_operator.html). It inherits some functionality from the [generalOperator](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1general_operator.html) base class. A range of linear imaging and regularization operators are derived from the pure virtual [linearOperator](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1linear_operator.html).
+A fundamental building block of most image reconstruction algorithms is the abstract class [linearOperator](https://gadgetron.github.io/api_master//class_gadgetron_1_1linear_operator.html). It inherits some functionality from the [generalOperator](https://gadgetron.github.io/api_master//class_gadgetron_1_1general_operator.html) base class. A range of linear imaging and regularization operators are derived from the pure virtual [linearOperator](https://gadgetron.github.io/api_master//class_gadgetron_1_1linear_operator.html).
 
-The [linearOperator](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1linear_operator.html) is templated by it underlying ARRAY\_TYPE (e.g. hoNDArray<float> or cuNDArray<float>) representing the expected vector in the matrix-vector multiplication the operator implements.
+The [linearOperator](https://gadgetron.github.io/api_master//class_gadgetron_1_1linear_operator.html) is templated by it underlying ARRAY\_TYPE (e.g. hoNDArray<float> or cuNDArray<float>) representing the expected vector in the matrix-vector multiplication the operator implements.
 
-Every [linearOperator](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1linear_operator.html) has an associated weight that is used to balance multiple matrix terms when added to a cost function (see [Linear Solvers](#sectionlinearsolvers)).
+Every [linearOperator](https://gadgetron.github.io/api_master//class_gadgetron_1_1linear_operator.html) has an associated weight that is used to balance multiple matrix terms when added to a cost function (see [Linear Solvers](#sectionlinearsolvers)).
 
 The main functionality is provided in the two pure virtual functions `mult_M` and `mult_MH` denoting multiplication with the matrix operator (`M`) and multiplication with the adjoint (i.e. conjugate transpose) of the matrix operator (`M`) respectively. The default implementation of `mult_MH_M` computes an "iteration" of the two (`M^H M`) by invoking `mult_M` and `mult_MH` in turn. Specialized operators can redefine the virtual `mult_MH_M` to increase performance when appropriate.
 
 The clone method is required by some solvers to make a clone (copy) of a given linear operator. Similarly, some solvers require knowledge of the `domain` and `codomain` dimensions on which the operator can be applied. The mult\_M method converts the input vector of `domain_size` to one of `codomain_size` - and vice versa for mult\_MH.
 
-The [linearOperator](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1linear_operator.html) is used to model a linear imaging modality's encodig operation (Fourier transform for MRI, Radon transform for CT, convolution for Microscopy etc.) but also common regularization operators such the identity matrix, a partial derivative etc.
+The [linearOperator](https://gadgetron.github.io/api_master//class_gadgetron_1_1linear_operator.html) is used to model a linear imaging modality's encodig operation (Fourier transform for MRI, Radon transform for CT, convolution for Microscopy etc.) but also common regularization operators such the identity matrix, a partial derivative etc.
 
-Here follows a list that briefly describes the linear operators that are used for the reconstruction examples discussed later in this document ([Gadgetron Applications], [Standalone Applications]) - inspect the [API](http://gadgetron.sourceforge.net/latest/api/files.html) to obtain the full set of available operators:
+Here follows a list that briefly describes the linear operators that are used for the reconstruction examples discussed later in this document ([Gadgetron Applications], [Standalone Applications]) - inspect the [API](https://gadgetron.github.io/api_master//files.html) to obtain the full set of available operators:
 
 #### List of linear operators
 
 The section provides a non-exhaustive list of available linear operators in Gadgetron toolboxes.
 
-A two-level implementation strategy is used for most of the operators the Gadgetron provide. We first derive a class, say [identityOperator](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1identity_operator.html), from the [linearOperator](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1linear_operator.html). In this derived class we implement the pure virtual functions of the base class, e.g. `mult_M`, `mult_MH`, and `mult_MH_M`. The overall algorithm and functionality of the operator is implemented at this level. Like its superclass, the [identityOperator](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1identity_operator.html) is however templated on the underlying ARRAY\_TYPE and thus cannot contain dedicated implementation code to a specific array implementation. The implementation of `mult_M`, `mult_MH`, and `mult_MH_M` is consequently based on a new set of pure virtual functions of the templated ARRAY\_TYPE. We provide another level of inheritance, e.g. [cuIdentityOperator](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1cu_identity_operator.html), which in this case provides the cuNDArray-specific implementation of the pure virtual functions in the [identityOperator](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1identity_operator.html). This hierarchy has the desired design goal, that the core algorithm implementation is shared in the base class of the operator. Only the host/device specific sub-components are defined individually. It is thus fairly straightforward to derive both an cuNDArray and an hoNDArray version of an operator. I.e. to build both host and device solvers with minimal effort.
+A two-level implementation strategy is used for most of the operators the Gadgetron provide. We first derive a class, say [identityOperator](https://gadgetron.github.io/api_master//class_gadgetron_1_1identity_operator.html), from the [linearOperator](https://gadgetron.github.io/api_master//class_gadgetron_1_1linear_operator.html). In this derived class we implement the pure virtual functions of the base class, e.g. `mult_M`, `mult_MH`, and `mult_MH_M`. The overall algorithm and functionality of the operator is implemented at this level. Like its superclass, the [identityOperator](https://gadgetron.github.io/api_master//class_gadgetron_1_1identity_operator.html) is however templated on the underlying ARRAY\_TYPE and thus cannot contain dedicated implementation code to a specific array implementation. The implementation of `mult_M`, `mult_MH`, and `mult_MH_M` is consequently based on a new set of pure virtual functions of the templated ARRAY\_TYPE. We provide another level of inheritance, e.g. [cuIdentityOperator](https://gadgetron.github.io/api_master//class_gadgetron_1_1cu_identity_operator.html), which in this case provides the cuNDArray-specific implementation of the pure virtual functions in the [identityOperator](https://gadgetron.github.io/api_master//class_gadgetron_1_1identity_operator.html). This hierarchy has the desired design goal, that the core algorithm implementation is shared in the base class of the operator. Only the host/device specific sub-components are defined individually. It is thus fairly straightforward to derive both an cuNDArray and an hoNDArray version of an operator. I.e. to build both host and device solvers with minimal effort.
 
-As an example we provide a simplified declaration of the [identityOperator](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1identity_operator.html) and [cuIdentityOperator](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1cu_identity_operator.html) below. Without specific mentioning for the subsequent operators, they follow a similar inheritance hierarchy.
+As an example we provide a simplified declaration of the [identityOperator](https://gadgetron.github.io/api_master//class_gadgetron_1_1identity_operator.html) and [cuIdentityOperator](https://gadgetron.github.io/api_master//class_gadgetron_1_1cu_identity_operator.html) below. Without specific mentioning for the subsequent operators, they follow a similar inheritance hierarchy.
 
--   [identityOperator](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1identity_operator.html)
+-   [identityOperator](https://gadgetron.github.io/api_master//class_gadgetron_1_1identity_operator.html)
 
     Implements multiplication of a vector with the identity matrix.
 
@@ -406,37 +406,37 @@ As an example we provide a simplified declaration of the [identityOperator](http
         }; 
 
 
-    Notice that the template argument to the [cuIdentityOperator](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1cu_identity_operator.html) differs from the [identityOperator](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1identity_operator.html). Type T specifies the desired type of the matrix-vector elements (e.g. float or complext<float>). Also notice how the [cuIdentityOperator](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1cu_identity_operator.html) class definition directly specifies the ARRAY\_TYPE of its superclass (in this case to be of type cuNDArray\<T\>).
+    Notice that the template argument to the [cuIdentityOperator](https://gadgetron.github.io/api_master//class_gadgetron_1_1cu_identity_operator.html) differs from the [identityOperator](https://gadgetron.github.io/api_master//class_gadgetron_1_1identity_operator.html). Type T specifies the desired type of the matrix-vector elements (e.g. float or complext<float>). Also notice how the [cuIdentityOperator](https://gadgetron.github.io/api_master//class_gadgetron_1_1cu_identity_operator.html) class definition directly specifies the ARRAY\_TYPE of its superclass (in this case to be of type cuNDArray\<T\>).
 
--   [partialDerivativeOperator](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1partial_derivative_operator.html)
+-   [partialDerivativeOperator](https://gadgetron.github.io/api_master//class_gadgetron_1_1partial_derivative_operator.html)
 
     Provides the partial derivative of an image in a given spatial dimension.
 
--   [laplaceOperator](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1laplace_operator.html)
+-   [laplaceOperator](https://gadgetron.github.io/api_master//class_gadgetron_1_1laplace_operator.html)
 
     Computes the Laplacian of an image.
 
--   [imageOperator](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1image_operator.html)
+-   [imageOperator](https://gadgetron.github.io/api_master//class_gadgetron_1_1image_operator.html)
 
     Performs multiplication with a diagonal matrix of the element-wise reciprocal of a given image.
 
--   [convolutionOperator](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1convolution_operator.html)
+-   [convolutionOperator](https://gadgetron.github.io/api_master//class_gadgetron_1_1convolution_operator.html)
 
     Performs convolution of an image with a given kernel.
 
--   [cuNFFTOperator](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1cu_n_f_f_t_operator.html)
+-   [cuNFFTOperator](https://gadgetron.github.io/api_master//class_gadgetron_1_1cu_n_f_f_t_operator.html)
 
     Implements the non-Cartesian Fast Fourier Transform
 
--   [senseOperator](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1sense_operator.html)
+-   [senseOperator](https://gadgetron.github.io/api_master//class_gadgetron_1_1sense_operator.html)
 
-    Implements the encoding operator for the parallel MRI imaging technique Sense. Comes in two flavours for 1) [Cartesian](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1cartesian_sense_operator.html) and 2) [non-Cartesian](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1non_cartesian_sense_operator.html) reconstruction.
+    Implements the encoding operator for the parallel MRI imaging technique Sense. Comes in two flavours for 1) [Cartesian](https://gadgetron.github.io/api_master//class_gadgetron_1_1cartesian_sense_operator.html) and 2) [non-Cartesian](https://gadgetron.github.io/api_master//class_gadgetron_1_1non_cartesian_sense_operator.html) reconstruction.
 
--   [multiplicationOperatorContainer](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1multiplication_operator_contrainer.html)
+-   [multiplicationOperatorContainer](https://gadgetron.github.io/api_master//class_gadgetron_1_1multiplication_operator_contrainer.html)
 
     An operator can often be considered the result of multiplicative concatenation of a sequence of simpler linear operators. The multiplicationOperatorContainer defines a convenient interface to ease the construction of such concatenations.
 
--   [encodingOperatorContainer](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1encoding_operator_container.html)
+-   [encodingOperatorContainer](https://gadgetron.github.io/api_master//class_gadgetron_1_1encoding_operator_container.html)
 
     As we require exactly one encoding operator (but allow multiple regularization operators) to be added to our solvers (see [Linear Solvers](#sectionlinearsolvers) below), this operator acts as a container when multiple encoding operators are desired. For example: The cost function right below ([Conjugate Gradient Method for Linear Least Squares](#sectionconjugategradient)) has two terms in its general form. Most often the vector **p** is **0** and consequently the operator **R** is considered a regularization operator while the operator **E** the single encoding operator. However, if **p** is non-zero, both **E** and **R** must be added to an encodingOperatorContainer that takes in both **m** and **p** during multiplication. A single encodingOperatorContainer is then added to the solver.
 
@@ -462,13 +462,13 @@ The closed form solution to the optimization problem is given by the linear syst
 Put extremely short; you set up and run a solver by 1) adding the corresponding linear operators to the solver, and 2) invoking the `solve` function in the solver providing **m** (and **p** if non-zero)
 as input arguments.
 
-The interface to the conjugate solver is defined from the classes [solver](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1solver.html), [linearOperatorSolver](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1linear_operator_solver.html), and [cgSolver](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1cg_solver.html). Host/device specific implementations are available in the classes [hoCgSolver](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1ho_cg_solver.html), [cuCgSolver](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1cu_cg_solver.html), and [hoCuCgSolver](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1ho_cu_cg_solver.html). I.e. the overall inheritance hierarchy is modelled and implemented similarly to the operator class hierarchy described above (see [Linear (Matrix) Operators](#sectionlinearmatrixoperators)). 
+The interface to the conjugate solver is defined from the classes [solver](https://gadgetron.github.io/api_master//class_gadgetron_1_1solver.html), [linearOperatorSolver](https://gadgetron.github.io/api_master//class_gadgetron_1_1linear_operator_solver.html), and [cgSolver](https://gadgetron.github.io/api_master//class_gadgetron_1_1cg_solver.html). Host/device specific implementations are available in the classes [hoCgSolver](https://gadgetron.github.io/api_master//class_gadgetron_1_1ho_cg_solver.html), [cuCgSolver](https://gadgetron.github.io/api_master//class_gadgetron_1_1cu_cg_solver.html), and [hoCuCgSolver](https://gadgetron.github.io/api_master//class_gadgetron_1_1ho_cu_cg_solver.html). I.e. the overall inheritance hierarchy is modelled and implemented similarly to the operator class hierarchy described above (see [Linear (Matrix) Operators](#sectionlinearmatrixoperators)). 
 
-To use the solver, the user creates an instance of the solver for either the host or device (e.g. the [cuCgSolver](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1cu_cg_solver.html) for a GPU-based solver). The solver is then configured using the inherited functions. The core 'solve' function itself is found in the root of the hierarchy; the [solver](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1solver.html) class.
+To use the solver, the user creates an instance of the solver for either the host or device (e.g. the [cuCgSolver](https://gadgetron.github.io/api_master//class_gadgetron_1_1cu_cg_solver.html) for a GPU-based solver). The solver is then configured using the inherited functions. The core 'solve' function itself is found in the root of the hierarchy; the [solver](https://gadgetron.github.io/api_master//class_gadgetron_1_1solver.html) class.
 
 Note that any number of terms (linear operators) can be added to the solver (or cost function).
 
-The following code listing provides a short example of how to define a conjugate gradient solver for GPU-based image deblurring given an image and an estimate of the point spread function that degraded the image. It uses the [convolutionOperator](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1convolution_operator.html) to model the blurring and a [partialDerivativeOperator](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1partial_derivative_operator.html) in each spatial dimension for regularization. The full code can be found in
+The following code listing provides a short example of how to define a conjugate gradient solver for GPU-based image deblurring given an image and an estimate of the point spread function that degraded the image. It uses the [convolutionOperator](https://gadgetron.github.io/api_master//class_gadgetron_1_1convolution_operator.html) to model the blurring and a [partialDerivativeOperator](https://gadgetron.github.io/api_master//class_gadgetron_1_1partial_derivative_operator.html) in each spatial dimension for regularization. The full code can be found in
 \$(GADGETRON\_SOURCE)`/apps/standalone/gpu/deblurring/2d/deblur_2d_cg.cpp`.
 
       << Code that parses the command line 
@@ -538,9 +538,9 @@ The Gadgetron includes two Split Bregman solvers to solve respectively
 
 ![](http://gadgetron.sf.net/figs/math/sb.jpg)
 
-where |.|<sub>TV</sub> denotes the Total Variation norm. The solver to the upper (unconstraint) optimization problem is defined in the class [sbCgSolver](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1sb_cg_solver.html), while the solver to the latter constraint problem defined in the class [sbcCgSolver](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1sbc_cg_solver.html). The Split Bregman solver was chosen as it integrates nicely with the linear conjugate solver described above [Linear Solvers](#sectionlinearsolvers). In fact, most of the work in the two Split Bregman solvers is performed by a linear inner solver (e.g. a conjugate gradient solver), but the input (right hand side) to the inner solver varies from iteration to iteration. 
+where |.|<sub>TV</sub> denotes the Total Variation norm. The solver to the upper (unconstraint) optimization problem is defined in the class [sbCgSolver](https://gadgetron.github.io/api_master//class_gadgetron_1_1sb_cg_solver.html), while the solver to the latter constraint problem defined in the class [sbcCgSolver](https://gadgetron.github.io/api_master//class_gadgetron_1_1sbc_cg_solver.html). The Split Bregman solver was chosen as it integrates nicely with the linear conjugate solver described above [Linear Solvers](#sectionlinearsolvers). In fact, most of the work in the two Split Bregman solvers is performed by a linear inner solver (e.g. a conjugate gradient solver), but the input (right hand side) to the inner solver varies from iteration to iteration. 
 
-As for the operators and conjugate gradient solvers one should instantiate either a host or device specific instance of the solver. I.e. to run the constrained Split Bregman solver on the GPU, the user would create an instance of a [cuSbCgSolver](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1cu_sbc_cg_solver.html). Prior to running the `solve` function with the measured data **m**, the user should provide 1) the encoding operator, 2) the regularization operators, and 3) the desired domain and codomain dimensions as these cannot in general be deduced from the measured data.
+As for the operators and conjugate gradient solvers one should instantiate either a host or device specific instance of the solver. I.e. to run the constrained Split Bregman solver on the GPU, the user would create an instance of a [cuSbCgSolver](https://gadgetron.github.io/api_master//class_gadgetron_1_1cu_sbc_cg_solver.html). Prior to running the `solve` function with the measured data **m**, the user should provide 1) the encoding operator, 2) the regularization operators, and 3) the desired domain and codomain dimensions as these cannot in general be deduced from the measured data.
 
 We outline the code required to set up the unconstraint Split Bregman solver for TV-based image denoising. The full code can be found in \$(GADGETRON\_SOURCE)`/apps/standalone/gpu/denoising/2d/denoise_TV.cpp`.
 

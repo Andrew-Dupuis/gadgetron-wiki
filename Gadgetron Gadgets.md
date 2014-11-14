@@ -95,17 +95,17 @@ The [ISMRMRD::ImageHeader](http://ismrmrd.sourceforge.net/api/struct_i_s_m_r_m_r
 
 This section contains a non-exhaustive list of available MRI Gadgets with a few brief comments on their function. The purpose is to make it easier to read the XML configuration files provided with the Gadgetron and to give some ideas of what modules can be reused in new reconstruction programs.
 
--   [AccumulatorGadget](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1_accumulator_gadget.html) (`gadgetron_mricore`):
+-   [AccumulatorGadget](https://gadgetron.github.io/api_master//class_gadgetron_1_1_accumulator_gadget.html) (`gadgetron_mricore`):
 
     Simple Gadget for accumulating k-space profiles in an array and passing it on to next Gadget. Used for simple Cartesian FT MRI reconstructions.
 
--   [AutoScaleGadget](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1_auto_scale_gadget.html) (`gadgetron_mricore`):
+-   [AutoScaleGadget](https://gadgetron.github.io/api_master//class_gadgetron_1_1_auto_scale_gadget.html) (`gadgetron_mricore`):
 
     Does simple histogram analysis of floating point images passing through and scales them. This is typically used upstream of conversion from floating point to unsigned short images.
 
--   [CoilReductionGadget](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1_coil_reduction_gadget.html) (`gadgetron_mricore`):
+-   [CoilReductionGadget](https://gadgetron.github.io/api_master//class_gadgetron_1_1_coil_reduction_gadget.html) (`gadgetron_mricore`):
 
-    Used to reduce the number of coils in a dataset. Typically used to tune the performance of a given reconstruction by eliminating data. This Gadget is commonly used in conjunction with the [PCACoilGadget](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1_p_c_a_coil_gadget.html), which generates virtual coils based on principal component analysis. The coil reduction can be specified with either a mask or the number of target coils as illustrated below
+    Used to reduce the number of coils in a dataset. Typically used to tune the performance of a given reconstruction by eliminating data. This Gadget is commonly used in conjunction with the [PCACoilGadget](https://gadgetron.github.io/api_master//class_gadgetron_1_1_p_c_a_coil_gadget.html), which generates virtual coils based on principal component analysis. The coil reduction can be specified with either a mask or the number of target coils as illustrated below
 
         <gadget>
          <name>CoilReduction</name>
@@ -126,11 +126,11 @@ This section contains a non-exhaustive list of available MRI Gadgets with a few 
          </property>
         </gadget>
 
--   [CropAndCombineGadget](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1_crop_and_combine_gadget.html) (`gadgetron_mricore`):
+-   [CropAndCombineGadget](https://gadgetron.github.io/api_master//class_gadgetron_1_1_crop_and_combine_gadget.html) (`gadgetron_mricore`):
 
     This Gadget is used to do a simple RMS coil combination in the image domain and remove 2x oversampling in the first dimension of the image as is commonly used in MRI. This Gadget is intended to be used after FFT of the data.
 
--   [ExtractGadget](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1_extract_gadget.html) (`gadgetron_mricore`):
+-   [ExtractGadget](https://gadgetron.github.io/api_master//class_gadgetron_1_1_extract_gadget.html) (`gadgetron_mricore`):
 
     This Gadget is used to extract a given component (magnitude, real, imaginary, phase) from complex images, i.e. it converts complex images to real images containing specific components. The Gadget can be used to extract multiple components using a mask. The bit fields used to define the components are defined as:
 
@@ -150,22 +150,22 @@ This section contains a non-exhaustive list of available MRI Gadgets with a few 
 
     Default behavior is to extract magnitude.
 
--   [FFTGadget](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1_f_f_t_gadget.html) (`gadgetron_mricore`):
+-   [FFTGadget](https://gadgetron.github.io/api_master//class_gadgetron_1_1_f_f_t_gadget.html) (`gadgetron_mricore`):
 
     This Gadget Fourier transforms along the first 3 dimensions of the dataset (frequency, phase, partition encoding directions) and passes on the data to the next Gadget.
 
--   [FloatToUShortGadget](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1_float_to_u_short_gadget.html) (`gadgetron_mricore`):
+-   [FloatToUShortGadget](https://gadgetron.github.io/api_master//class_gadgetron_1_1_float_to_u_short_gadget.html) (`gadgetron_mricore`):
 
-    Converts floating point images to unsigned short images. This Gadget would often be used in conjunction with a scaling step (e.g. [AutoScaleGadget](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1_auto_scale_gadget.html)) upstream to ensure that the values will not get clipped or overflow during the conversion to unsigned short. This Gadget does not make any attempt to scale the data, it is assumed to be scaled upon entry.
+    Converts floating point images to unsigned short images. This Gadget would often be used in conjunction with a scaling step (e.g. [AutoScaleGadget](https://gadgetron.github.io/api_master//class_gadgetron_1_1_auto_scale_gadget.html)) upstream to ensure that the values will not get clipped or overflow during the conversion to unsigned short. This Gadget does not make any attempt to scale the data, it is assumed to be scaled upon entry.
 
--   [gpuRadialSensePrepGadget](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1gpu_radial_sense_prep_gadget.html) (`gadgetron_radial`):
+-   [gpuRadialSensePrepGadget](https://gadgetron.github.io/api_master//class_gadgetron_1_1gpu_radial_sense_prep_gadget.html) (`gadgetron_radial`):
 
     This gadget is a SENSE preparation gadget for radial trajectories. It assembles a Sense job to be used in a subsequent solver. This Sense job contains all the arrays required for a subsequent reconstruction; coil sensitivity maps, a regularization image, sampling trajectory, data samples, and density compensation weights.
     This gadget has a number of configuration options:
-    • mode. Please see the explanation in the header file [gpuRadialSensePrepGadget.h](http://gadgetron.sourceforge.net/latest/api/gpu_radial_sense_prep_gadget_8h_source.html). Briefly: mode 0 and mode 1 denote fixed angle trajectories and mode 2 is based on the golden ratio.
+    • mode. Please see the explanation in the header file [gpuRadialSensePrepGadget.h](https://gadgetron.github.io/api_master//gpu_radial_sense_prep_gadget_8h_source.html). Briefly: mode 0 and mode 1 denote fixed angle trajectories and mode 2 is based on the golden ratio.
     • deviceno. The gpu on which to run.
-    • profiles_per_frame. The number of profiles (radial readouts) per reconstructed image. Must be specified for golden ratio based acquisitions but is normally auto-detected for modes 0-1. More details available in the header [gpuRadialSensePrepGadget.h](http://gadgetron.sourceforge.net/latest/api/gpu_radial_sense_prep_gadget_8h_source.html).
-    • frames_per_rotation. The number of image frames making up a fully sampled k-space (one rotation). For modes 0-1 the trajectory repeats itself after this many frames. Normally this parameter is auto-detected and for mode 2 (in which the name is less meaningful) it is set to 1 internally. Again, more details are available in the header [gpuRadialSensePrepGadget.h](http://gadgetron.sourceforge.net/latest/api/gpu_radial_sense_prep_gadget_8h_source.html).
+    • profiles_per_frame. The number of profiles (radial readouts) per reconstructed image. Must be specified for golden ratio based acquisitions but is normally auto-detected for modes 0-1. More details available in the header [gpuRadialSensePrepGadget.h](https://gadgetron.github.io/api_master//gpu_radial_sense_prep_gadget_8h_source.html).
+    • frames_per_rotation. The number of image frames making up a fully sampled k-space (one rotation). For modes 0-1 the trajectory repeats itself after this many frames. Normally this parameter is auto-detected and for mode 2 (in which the name is less meaningful) it is set to 1 internally. Again, more details are available in the header [gpuRadialSensePrepGadget.h](https://gadgetron.github.io/api_master//gpu_radial_sense_prep_gadget_8h_source.html).
     • rotations_per_reconstruction. The number of rotations (see ‘frames_per_rotation’ above) to reconstruct per solver invocation. Can be set to 0 to denote a frame-by-frame reconstruction (the default for real-time reconstruction). The number of frames coming out of each solver invocation is then max(1,frames_per_rotation*rotations_per_reconstruction). Performance-wise it is often faster to reconstruct multiple frames (i.e. rotations) per reconstruction.
     • reconstruction_os_factor_x. The reconstruction matrix size is automatically determined from the input data, but this property denotes an internal oversampling factor (for an increased field of view) used during the reconstruction. After the reconstruction downstream the images are automatically cropped. Consider using this option if the radial profiles are oversampled in the readout direction.
     • reconstruction_os_factor_y. As above.
@@ -178,11 +178,11 @@ This section contains a non-exhaustive list of available MRI Gadgets with a few 
     • sliding_window_rotations. Specifies how many “rotations of profiles” that are shared between reconstructions. Setting this property (>0) causes some rotations (see ‘rotations_per_reconstruction’ above) to be reconstructed several times. This is useful if e.g. the quality of the first/latter rotation of a reconstruction is degraded; a rotation can then be discarded from the reconstruction in which it is an extreme rotation and kept in the reconstruction in which it is not. See e.g. the default kt-Sense config files. See also the property ‘rotations_to_discard’ for the solver gadgets below.
     • output_timing. Enable this property to see receive some timing feedback.
 
--   [gpuGenericSensePrepGadget](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1gpu_generic_sense_prep_gadget.html) (`gadgetron_sense`):
+-   [gpuGenericSensePrepGadget](https://gadgetron.github.io/api_master//class_gadgetron_1_1gpu_generic_sense_prep_gadget.html) (`gadgetron_sense`):
 
     This gadget is a generic SENSE preparation gadget for arbitrary trajectories. It assembles a Sense job to be used in a subsequent solver. This Sense job contains all the arrays required for a subsequent reconstruction; coil sensitivity maps, a regularization image, sampling trajectory, data samples, and density compensation weights. It has a number of configuration options as described for the radial specialization above.
 
--   [gpuCgSenseGadget](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1gpu_cg_sense_gadget.html) (`gadgetron_sense`):
+-   [gpuCgSenseGadget](https://gadgetron.github.io/api_master//class_gadgetron_1_1gpu_cg_sense_gadget.html) (`gadgetron_sense`):
 
     The gadget performs a linear sense reconstruction from a Sense job. It uses a linear conjugate gradient solver. A number of configuration options are available:
 
@@ -199,12 +199,12 @@ This section contains a non-exhaustive list of available MRI Gadgets with a few 
     • output_convergence. Output solver convergence information in the Gadgetron terminal.
     • output_timing. Output solver performance timing information in the Gadgetron terminal.
 
--   [gpuCgKtSenseGadget](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1gpu_cg_kt_sense_gadget.html) (`gadgetron_sense`):
+-   [gpuCgKtSenseGadget](https://gadgetron.github.io/api_master//class_gadgetron_1_1gpu_cg_kt_sense_gadget.html) (`gadgetron_sense`):
 
     This gadget performs a linear kt-sense reconstruction from a Sense job. It uses a linear conjugate gradient solver. It contains all of the property options of the gpuCgSenseGadget and the following additional property.
     • training_data_shutter_radius. The radius of the circle around the center of k-space used for training data estimation. If this property is not specified it will be estimated automatically.
 
--   [gpuSbSenseGadget](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1gpu_sb_sense_gadget.html) (`gadgetron_sense`):
+-   [gpuSbSenseGadget](https://gadgetron.github.io/api_master//class_gadgetron_1_1gpu_sb_sense_gadget.html) (`gadgetron_sense`):
 
     This gadget performs a non-linear sense reconstruction from a Sense job. It uses a constraint Split Bregman solver with total variation minimization - possibly with prior image regularization. Contains all of the property options of the gpuCgSenseGadget (except ‘number_of_iterations’ and ‘kappa’) and the following additional properties.
     • number_of_sb_iterations. The number of Split-Bregman iterations to perform (outer solver iterations).
@@ -214,9 +214,9 @@ This section contains a non-exhaustive list of available MRI Gadgets with a few 
     • alpha. Weighing of the “pure” TV regularization term vs. the prior image term. The value should be between 0 and 1, where alpha=0 denotes TV regularization only and alpha=1 denotes prior regularization only.
 
 
--   [GrappaGadget](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1_grappa_gadget.html), [GrappaUnmixingGadget](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1_grappa_unmixing_gadget.html) (`gadgetron_grappa`):
+-   [GrappaGadget](https://gadgetron.github.io/api_master//class_gadgetron_1_1_grappa_gadget.html), [GrappaUnmixingGadget](https://gadgetron.github.io/api_master//class_gadgetron_1_1_grappa_unmixing_gadget.html) (`gadgetron_grappa`):
 
-    These Gadgets are used together to perform 2D Cartesian parallel imaging on the GPU. The [GrappaGadget](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1_grappa_gadget.html) is responsible for calculating GRAPPA coefficients and the [GrappaUnmixingGadget](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1_grappa_unmixing_gadget.html) Fourier transforms the raw data and applies the coefficients. The [GrappaGadget](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1_grappa_gadget.html) has the ability to use target channel compression, i.e. it can reconstruct using fewer target channels than input channels to improve performance. See [Gadgetron Applications] for details. The target channel compression is specificied like this:
+    These Gadgets are used together to perform 2D Cartesian parallel imaging on the GPU. The [GrappaGadget](https://gadgetron.github.io/api_master//class_gadgetron_1_1_grappa_gadget.html) is responsible for calculating GRAPPA coefficients and the [GrappaUnmixingGadget](https://gadgetron.github.io/api_master//class_gadgetron_1_1_grappa_unmixing_gadget.html) Fourier transforms the raw data and applies the coefficients. The [GrappaGadget](https://gadgetron.github.io/api_master//class_gadgetron_1_1_grappa_gadget.html) has the ability to use target channel compression, i.e. it can reconstruct using fewer target channels than input channels to improve performance. See [Gadgetron Applications] for details. The target channel compression is specificied like this:
 
         <gadget>
          <name>Grappa</name>
@@ -225,23 +225,23 @@ This section contains a non-exhaustive list of available MRI Gadgets with a few 
          <property><name>target_coils</name><value>8</value></property>
         </gadget>
 
--   [ImageFinishGadgetUSHORT](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1_image_finish_gadget_u_s_h_o_r_t.html), [ImageFinishFLOAT](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1_image_finish_gadget_f_l_o_a_t.html), [ImageFinishCPLX](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1_image_finish_gadget_c_p_l_x.html)  (`gadgetron_mricore`):
+-   [ImageFinishGadgetUSHORT](https://gadgetron.github.io/api_master//class_gadgetron_1_1_image_finish_gadget_u_s_h_o_r_t.html), [ImageFinishFLOAT](https://gadgetron.github.io/api_master//class_gadgetron_1_1_image_finish_gadget_f_l_o_a_t.html), [ImageFinishCPLX](https://gadgetron.github.io/api_master//class_gadgetron_1_1_image_finish_gadget_c_p_l_x.html)  (`gadgetron_mricore`):
 
-    These 3 Gadgets are all template instances of the same [ImageFinishGadget](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1_image_finish_gadget.html). The only different between them is that they operate on different types of image data types as indicated by their names. Their purpose is to return the reconstructed images to the output queue of the Gadgetron so that they can be returned to the client.
+    These 3 Gadgets are all template instances of the same [ImageFinishGadget](https://gadgetron.github.io/api_master//class_gadgetron_1_1_image_finish_gadget.html). The only different between them is that they operate on different types of image data types as indicated by their names. Their purpose is to return the reconstructed images to the output queue of the Gadgetron so that they can be returned to the client.
 
--   [NoiseAdjustGadget](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1_noise_adjust_gadget.html) (`gadgetron_mricore`):
+-   [NoiseAdjustGadget](https://gadgetron.github.io/api_master//class_gadgetron_1_1_noise_adjust_gadget.html) (`gadgetron_mricore`):
 
-    The Gadgetron has two noise pre-whitening Gadgets with similar names [NoiseAdjustGadget](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1_noise_adjust_gadget.html) and [NoiseAdjustGadget_unoptimized](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1_noise_adjust_gadget__unoptimized.html). They both perform the same operation, which is a) to collect noise adjust data when present, calculate the noise decorrelation matrix, and perform noise decorrelation (when the noise adjustment data is available). The difference between the two Gadgets is that [NoiseAdjustGadget](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1_noise_adjust_gadget.html) uses BLAS and LAPACK routines to perform the operation, which makes it much faster than unoptimized version. The latter Gadget is provided to enable reconstruction on systems where those libraries are not available.
+    The Gadgetron has two noise pre-whitening Gadgets with similar names [NoiseAdjustGadget](https://gadgetron.github.io/api_master//class_gadgetron_1_1_noise_adjust_gadget.html) and [NoiseAdjustGadget_unoptimized](https://gadgetron.github.io/api_master//class_gadgetron_1_1_noise_adjust_gadget__unoptimized.html). They both perform the same operation, which is a) to collect noise adjust data when present, calculate the noise decorrelation matrix, and perform noise decorrelation (when the noise adjustment data is available). The difference between the two Gadgets is that [NoiseAdjustGadget](https://gadgetron.github.io/api_master//class_gadgetron_1_1_noise_adjust_gadget.html) uses BLAS and LAPACK routines to perform the operation, which makes it much faster than unoptimized version. The latter Gadget is provided to enable reconstruction on systems where those libraries are not available.
 
--   [NoiseAdjustGadget_unoptimized](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1_noise_adjust_gadget__unoptimized.html) (`gadgetron_mricore`):
+-   [NoiseAdjustGadget_unoptimized](https://gadgetron.github.io/api_master//class_gadgetron_1_1_noise_adjust_gadget__unoptimized.html) (`gadgetron_mricore`):
 
-    See description of [NoiseAdjustGadget](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1_noise_adjust_gadget.html).
+    See description of [NoiseAdjustGadget](https://gadgetron.github.io/api_master//class_gadgetron_1_1_noise_adjust_gadget.html).
 
--   [PCACoilGadget](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1_p_c_a_coil_gadget.html) (`gadgetron_mricore`):
+-   [PCACoilGadget](https://gadgetron.github.io/api_master//class_gadgetron_1_1_p_c_a_coil_gadget.html) (`gadgetron_mricore`):
 
-    This Gadget is used to create virtual channels based on principal component analysis of a portion of the data. Specifically, data is accumulated for the first frame (for each location, i.e. slice) and a principal component analysis is done of this data. Once the PCA coefficients are available, all subsequent data will be transformed into the virtual channel domain and passed on down the Gadget chain. This Gadget is often combined with the [CoilReductionGadget](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1_coil_reduction_gadget.html).
+    This Gadget is used to create virtual channels based on principal component analysis of a portion of the data. Specifically, data is accumulated for the first frame (for each location, i.e. slice) and a principal component analysis is done of this data. Once the PCA coefficients are available, all subsequent data will be transformed into the virtual channel domain and passed on down the Gadget chain. This Gadget is often combined with the [CoilReductionGadget](https://gadgetron.github.io/api_master//class_gadgetron_1_1_coil_reduction_gadget.html).
 
--   [RemoveROOversamplingGadget](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1_remove_r_o_oversampling_gadget.html) (`gadgetron_core`):
+-   [RemoveROOversamplingGadget](https://gadgetron.github.io/api_master//class_gadgetron_1_1_remove_r_o_oversampling_gadget.html) (`gadgetron_core`):
 
     Removes the 2x oversampling often used in the readout direction for (Cartesian) MRI.
 

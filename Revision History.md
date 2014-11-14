@@ -14,7 +14,7 @@ Version 2.5 contains a number of extension and enhancements to the Gadgetron. In
 
 -   Various bug fixes.
 
--   Note in particular that we now use 'size_t' to denote [NDArray](http://gadgetron.sourceforge.net/latest/api/class_gadgetron_1_1_n_d_array.html) dimension sizes etc. Users writing custom gadgets will need to update their code accordingly.
+-   Note in particular that we now use 'size_t' to denote [NDArray](https://gadgetron.github.io/api_master//class_gadgetron_1_1_n_d_array.html) dimension sizes etc. Users writing custom gadgets will need to update their code accordingly.
 
 ### Version 2.0
 
