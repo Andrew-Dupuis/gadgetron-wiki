@@ -1,7 +1,7 @@
 ### Gadgetron Manual
 
 * Introduction
-    * [What Is The Gadgetron]
+    * [[What Is The Gadgetron]]
     * [Revision History]
     * [Obtaining The Gadgetron]
 
