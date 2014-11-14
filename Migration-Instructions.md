@@ -18,4 +18,4 @@ will return the commit with its new hash
 
 ### Option 2: search through the old repo
 An archive of the decommissioned source forge repository can be found here:
-[](https://s3.amazonaws.com/gadgetron.github.io/gadgetron-repo-20141114.tar.gz)
+[gadgetron-repo-20141114.tar.gz](https://s3.amazonaws.com/gadgetron.github.io/gadgetron-repo-20141114.tar.gz)
