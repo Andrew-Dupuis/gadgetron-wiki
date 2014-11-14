@@ -6,7 +6,7 @@ If you would like to use a RedHat6 or CentOS 6 or equivalent system, please refe
 
 First install all dependencies for Gadgetron. The following will install everything you need:
 
-   sudo apt-get install libhdf5-serial-dev cmake git-core libboost-all-dev build-essential libfftw3-dev h5utils hdf5-tools python-dev python-numpy liblapack-dev libxml2-dev libxslt-dev libarmadillo-dev
+    sudo apt-get install libhdf5-serial-dev cmake git-core libboost-all-dev build-essential libfftw3-dev h5utils hdf5-tools python-dev python-numpy liblapack-dev libxml2-dev libxslt-dev libarmadillo-dev
 libace-dev python-h5py python-matplotlib python-libxml2 gcc-multilib python-psutil libgtest-dev nvidia-cuda-toolkit 
 
 If you would like to use MKL (Intel Math Kernel Library), please download your installation file from Intel and do the installation. Here is what we did with MKL version 11.0.5.192:
