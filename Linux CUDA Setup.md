@@ -7,12 +7,9 @@ On Ubuntu 14.04, CUDA and required drives can be found in the restricted reposit
 
 1. Enable multiverse and restricted packages. In /etc/apt/sources.list:
 
-    ## N.B. software from this repository is ENTIRELY UNSUPPORTED by the Ubuntu                                                                                                                            
-    ## team. Also, please note that software in universe WILL NOT receive any                                                                                                                              
-    ## review or updates from the Ubuntu security team.                                                                                                                                                    
-    deb http://us-east-1.ec2.archive.ubuntu.com/ubuntu/ trusty universe multiverse restricted                                                                                                              
-    deb-src http://us-east-1.ec2.archive.ubuntu.com/ubuntu/ trusty universe multiverse restricted                                                                                                          
-    deb http://us-east-1.ec2.archive.ubuntu.com/ubuntu/ trusty-updates universe multiverse restricted                                                                                                      
+    deb http://us-east-1.ec2.archive.ubuntu.com/ubuntu/ trusty universe multiverse restricted
+    deb-src http://us-east-1.ec2.archive.ubuntu.com/ubuntu/ trusty universe multiverse restricted
+    deb http://us-east-1.ec2.archive.ubuntu.com/ubuntu/ trusty-updates universe multiverse restricted
     deb-src http://us-east-1.ec2.archive.ubuntu.com/ubuntu/ trusty-updates universe multiverse restricted                                                                                                  
 
 2. Install kernel headers for your current kernel (for nvidia driver):
