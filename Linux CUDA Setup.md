@@ -2,22 +2,38 @@ Intstallation of the required components for CUDA support in the Gadgetron gener
 
 1. Installation of the CUDA driver
 2. Installation of the CUDA compiler and libraries
-3. Installation of CULA (linear algebra library).
 
-On Ubuntu 12.04, the first two components can easily be installed using a deb packpage provided by NVIDIA:
+On Ubuntu 14.04, CUDA and required drives can be found in the restricted repositories. Simply:
+
+1. Enable multiverse and restricted packages. In /etc/apt/sources.list:
+
+    ## N.B. software from this repository is ENTIRELY UNSUPPORTED by the Ubuntu                                                                                                                            
+    ## team. Also, please note that software in universe WILL NOT receive any                                                                                                                              
+    ## review or updates from the Ubuntu security team.                                                                                                                                                    
+    deb http://us-east-1.ec2.archive.ubuntu.com/ubuntu/ trusty universe multiverse restricted                                                                                                              
+    deb-src http://us-east-1.ec2.archive.ubuntu.com/ubuntu/ trusty universe multiverse restricted                                                                                                          
+    deb http://us-east-1.ec2.archive.ubuntu.com/ubuntu/ trusty-updates universe multiverse restricted                                                                                                      
+    deb-src http://us-east-1.ec2.archive.ubuntu.com/ubuntu/ trusty-updates universe multiverse restricted                                                                                                  
+
+2. Install kernel headers for your current kernel (for nvidia driver):
+
+    sudo apt-get install linux-headers-`uname -r`                                                                                                                                                          
+
+3. Install nvidia driver:
+
+    sudo apt-get install nvidia-331                                                                                                                                                                        
+ 
+4. Install nvidia cuda toolkit:
+
+   sudo apt-get install nvidia-cuda-toolkit
+
+On Ubuntu 12.04, the components can easily be installed using a deb packpage provided by NVIDIA:
 
     wget http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1204/x86_64/cuda-repo-ubuntu1204_5.5-0_amd64.deb
     sudo sudo dpkg -i cuda-repo-ubuntu1204_5.5-0_amd64.deb 
     sudo apt-get update
     sudo apt-get install cuda
 
-Next you need to install CULA. Download cula_dense_free_R17-linux.run <http://www.culatools.com/downloads/dense/> (free registration required)
-
-Go to the folder where the files were downloaded and type:
-
-    chmod +x cula_dense_free_R17-linux.run 
-    sudo ./cula_dense_free_R17-linux.run
- 
 Follow the instructions. When you are done with the installation you may
 want to add the following to your `~/.bashrc` file.
 
