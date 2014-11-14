@@ -1,4 +1,4 @@
-Linux is the preferred operating system to get started using the Gadgetron. All of the required dependencies are included in most major Linux distributions and can be installed easily and without having to compile anything. In the following sections we walk you through the required steps to set up a full Gadgetron installation. We assume that you are starting with a freshly installed Ubuntu 12.04 available from the Ubuntu website (<http://www.ubuntu.com>). If you don't have a machine available for installing Ubuntu, you can always try it out in a virtual machine using virtualization software such as VirtualBox (<https://www.virtualbox.org>).
+Linux is the preferred operating system to get started using the Gadgetron. All of the required dependencies are included in most major Linux distributions and can be installed easily and without having to compile anything. In the following sections we walk you through the required steps to set up a full Gadgetron installation. We assume that you are starting with a freshly installed Ubuntu 14.04 available from the Ubuntu website (<http://www.ubuntu.com>). If you don't have a machine available for installing Ubuntu, you can always try it out in a virtual machine using virtualization software such as VirtualBox (<https://www.virtualbox.org>).
 
 If you would like to use the GPU components included in the Gadgetron and you have an Nvidia GPU available on your system, please complete the CUDA/CULA installations as described in [Linux CUDA Setup].
 
@@ -6,8 +6,8 @@ If you would like to use a RedHat6 or CentOS 6 or equivalent system, please refe
 
 First install all dependencies for Gadgetron. The following will install everything you need:
 
-     sudo apt-get install libhdf5-serial-dev cmake libxerces-c-dev xsdcxx doxygen git-core libboost-all-dev build-essential libfftw3-dev h5utils hdf5-tools libqt4-dev libglew1.6-dev docbook5-xml docbook-xsl-doc-pdf docbook-xsl-doc-html docbook-xsl-ns xsltproc fop python-dev python-numpy freeglut3-dev libxi-dev liblapack-dev libxml2-dev libxslt-dev libarmadillo-dev libace-dev python-h5py python-matplotlib python-libxml2 gcc-multilib python-psutil libgtest-dev
-
+   sudo apt-get install libhdf5-serial-dev cmake git-core libboost-all-dev build-essential libfftw3-dev h5utils hdf5-tools python-dev python-numpy liblapack-dev libxml2-dev libxslt-dev libarmadillo-dev
+libace-dev python-h5py python-matplotlib python-libxml2 gcc-multilib python-psutil libgtest-dev nvidia-cuda-toolkit 
 
 If you would like to use MKL (Intel Math Kernel Library), please download your installation file from Intel and do the installation. Here is what we did with MKL version 11.0.5.192:
 
@@ -19,12 +19,7 @@ Follow the instructions and add the following paths to your `~/.bashrc`::
 
     export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/intel/mkl/lib/intel64
 
-You will also need to install Armadillo from source, skip the libarmadillo-dev package above. Download latest armadillo from http://arma.sourceforge.net and unpack, build and install.  If you have MKL installed, this will pick it up and build the armadillo libs against it.
-    cd armadillo-3.900.6/
-    cmake
-    make; sudo make install
-
-Next download, compile, and install ISMRMRD (there are more detailed instructions on the <http://ismrmrd.sourceforge.net> website):
+Next download, compile, and install ISMRMRD (there are more detailed instructions on the <http://ismrmrd.github.io/ismrmrd> website):
 
       git clone git://git.code.sf.net/p/ismrmrd/code ismrmrd-code
       cd ismrmrd-code/
