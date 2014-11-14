@@ -5,22 +5,22 @@ Intstallation of the required components for CUDA support in the Gadgetron gener
 
 On Ubuntu 14.04, CUDA and required drives can be found in the restricted repositories. Simply:
 
-1. Enable multiverse and restricted packages. In /etc/apt/sources.list:
+Enable multiverse and restricted packages. In /etc/apt/sources.list:
 
     deb http://us-east-1.ec2.archive.ubuntu.com/ubuntu/ trusty universe multiverse restricted
     deb-src http://us-east-1.ec2.archive.ubuntu.com/ubuntu/ trusty universe multiverse restricted
     deb http://us-east-1.ec2.archive.ubuntu.com/ubuntu/ trusty-updates universe multiverse restricted
     deb-src http://us-east-1.ec2.archive.ubuntu.com/ubuntu/ trusty-updates universe multiverse restricted                                                                                                  
 
-2. Install kernel headers for your current kernel (for nvidia driver):
+Install kernel headers for your current kernel (for nvidia driver):
 
     sudo apt-get install linux-headers-`uname -r`                                                                                                                                                          
 
-3. Install nvidia driver:
+Install nvidia driver:
 
     sudo apt-get install nvidia-331                                                                                                                                                                        
  
-4. Install nvidia cuda toolkit:
+Install nvidia cuda toolkit:
 
    sudo apt-get install nvidia-cuda-toolkit
 
