@@ -10,4 +10,5 @@ The Gadgetron is an open source medical image reconstruction framework.
 [\[Paper\]](http://dx.doi.org/10.1002/mrm.24389)
 
 The source code can also be accessed using git:
-git clone git://github.com/gadgetron/gadgetron
+
+  git clone git://github.com/gadgetron/gadgetron
