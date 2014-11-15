@@ -2,7 +2,7 @@ This example uses the unconstraint Split Bregman solver for total variation base
 
 The full source code for the example can be found at \$(GADGETRON\_SOURCE)`/apps/standalone/gpu/denoising/2d/denoise_TV.cpp`.
 
-You can download some noisy Shepp-Logan phantom test datasets from <https://sourceforge.net/projects/gadgetron/files/testdata/standalone/shepp.tar.gz>
+You can download some noisy Shepp-Logan phantom test datasets from <http://gadgetron.github.io.s3-website-us-east-1.amazonaws.com/files/testdata/standalone/shepp.tar.gz>
 
 In a terminal, go to the folder in which you unpacked the data. We assume that you have added \$(GADGETRON\_HOME)/bin to your PATH environment variable.
 

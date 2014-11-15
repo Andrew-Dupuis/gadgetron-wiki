@@ -35,7 +35,7 @@ Next download, compile, and install ISMRMRD (there are more detailed instruction
 
 Last command will install the library in `/usr/local/`.
 
-Next download the Gadgetron source code. Either obtain a [release zip file](https://sourceforge.net/projects/gadgetron/files/) or use git:
+Next download the Gadgetron source code. Either obtain a [release zip file](http://gadgetron.github.io.s3-website-us-east-1.amazonaws.com/files/) or use git:
 
       git clone https://github.com/gadgetron/gadgetron.git
 

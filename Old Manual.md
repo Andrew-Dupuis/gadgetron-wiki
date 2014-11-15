@@ -594,7 +594,7 @@ You now have a working installation of the Gadgetron in Windows. Follow the inst
 
 Some basic sample datasets are available from the Sourceforge website:
 
-https://sourceforge.net/projects/gadgetron/files/testdata/
+http://gadgetron.github.io.s3-website-us-east-1.amazonaws.com/files/testdata/
 
 You will generally encounter two types of data in this manual: a) Simple array format described in Appendix A, Simple Array File Format and b) ISMRMRD HDF5 files which are described in more detail at http://ismrmrd.github.io. It is beyond the scope of this manual to explain the HDF5 file format, but we have added a small introductory section in the appendix (Appendix B, HDF5 Files).
 
@@ -3458,7 +3458,7 @@ The Gadgetron contains a high-throughput real-time 2D Cartesian parallel imaging
 
 The Gadget chain is defined in the grappa.xml and the resulting chain is illustrated in Figure 3.2, “GRAPPA Reconstruction Chain”.
 
-To test this configuration, please download the GRAPPA test datasets from https://sourceforge.net/projects/gadgetron/files/testdata/ismrmrd, where you will find the dataset grappa_rate2 It is a Cartesian parallel imaging datasets with rate 2 TSENSE type acquisition. Data were acquired with a 32 channel coil.
+To test this configuration, please download the GRAPPA test datasets from http://gadgetron.github.io.s3-website-us-east-1.amazonaws.com/files/testdata/ismrmrd, where you will find the dataset grappa_rate2 It is a Cartesian parallel imaging datasets with rate 2 TSENSE type acquisition. Data were acquired with a 32 channel coil.
 
 In order to run the GRAPPA reconstruction you have to have a CUDA enable GPU on your system and your Gadgetron distribution should be compiled with CUDA and CULA enabled. Please see Section 1.4, “Compiling and Installing Gadgetron” for details for your specific platform.
 
@@ -3553,7 +3553,7 @@ Gadgetron chain for non-Cartesian Sense
 
 The CGSenseGadget implements the non-Cartesian Sense reconstruction. It contains a conjugate gradient solver (Section 2.2.6, “Linear Solvers”) set up with a nonCartesianSense image encoding matrix and an imageOperator for regularization. Internally it maintains a cyclic buffer of a few seconds of imaging data. It uses this buffer to maintain a fully sampled (i.e. unaliased but blurred) k-space image from which coil sensititivities and regularization images are dynamically estimated. The combination of parallel imaging and image regularization operators allows for alias-suppressed image reconstruction using significant undersampling hereby achieving real-time data acquisition rates per frame. The conjugate gradient solver is able to reconstruct faster than the acquisition time e.g. a 192x192 image from 32 coils using 10 solver iterations on newer graphics hardware.
 
-To test this configuration use the 32 channel radial MRI test dataset (golden_angle.h5), which you can download from https://sourceforge.net/projects/gadgetron/files/testdata/ismrmrd/. We assume that you have added $(GADGETRON_HOME)/bin to your PATH environment variable. You need a CUDA enable GPU on your system and your Gadgetron distribution should be compiled with CUDA and CULA enabled. Please see Section 1.4, “Compiling and Installing Gadgetron” for details for your specific platform.
+To test this configuration use the 32 channel radial MRI test dataset (golden_angle.h5), which you can download from http://gadgetron.github.io.s3-website-us-east-1.amazonaws.com/files/testdata/ismrmrd/. We assume that you have added $(GADGETRON_HOME)/bin to your PATH environment variable. You need a CUDA enable GPU on your system and your Gadgetron distribution should be compiled with CUDA and CULA enabled. Please see Section 1.4, “Compiling and Installing Gadgetron” for details for your specific platform.
 
 To run the reconstruction; start up gadgetron (in its own terminal window) and use the mriclient to send the data from another terminal. First start gadgetron:
 
@@ -3605,7 +3605,7 @@ This example uses the unconstraint Split Bregman solver for total variation base
 
 The full source code for the example can be found at $(GADGETRON_SOURCE)/apps/standalone/gpu/denoising/2d/denoise_TV.cpp.
 
-You can download some noisy Shepp-Logan phantom test datasets from https://sourceforge.net/projects/gadgetron/files/testdata/phantom/shepp.tar.gz
+You can download some noisy Shepp-Logan phantom test datasets from http://gadgetron.github.io.s3-website-us-east-1.amazonaws.com/files/testdata/phantom/shepp.tar.gz
 
 In a terminal, go to the folder in which you unpacked the data. We assume that you have added $(GADGETRON_HOME)/bin to your PATH environment variable.
 
@@ -3955,7 +3955,7 @@ The Gadgetron framework is used to process many different types of data and it i
 
 The HDF5 file format is much like a file system. Data can be organized hierarchically into groups (like folders in a filesystem) and each file can contain multiple groups and datasets. Each dataset can be an array of any type, e.g. an array of images. There is a generic tool hdfview which can be used to view the files. It is available on all the platforms supported by the Gadgetron framework. HDF5 files can also be read easily in newer versions of Matlab.
 
-As an example of a HDF5 file with MRI raw data can be found at https://sourceforge.net/projects/gadgetron/files/testdata/. Download the file gadgetron_testdata.h5. When opened with hdfview, it should look like Figure B.1, “Examining Data with HDFView”. As seen, the file contains 4 groups of data. Each group consists of some data and an XML configuration for the Gadgetron.
+As an example of a HDF5 file with MRI raw data can be found at http://gadgetron.github.io.s3-website-us-east-1.amazonaws.com/files/testdata/. Download the file gadgetron_testdata.h5. When opened with hdfview, it should look like Figure B.1, “Examining Data with HDFView”. As seen, the file contains 4 groups of data. Each group consists of some data and an XML configuration for the Gadgetron.
 
 Figure B.1. Examining Data with HDFView
 

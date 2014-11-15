@@ -2,7 +2,7 @@ The Gadgetron framework is used to process many different types of data and it i
 
 The HDF5 file format is much like a file system. Data can be organized hierarchically into groups (like folders in a filesystem) and each file can contain multiple groups and datasets. Each dataset can be an array of any type, e.g. an array of images. There is a generic tool `hdfview` which can be used to view the files. It is available on all the platforms supported by the Gadgetron framework. HDF5 files can also be read easily in newer versions of Matlab.
 
-As an example of a HDF5 file with MRI raw data can be found at <https://sourceforge.net/projects/gadgetron/files/testdata/>. Download the file `gadgetron_testdata.h5`. When opened with `hdfview`, it should look like the figure below. As seen, the file contains 4 groups of data. Each group consists of some data and an XML configuration for the Gadgetron.
+As an example of a HDF5 file with MRI raw data can be found at <http://gadgetron.github.io.s3-website-us-east-1.amazonaws.com/files/testdata/>. Download the file `gadgetron_testdata.h5`. When opened with `hdfview`, it should look like the figure below. As seen, the file contains 4 groups of data. Each group consists of some data and an XML configuration for the Gadgetron.
 
 <img src="http://gadgetron.sf.net/figs/hdfview_mri_testdata.png" style="width: 400px;" />
 

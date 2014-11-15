@@ -1,7 +1,7 @@
 Besides MRI reconstruction, Gadgetron also supports reconstruction of 3d and 4d cone-beam CT reconstruction. This is currently done through stand alone applications, though it will eventually be implemented as a gadget chain, similarly to what is done for MRI.
 The code is currently in an alpha stage, meaning that it can and will change. Some things, such as the data format, are not expected to change however.
 
-Testdata can be downloaded from <https://sourceforge.net/projects/gadgetron/files/testdata/standalone/cbct/>. The folder includes the dataset (projections.hdf5) and a binning file (binning_1ph.hdf5).
+Testdata can be downloaded from <http://gadgetron.github.io.s3-website-us-east-1.amazonaws.com/files/testdata/standalone/cbct/>. The folder includes the dataset (projections.hdf5) and a binning file (binning_1ph.hdf5).
 Binning files contain information about which projections belong to which time-phase for 4D CT, but can also be used to exclude projections with heavy artifacts. 
 
 
