@@ -41,7 +41,7 @@ Gadgetron dependencies
 **The steps below must be executed as a super user.**
 
 * yum install qt-devel fftw-devel freeglut-devel hdf5-devel glew-devel lapack-devel xerces-c-devel xsd
-* yum install fop docbook-utils-pdf docbook5-schemas docbook5-style-xsl
+* yum install docbook-utils-pdf docbook5-schemas docbook5-style-xsl
 * yum install cmake28
 * yum install ace-devel
 
@@ -61,13 +61,14 @@ ISMRMRD and Gadgetron
 * Create install directory
     - mkdir ~/local
 * ISMRMRD
-    - git clone **XXXX**/ismrmrd
+    - git clone https://github.com/ismrmrd/ismrmrd.git
     - cd ismrmrd
     - mkdir build; cd build
     - cmake28 -DCMAKE_INSTALL_PREFIX=~/local -DCMAKE_PREFIX_PATH=~/local/ ../
     - make;make install
 * Gadgetron
-    - git clone **XXXX**/gadgetron
+    - git clone https://github.com/gadgetron/gadgetron.git
+    - git checkout development
     - cd gadgetron
     - mkdir build; cd build
     - cmake28 -DCMAKE_INSTALL_PREFIX=~/local -DCMAKE_PREFIX_PATH=~/local/ ../
