@@ -44,7 +44,7 @@ Gadgetron dependencies
 * yum install docbook-utils-pdf docbook5-schemas docbook5-style-xsl
 * yum install cmake28
 * yum install ace-devel
-* yum install boost-devel doxygen git libxml2-devel libxslt-devel openblas armadillo gtest
+* yum install boost-devel doxygen git libxml2-devel libxslt-devel openblas-devel armadillo-devel gtest
 
   Note: Libraries below can be updated from third party repos
   boost-devel 1.55: http://vicendominguez.blogspot.com.es/2014/04/boost-c-library-rpm-packages-for-centos.html
@@ -53,14 +53,13 @@ Gadgetron dependencies
 
 Python Options
 --------------
-* CentOS6.3 ships with python 2.6.6 and some somewhat outdated python packages.  They work just fine, but if you want the latest and greatest, you'll want to install python 2.7.3 and set up a virtualenv and use pip to install the necessary bits.  Alternatively you could stay on python 2.6.6 and just install/upgrade the packages you want. One can install newer version of the numpy by installing via the PUIAS Computational repo, e.g:
+* CentOS 6.3 ships with python 2.6.6 and some somewhat outdated python packages.  They work just fine, but if you want the latest and greatest, you'll want to install python 2.7.3 and set up a virtualenv and use pip to install the necessary bits.  Alternatively you could stay on python 2.6.6 and just install/upgrade the packages you want. One can install newer version of the numpy by installing via the PUIAS Computational repo, e.g:
     - yum update http://puias.math.ias.edu/data/puias/computational/6/x86_64/numpy-1.6.2-0.1.puias6.x86_64.rpm
     - yum update http://puias.math.ias.edu/data/puias/computational/6/x86_64/numpy-f2py-1.6.2-0.1.puias6.x86_64.rpm
 
 * Then, one can install pip to update the python packages, e.g.:
     - yum install python-pip 
-    - pip-python install --upgrade scipy matplotlib
-    - pip install -Iv http://archive.ipython.org/release/1.1.0/ipython-1.1.0.tar.gz
+    - pip-python install --upgrade scipy matplotlib psutil twisted
 
 ISMRMRD and Gadgetron
 ---------------------
@@ -76,8 +75,8 @@ ISMRMRD and Gadgetron
     - make;make install
 * Gadgetron
     - git clone https://github.com/gadgetron/gadgetron.git
-    - git checkout development
     - cd gadgetron
+    - git checkout development
     - mkdir build; cd build
     - cmake28 -DCMAKE_INSTALL_PREFIX=~/local -DCMAKE_PREFIX_PATH=~/local/ ../
     - make; make install
@@ -90,4 +89,5 @@ Environment Variables
   export ISMRMRD_HOME=/usr/local
   export PATH=$PATH:$GADGETRON_HOME/bin:$ISMRMRD_HOME/bin
   export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$GADGETRON_HOME/lib:$ISMRMRD_HOME/lib
+
   Rename the example configuration file GADGETRON_HOME/config/gadgetron.xml.example to GADGETRON_HOME/config/gadgetron.xml
