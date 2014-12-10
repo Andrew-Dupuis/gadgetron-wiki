@@ -48,7 +48,7 @@ Gadgetron dependencies
 
   Note: Depending on your installation, you may need to install a few additional packages.  Here is a list: boost-devel, doxygen, git, libxml2-devel, libxslt-devel.
 
-  Note2: Libraries below can be updated from third party repos:
+  Note2: Libraries below can be updated from third party repos
 boost-devel 1.55: http://vicendominguez.blogspot.com.es/2014/04/boost-c-library-rpm-packages-for-centos.html
 fftw-devel 3.2.2: atrpms
 libglew-devel 1.7.0: linuxtech-release
