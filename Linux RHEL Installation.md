@@ -1,9 +1,9 @@
-RHEL 6.3 Derivatives
+RHEL 6 Derivatives
 ====================
 
 Installation instruction for Red Hat Enterprise Linux and its derivatives (CentOS, Scientific Linux, etc).  These notes have been tested on a clean install of CentOS 6.3 with the "Software Development Workstation" package option.
 
-CUDA, CULA and GPU Driver
+CUDA, CULA and GPU Driver (Optional)
 -------------------------
 **The steps below must be executed as a super user.**
 
@@ -44,15 +44,26 @@ Gadgetron dependencies
 * yum install docbook-utils-pdf docbook5-schemas docbook5-style-xsl
 * yum install cmake28
 * yum install ace-devel
+* yum install openblas armadillo gtest
 
   Note: Depending on your installation, you may need to install a few additional packages.  Here is a list: boost-devel, doxygen, git, libxml2-devel, libxslt-devel.
 
+Note:
+Libraries below can be updated from third party repos:
+[boost-devel] 1.55 (http://vicendominguez.blogspot.com.es/2014/04/boost-c-library-rpm-packages-for-centos.html)
+fftw-devel 3.2.2: atrpms
+libglew-devel 1.7.0: linuxtech-release
 
 Python Options
 --------------
-* CentOS6.3 ships with python 2.6.6 and some somewhat outdated python packages.  They work just fine, but if you want the latest and greatest, you'll want to install python 2.7.3 and set up a virtualenv and use pip to install the necessary bits.  Alternatively you could stay on python 2.6.6 and just install/upgrade the packages you want using pip, e.g.:
+* CentOS6.3 ships with python 2.6.6 and some somewhat outdated python packages.  They work just fine, but if you want the latest and greatest, you'll want to install python 2.7.3 and set up a virtualenv and use pip to install the necessary bits.  Alternatively you could stay on python 2.6.6 and just install/upgrade the packages you want. One can install newer version of the numpy by installing via the PUIAS Computational repo, e.g:
+    - yum update http://puias.math.ias.edu/data/puias/computational/6/x86_64/numpy-1.6.2-0.1.puias6.x86_64.rpm
+    - yum update http://puias.math.ias.edu/data/puias/computational/6/x86_64/numpy-f2py-1.6.2-0.1.puias6.x86_64.rpm
+
+Then, one can install pip to update the python packages, e.g.:
     - yum install python-pip 
-    - pip-python install --upgrade numpy scipy matplotlib ipython
+    - pip-python install --upgrade scipy matplotlib
+    - pip install -Iv http://archive.ipython.org/release/1.1.0/ipython-1.1.0.tar.gz
 
 ISMRMRD and Gadgetron
 ---------------------
