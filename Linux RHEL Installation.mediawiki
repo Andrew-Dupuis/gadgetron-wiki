@@ -81,3 +81,13 @@ ISMRMRD and Gadgetron
     - mkdir build; cd build
     - cmake28 -DCMAKE_INSTALL_PREFIX=~/local -DCMAKE_PREFIX_PATH=~/local/ ../
     - make; make install
+
+Environment Variables
+---------------------
+* The final step is to add/modify a few environment variables in your ~/.bashrc file:
+
+  export GADGETRON_HOME=/usr/local/gadgetron
+  export ISMRMRD_HOME=/usr/local
+  export PATH=$PATH:$GADGETRON_HOME/bin:$ISMRMRD_HOME/bin
+  export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$GADGETRON_HOME/lib:$ISMRMRD_HOME/lib
+  Rename the example configuration file GADGETRON_HOME/config/gadgetron.xml.example to GADGETRON_HOME/config/gadgetron.xml
