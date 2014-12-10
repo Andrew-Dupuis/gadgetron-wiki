@@ -44,14 +44,12 @@ Gadgetron dependencies
 * yum install docbook-utils-pdf docbook5-schemas docbook5-style-xsl
 * yum install cmake28
 * yum install ace-devel
-* yum install openblas armadillo gtest
+* yum install boost-devel doxygen git libxml2-devel libxslt-devel openblas armadillo gtest
 
-  Note: Depending on your installation, you may need to install a few additional packages.  Here is a list: boost-devel, doxygen, git, libxml2-devel, libxslt-devel.
-
-  Note2: Libraries below can be updated from third party repos
-boost-devel 1.55: http://vicendominguez.blogspot.com.es/2014/04/boost-c-library-rpm-packages-for-centos.html
-fftw-devel 3.2.2: atrpms
-libglew-devel 1.7.0: linuxtech-release
+  Note: Libraries below can be updated from third party repos
+  boost-devel 1.55: http://vicendominguez.blogspot.com.es/2014/04/boost-c-library-rpm-packages-for-centos.html
+  fftw-devel 3.2.2: atrpms
+  libglew-devel 1.7.0: linuxtech-release
 
 Python Options
 --------------
@@ -59,7 +57,7 @@ Python Options
     - yum update http://puias.math.ias.edu/data/puias/computational/6/x86_64/numpy-1.6.2-0.1.puias6.x86_64.rpm
     - yum update http://puias.math.ias.edu/data/puias/computational/6/x86_64/numpy-f2py-1.6.2-0.1.puias6.x86_64.rpm
 
-Then, one can install pip to update the python packages, e.g.:
+* Then, one can install pip to update the python packages, e.g.:
     - yum install python-pip 
     - pip-python install --upgrade scipy matplotlib
     - pip install -Iv http://archive.ipython.org/release/1.1.0/ipython-1.1.0.tar.gz
