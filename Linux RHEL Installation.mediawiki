@@ -7,21 +7,9 @@ CUDA, CULA and GPU Driver (Optional)
 -------------------------
 **The steps below must be executed as a super user.**
 
-* Install the CUDA (4.2) toolkit, driver and SDK
-    - wget http://developer.download.nvidia.com/compute/cuda/4_2/rel/toolkit/cudatoolkit_4.2.9_linux_64_rhel6.0.run
-    - sh ./cudatoolkit_4.2.9_linux_64_rhel6.0.run
+* Install CUDA (5.5) toolkit and SDK
 * Install CULA
-    - download the .run file from http://www.culatools.com/downloads/dense/
-    - sh ./cula_dense_free_R15-linux.run
-* GPU Driver 
-  (Optional: The GPU Driver is not needed for building)
-    - Download the nvidia driver corresponding to your card.  
-      This will give you a file named something like this:  NVIDIA-Linux-x86_64-304.37.run
-    - Stop the XServer, install, start the XServer, check the GPU
-        * init 3
-        * ./NVIDIA-Linux-x86_64-304.37.run
-        * init 5
-        * lspci | grep NVIDIA
+* Install nvidia GPU Driver
 
 Enabling some none-default repositories
 ---------------------------------------
