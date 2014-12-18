@@ -55,7 +55,7 @@ This is the Homebrew version of the installation:
         brew install matplotlib --with-pygtk --with-pyqt
         brew install libxml2 --with-python
         
-        pip install pyxb Cython
+        pip install h5py pyxb Cython
 
 0.  Install GTest
 
@@ -87,6 +87,7 @@ This is the Homebrew version of the installation:
 
     git clone https://github.com/ismrmrd/ismrmrd
     cd ismrmrd
+    git checkout development
     mkdir build
     cd build/
     cmake -D CMAKE_INSTALL_PREFIX=$ISMRMRD_HOME ../
@@ -97,6 +98,7 @@ This is the Homebrew version of the installation:
 
     git clone https://github.com/gadgetron/gadgetron
     cd gadgetron
+    git checkout development
     mkdir build
     cd build/
     cmake -D CMAKE_INSTALL_PREFIX=/usr/local ../
@@ -127,4 +129,4 @@ This is the Homebrew version of the installation:
 
 0. Copy `$GADGETRON_HOME/config/gadgetron.xml.example` to `$GADGETRON_HOME/config/gadgetron.xml`
 0. Fetch Gadgetron test data: run `python get_data.py` in `test/integration` in the Gadgetron source tree.
-0. Run integration tests: run `python run_all_test.py $ISMRMRD_HOME $GADGETRON_HOME test_cases.txt` in `test/integration` in the Gadgetron source tree.
+0. Run integration tests: run `python run_all_tests.py $ISMRMRD_HOME $GADGETRON_HOME test_cases.txt` in `test/integration` in the Gadgetron source tree.
