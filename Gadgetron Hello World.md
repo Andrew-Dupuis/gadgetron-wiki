@@ -14,12 +14,12 @@ Next (in the client terminal) we generate some data and send it in. The ISMRMRD 
 which generates a dataset with 8 coils and 10 repetitions. 
 Send it to the Gadgetron server using the following command:
 
-    mriclient -d testdata.h5 
+    gadgetron_ismrmrd_client -f testdata.h5 
 
 You should see something similar to the following in the client window:
 
-    ubuntu@ip-10-184-82-58:~$ mriclient -d testdata.h5 
-    Gadgetron MRI Data Sender
+    ubuntu@ip-10-184-82-58:~$ gadgetron_ismrmrd_client -f testdata.h5 
+    Gadgetron ISMRMRD client
       -- host            :      localhost
       -- port            :      9002
       -- hdf5 file  in   :      testdata.h5
@@ -130,7 +130,7 @@ In the server window, you should see something like this:
     [file /home/ubuntu/mrprogs/gadgetron/toolboxes/gadgettools/GadgetStreamController.cpp, line 161] Shutting down stream and closing up shop...
     [file /home/ubuntu/mrprogs/gadgetron/toolboxes/gadgettools/GadgetStreamController.cpp, line 192] Stream is closed
 
-The images are saved in the folder in which you started the mriclient. The client appends the result to an HDF5 file called out.h5 (if no other file name is specified). A group is created with the current time and data and the images are stored in that group. If you run multiple reconstructions one after another, the results will be added to the same file with a new group is created for each run. This makes it easy to compare results from different reconstructions. The images are stored in a single precision format as specified by the default.xml configuration file. You can read and display the data using [hdfview](http://www.hdfgroup.org/products/java/hdf-java-html/hdfview/) or in Matlab with:
+The images are saved in the folder in which you started the gadgetron_ismrmrd_client. The client appends the result to an HDF5 file called out.h5 (if no other file name is specified). A group is created with the current time and data and the images are stored in that group. If you run multiple reconstructions one after another, the results will be added to the same file with a new group is created for each run. This makes it easy to compare results from different reconstructions. The images are stored in a single precision format as specified by the default.xml configuration file. You can read and display the data using [hdfview](http://www.hdfgroup.org/products/java/hdf-java-html/hdfview/) or in Matlab with:
 
     images = h5read('out.h5','/<INSERT CORRECT DATE HERE>/image_0.img');
     imagesc(images(:,:,1,1));colormap(gray);
