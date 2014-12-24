@@ -29,7 +29,7 @@ This is the Homebrew version of the installation:
 
     # MATLAB, ISMRMRD, GADGETRON
     export MATLAB_HOME=/Applications/MATLAB_R2013b.app
-    export ISMRMRD_HOME=/usr/local/ismrmrd
+    export ISMRMRD_HOME=/usr/local
     export GADGETRON_HOME=/usr/local/gadgetron
 
     export PATH=$MATLAB_HOME/bin:$PATH
