@@ -23,7 +23,7 @@ This is the Homebrew version of the installation:
     export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
     # Python
-    export PYTHONHOME=/usr/local/Frameworks/Python.Framework/Versions/2.7
+    export PYTHONHOME=/usr/local/Frameworks/Python.framework/Versions/2.7
     export PYTHONPATH=$PYTHONHOME/lib/python2.7/site-packages
     export PYTHONPATH=/usr/local/opt/libxml2/lib/python2.7/site-packages:$PYTHONPATH
 
