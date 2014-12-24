@@ -101,7 +101,7 @@ This is the Homebrew version of the installation:
     git checkout development
     mkdir build
     cd build/
-    cmake -D CMAKE_INSTALL_PREFIX=/usr/local ../
+    cmake -DCMAKE_INSTALL_PREFIX=/usr/local -DPYTHON_LIBRARY=`python-config --prefix`/Python -DPYTHON_INCLUDE_DIR=`python-config --prefix`/Headers ../
     make
     make install
 
