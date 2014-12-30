@@ -1,4 +1,4 @@
-Intstallation of the required components for CUDA support in the Gadgetron generally requires 3 steps:
+Installation of the required components for CUDA support in the Gadgetron generally requires 3 steps:
 
 1. Installation of the CUDA driver
 2. Installation of the CUDA compiler and libraries
