@@ -12,80 +12,80 @@ The following is a list of steps we have used to install the Gadgetron on a clea
 
     After running the installer and installing it to default location, set the envirnment variables (if they are not already set):
 
-    CUDA_PATH=C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v6.0
-    CUDA_PATH_V6_0=C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v6.0
+    ```CUDA_PATH=C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v6.0```
+    ```CUDA_PATH_V6_0=C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v6.0```
 
     Note: The setup scripts assume that version of CUDA installed is 6.0. If you decide to install different version of CUDA, update the scripts.
 
 - Install MKL (optional)
 
-  After running the installer, set the environment variable (assuming install location is C:\Intel):
+  After running the installer, set the environment variable (assuming install location is ```C:\Intel```):
 
-  MKLROOT_PATH=C:\Intel\ComposerXE2013SP1
+  ```MKLROOT_PATH=C:\Intel\ComposerXE2013SP1```
 
 
-### Copy the content of the S3 bucket to a C:\ folder
+### Copy the content of the S3 bucket to a ```C:\``` folder
 
 ### Install precompiled dependencies:
 
-Go into C:\gadgetron\dependencies folder and do the following for each dependency (assuming that you copied content of the S3 bucket to C:\)
+Go into ```C:\gadgetron\dependencies``` folder and do the following for each dependency (assuming that you copied content of the S3 bucket to ```C:\```)
 
 - ACE:
 
-    Set the environment variable: ACE_ROOT=C:\gadgetron\Dependencies\ACE\binaries\ACE_wrappers
+    Set the environment variable: ```ACE_ROOT=C:\gadgetron\Dependencies\ACE\binaries\ACE_wrappers```
 
 - Armadillo:
 
-    Set the env variable: ARMA_HOME=C:\gadgetron\Dependencies\Armadillo\binaries\armadillo-4.400.1\install_vc11
+    Set the environment variable: ```ARMA_HOME=C:\gadgetron\Dependencies\Armadillo\binaries\armadillo-4.400.1\install_vc11```
 
 - Boost:
 
-    Set the env variable: BOOST_ROOT=C:\gadgetron\Dependencies\Boost\binaries\boost_1_56_0
+    Set the environment variable: ```BOOST_ROOT=C:\gadgetron\Dependencies\Boost\binaries\boost_1_56_0```
 
 - dcmtk:
 
-    Set the env variable: DCMTK_HOME=C:\gadgetron\Dependencies\dcmtk\binaries\dcmtk-3.6.0\install_vc11
+    Set the environment variable: ```DCMTK_HOME=C:\gadgetron\Dependencies\dcmtk\binaries\dcmtk-3.6.0\install_vc11```
 
 - FFTW:
 
-    Set the env variable: FFTW3_ROOT_DIR=C:\gadgetron\Dependencies\FFTW\binaries\FFTW3
+    Set the environment variable: ```FFTW3_ROOT_DIR=C:\gadgetron\Dependencies\FFTW\binaries\FFTW3```
 
 - gtest:
 
-    Set the env variable: GTEST_ROOT=C:\gadgetron\Dependencies\gtest\binaries\gtest-1.7.0
+    Set the environment variable: ```GTEST_ROOT=C:\gadgetron\Dependencies\gtest\binaries\gtest-1.7.0```
 
 - SWIG:
 
-    Set the env variable: SWIG_ROOT=C:\gadgetron\Dependencies\SWIG\swigwin-3.0.2\swigwin-3.0.2
+    Set the environment variable: ```SWIG_ROOT=C:\gadgetron\Dependencies\SWIG\swigwin-3.0.2\swigwin-3.0.2```
 
 - XSLT:
 
-    Set the env variable: XSLT_ROOT=C:\gadgetron\Dependencies\XSLT\binaries
+    Set the environment variable: ```XSLT_ROOT=C:\gadgetron\Dependencies\XSLT\binaries```
 
 - HDF5:
 
     Run the installer and install it to default location.
-    Set the env variable: HDF5_ROOT=C:\Program Files\HDF_Group\HDF5\1.8.13
+    Set the environment variable: ```HDF5_ROOT=C:\Program Files\HDF_Group\HDF5\1.8.13```
 
 - Python:
 
     Run the installer and six executables from the Python folder.
-    Add Python path (C:\Python27) to the 'PATH' environment variable
+    Add Python path (```C:\Python27```) to the 'PATH' environment variable
 
 
 ### Setting additional environment variables:
 
 Create the root folder for the gadgetron, ismrmrd and siemens_to_ismrmrd projects 
-(for example: C:\gadgetron\projects).
+(for example: ```C:\gadgetron\projects```).
 
 Set the root folder environment variable:
  
-PROJECT_ROOT=C:\gadgetron\projects
+```PROJECT_ROOT=C:\gadgetron\projects```
 
 Set the environment variable for install folders for gadgetron and ismrmrd:
 
-GADGETRON_HOME=C:\gadgetron\projects\install\gadgetron
-ISMRMRD_HOME=C:\gadgetron\projects\install
+```GADGETRON_HOME=C:\gadgetron\projects\install\gadgetron```
+```ISMRMRD_HOME=C:\gadgetron\projects\install```
 
 ### Cloning repositories:
 
