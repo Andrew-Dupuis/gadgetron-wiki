@@ -2,13 +2,13 @@ It is probably appropriate to start this section with a warning: Windows is not 
 
 The following is a list of steps we have used to install the Gadgetron on a clean Microsoft Windows Server 2012 R2 Base (64-bit) machine. 
 
-### Install Visual Studio 2012 and Update 4 for Visual Studio 2012
+- Install Visual Studio 2012 and Update 4 for Visual Studio 2012
 
-### Install Git
+- Install Git
 
-### Install cmake
+- Install cmake
 
-### Install CUDA (optional, but required for GPU support).
+- Install CUDA (optional, but required for GPU support).
 
 After running the installer and installing it to default location,
 set the envirnment variables (if they are not already set):
@@ -18,7 +18,7 @@ CUDA_PATH_V6_0=C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v6.0
 
 Note: The setup scripts assume that version of CUDA installed is 6.0. If you decide to install different version of CUDA, update the scripts.
 
-### Install MKL (optional)
+- Install MKL (optional)
 
 After running the installer, set the environment variable (assuming install location is C:\Intel):
 
