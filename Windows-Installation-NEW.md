@@ -9,14 +9,13 @@ The following is a list of steps we have used to install the Gadgetron on a clea
 - Install cmake
 
 - Install CUDA (optional, but required for GPU support).
+  After running the installer and installing it to default location,
+  set the envirnment variables (if they are not already set):
 
-After running the installer and installing it to default location,
-set the envirnment variables (if they are not already set):
+  CUDA_PATH=C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v6.0
+  CUDA_PATH_V6_0=C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v6.0
 
-CUDA_PATH=C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v6.0
-CUDA_PATH_V6_0=C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v6.0
-
-Note: The setup scripts assume that version of CUDA installed is 6.0. If you decide to install different version of CUDA, update the scripts.
+  Note: The setup scripts assume that version of CUDA installed is 6.0. If you decide to install different version of CUDA, update the scripts.
 
 - Install MKL (optional)
 
