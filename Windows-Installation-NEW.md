@@ -8,7 +8,8 @@ The following is a list of steps we have used to install the Gadgetron on a clea
 
 - Install cmake
 
-- Install CUDA (optional, but required for GPU support).
+- ****Install CUDA**** (optional, but required for GPU support)
+
   After running the installer and installing it to default location,
   set the envirnment variables (if they are not already set):
 
