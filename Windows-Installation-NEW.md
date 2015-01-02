@@ -77,7 +77,7 @@ Go into ```C:\gadgetron\dependencies``` folder and do the following for each dep
 Create the root folder for the gadgetron, ismrmrd and siemens_to_ismrmrd projects 
 (for example: ```C:\gadgetron\projects```).
 
-Set the root folder environment variable:
+- Set the root folder environment variable:
  
 ```PROJECT_ROOT=C:\gadgetron\projects```
 
