@@ -44,9 +44,11 @@ Set the env variable: ARMA_HOME=C:\gadgetron\Dependencies\Armadillo\binaries\arm
 Set the env variable: BOOST_ROOT=C:\gadgetron\Dependencies\Boost\binaries\boost_1_56_0
 
 #### dcmtk:
+
 Set the env variable: DCMTK_HOME=C:\gadgetron\Dependencies\dcmtk\binaries\dcmtk-3.6.0\install_vc11
 
 #### FFTW:
+
 Set the env variable: FFTW3_ROOT_DIR=C:\gadgetron\Dependencies\FFTW\binaries\FFTW3
 
 #### gtest:
@@ -54,9 +56,11 @@ Set the env variable: FFTW3_ROOT_DIR=C:\gadgetron\Dependencies\FFTW\binaries\FFT
 Set the env variable: GTEST_ROOT=C:\gadgetron\Dependencies\gtest\binaries\gtest-1.7.0
 
 #### SWIG:
+
 Set the env variable: SWIG_ROOT=C:\gadgetron\Dependencies\SWIG\swigwin-3.0.2\swigwin-3.0.2
 
 #### XSLT:
+
 Set the env variable: XSLT_ROOT=C:\gadgetron\Dependencies\XSLT\binaries
 
 #### HDF5:
@@ -76,7 +80,8 @@ Add Python path (C:\Python27) to the 'PATH' environment variable
 Create the root folder for the gadgetron, ismrmrd and siemens_to_ismrmrd projects 
 (for example: C:\gadgetron\projects).
 
-Set the root folder environment variable: 
+Set the root folder environment variable:
+ 
 PROJECT_ROOT=C:\gadgetron\projects
 
 Set the environment variable for install folders for gadgetron and ismrmrd:
