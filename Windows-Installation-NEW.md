@@ -19,9 +19,9 @@ The following is a list of steps we have used to install the Gadgetron on a clea
 
 - Install MKL (optional)
 
-  After running the installer, set the environment variable (assuming install location is C:\Intel):
+    After running the installer, set the environment variable (assuming install location is C:\Intel):
 
-  ```MKLROOT_PATH=C:\Intel\ComposerXE2013SP1```
+    ```MKLROOT_PATH=C:\Intel\ComposerXE2013SP1```
 
 
 - Copy the content of the S3 bucket to a ```C:\``` folder
