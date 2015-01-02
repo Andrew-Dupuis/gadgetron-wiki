@@ -24,7 +24,7 @@ The following is a list of steps we have used to install the Gadgetron on a clea
   MKLROOT_PATH=C:\Intel\ComposerXE2013SP1
 
 
-- Copy the content of the S3 bucket to a C:\ folder
+### Copy the content of the S3 bucket to a C:\ folder
 
 ### Install precompiled dependencies:
 
@@ -32,46 +32,45 @@ Go into C:\gadgetron\dependencies folder and do the following for each dependenc
 
 - ACE:
 
-Set the environment variable: ACE_ROOT=C:\gadgetron\Dependencies\ACE\binaries\ACE_wrappers
+    Set the environment variable: ACE_ROOT=C:\gadgetron\Dependencies\ACE\binaries\ACE_wrappers
 
 - Armadillo:
 
-Set the env variable: ARMA_HOME=C:\gadgetron\Dependencies\Armadillo\binaries\armadillo-4.400.1\install_vc11
+    Set the env variable: ARMA_HOME=C:\gadgetron\Dependencies\Armadillo\binaries\armadillo-4.400.1\install_vc11
 
 - Boost:
 
-Set the env variable: BOOST_ROOT=C:\gadgetron\Dependencies\Boost\binaries\boost_1_56_0
+    Set the env variable: BOOST_ROOT=C:\gadgetron\Dependencies\Boost\binaries\boost_1_56_0
 
 - dcmtk:
 
-Set the env variable: DCMTK_HOME=C:\gadgetron\Dependencies\dcmtk\binaries\dcmtk-3.6.0\install_vc11
+    Set the env variable: DCMTK_HOME=C:\gadgetron\Dependencies\dcmtk\binaries\dcmtk-3.6.0\install_vc11
 
 - FFTW:
 
-Set the env variable: FFTW3_ROOT_DIR=C:\gadgetron\Dependencies\FFTW\binaries\FFTW3
+    Set the env variable: FFTW3_ROOT_DIR=C:\gadgetron\Dependencies\FFTW\binaries\FFTW3
 
 - gtest:
 
-Set the env variable: GTEST_ROOT=C:\gadgetron\Dependencies\gtest\binaries\gtest-1.7.0
+    Set the env variable: GTEST_ROOT=C:\gadgetron\Dependencies\gtest\binaries\gtest-1.7.0
 
 - SWIG:
 
-Set the env variable: SWIG_ROOT=C:\gadgetron\Dependencies\SWIG\swigwin-3.0.2\swigwin-3.0.2
+    Set the env variable: SWIG_ROOT=C:\gadgetron\Dependencies\SWIG\swigwin-3.0.2\swigwin-3.0.2
 
 - XSLT:
 
-Set the env variable: XSLT_ROOT=C:\gadgetron\Dependencies\XSLT\binaries
+    Set the env variable: XSLT_ROOT=C:\gadgetron\Dependencies\XSLT\binaries
 
 - HDF5:
 
-Run the installer and install it to default location.
-
-Set the env variable: HDF5_ROOT=C:\Program Files\HDF_Group\HDF5\1.8.13
+    Run the installer and install it to default location.
+    Set the env variable: HDF5_ROOT=C:\Program Files\HDF_Group\HDF5\1.8.13
 
 - Python:
 
-Run the installer and six executables from the Python folder.
-Add Python path (C:\Python27) to the 'PATH' environment variable
+    Run the installer and six executables from the Python folder.
+    Add Python path (C:\Python27) to the 'PATH' environment variable
 
 
 ### Setting additional environment variables:
