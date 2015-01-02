@@ -79,7 +79,7 @@ Create the root folder for the gadgetron, ismrmrd and siemens_to_ismrmrd project
 
 Set the root folder environment variable:
  
-PROJECT_ROOT=C:\gadgetron\projects
+```PROJECT_ROOT=C:\gadgetron\projects```
 
 Set the environment variable for install folders for gadgetron and ismrmrd:
 
