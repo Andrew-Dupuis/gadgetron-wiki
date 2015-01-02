@@ -94,23 +94,30 @@ ISMRMRD_HOME=C:\gadgetron\projects\install
 ISMRMRD:
 
 Go to C:\gadgetron\projects
-git clone git://git.code.sf.net/p/ismrmrd/code ismrmrd
+
+git clone https://github.com/ismrmrd/ismrmrd.git
+
 cd ismrmrd
+
 git checkout development
 
 GADGETRON:
 
 Go to C:\gadgetron\projects
+
 git clone https://github.com/gadgetron/gadgetron.git
+
 cd gadgetron
+
 git checkout development
 
 SIEMENS_TO_ISMRMRD:
 
 Go to C:\gadgetron\projects
+
 git clone https://github.com/nih-fmrif/siemens_to_ismrmrd.git
 
-### Compile ISMRMRD, GADGETRON and SIEMENS_TO_ISMRMRD projects using scripts that you downloaded from the S3 bucket:
+Compile ISMRMRD, GADGETRON and SIEMENS_TO_ISMRMRD projects using scripts that you downloaded from the S3 bucket:
 - ISMRMRD: Run the script: compile_ismrmrd_.bat
 - GADGETRON: Run the script: compile_gadgetron.bat
 - SIEMENS_TO_ISMRMRD: Run the script: compile_siemens_to_ismrmrd.bat
