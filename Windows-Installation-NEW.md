@@ -91,7 +91,7 @@ Set the environment variable for install folders for gadgetron and ismrmrd:
 
 ISMRMRD:
 
-Go to ```C:\gadgetron\projects```:
+Go to C:\gadgetron\projects:
 ```
 git clone https://github.com/ismrmrd/ismrmrd.git
 cd ismrmrd
@@ -99,7 +99,7 @@ git checkout development
 ```
 GADGETRON:
 
-Go to ```C:\gadgetron\projects```:
+Go to C:\gadgetron\projects:
 ```
 git clone https://github.com/gadgetron/gadgetron.git
 cd gadgetron
@@ -107,8 +107,10 @@ git checkout development
 ```
 SIEMENS_TO_ISMRMRD:
 
-Go to ```C:\gadgetron\projects```:
-```git clone https://github.com/nih-fmrif/siemens_to_ismrmrd.git```
+Go to C:\gadgetron\projects:
+```
+git clone https://github.com/nih-fmrif/siemens_to_ismrmrd.git
+```
 Compile ISMRMRD, GADGETRON and SIEMENS_TO_ISMRMRD projects using scripts that you downloaded from the S3 bucket:
 - ISMRMRD: Run the script: compile_ismrmrd.bat
 - GADGETRON: Run the script: compile_gadgetron.bat
