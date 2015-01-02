@@ -20,12 +20,12 @@ Note: The setup scripts assume that version of CUDA installed is 6.0. If you dec
 
 - Install MKL (optional)
 
-After running the installer, set the environment variable (assuming install location is C:\Intel):
+  After running the installer, set the environment variable (assuming install location is C:\Intel):
 
-MKLROOT_PATH=C:\Intel\ComposerXE2013SP1
+  MKLROOT_PATH=C:\Intel\ComposerXE2013SP1
 
 
-### Copy the content of the S3 bucket to a C:\ folder
+- Copy the content of the S3 bucket to a C:\ folder
 
 ### Install precompiled dependencies:
 
