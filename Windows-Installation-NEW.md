@@ -84,7 +84,7 @@ PROJECT_ROOT=C:\gadgetron\projects
 Set the environment variable for install folders for gadgetron and ismrmrd:
 
 GADGETRON_HOME=C:\gadgetron\projects\install\gadgetron
-```ISMRMRD_HOME=C:\gadgetron\projects\install```
+ISMRMRD_HOME=C:\gadgetron\projects\install
 
 ### Cloning repositories:
 
