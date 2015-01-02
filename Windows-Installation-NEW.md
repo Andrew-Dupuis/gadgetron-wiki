@@ -28,15 +28,15 @@ The following is a list of steps we have used to install the Gadgetron on a clea
 
 ### Install precompiled dependencies:
 
-Go into ```C:\gadgetron\dependencies``` folder and do the following for each dependency (assuming that you copied content of the S3 bucket to C:\)
+Go into C:\gadgetron\dependencies folder and do the following for each dependency (assuming that you copied content of the S3 bucket to C:\)
 
 - ACE:
 
-    Set the environment variable: ```ACE_ROOT=C:\gadgetron\Dependencies\ACE\binaries\ACE_wrappers```
+    Set the environment variable: ACE_ROOT=C:\gadgetron\Dependencies\ACE\binaries\ACE_wrappers
 
 - Armadillo:
 
-    Set the environment variable: ```ARMA_HOME=C:\gadgetron\Dependencies\Armadillo\binaries\armadillo-4.400.1\install_vc11```
+    Set the environment variable: ARMA_HOME=C:\gadgetron\Dependencies\Armadillo\binaries\armadillo-4.400.1\install_vc11
 
 - Boost:
 
