@@ -23,6 +23,7 @@ The following is a list of steps we have used to install the Gadgetron on a clea
 
     ```MKLROOT_PATH=C:\Intel\ComposerXE2013SP1```
 
+    Note: blah
 
 - Copy the content of the S3 bucket to a ```C:\``` folder
 
