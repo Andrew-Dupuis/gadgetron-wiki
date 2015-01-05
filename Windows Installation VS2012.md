@@ -30,7 +30,7 @@ If you are uncomfortable setting up development tools on Windows, or if you are 
 
     MKLROOT_PATH=C:\Intel\ComposerXE2013SP1
 
-### Install precompiled dependencies:
+### Install dependencies:
 
 - **ACE**:
 
