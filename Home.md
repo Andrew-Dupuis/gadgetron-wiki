@@ -14,5 +14,5 @@ The source code can also be accessed using git:
   git clone git://github.com/gadgetron/gadgetron
 
 
-**Note to Developers**
+**Note to Developers:**
 If you have an existing source tree based on the sourceforge repository, or you need to find a specific commit in the old repository, please see these [[Migration Instructions]].
