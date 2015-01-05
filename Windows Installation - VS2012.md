@@ -31,15 +31,21 @@ Go into ```C:\gadgetron\dependencies``` folder and do the following for each dep
 
 - ACE:
 
-    Set the environment variable: ACE_ROOT=C:\gadgetron\Dependencies\ACE\binaries\ACE_wrappers
+    Download .zip file with precompiled binaries from the link: [ACE-6.2.0.zip](https://s3.amazonaws.com/install-gadgetron/Dependencies/ACE/zip/ACE-6.2.0.zip)
+    Unzip the file to: C:\gadgetron\Dependencies\ACE
+    Set the environment variable: ACE_ROOT=C:\gadgetron\Dependencies\ACE\ACE_wrappers
 
 - Armadillo:
 
-    Set the environment variable: ARMA_HOME=C:\gadgetron\Dependencies\Armadillo\binaries\armadillo-4.400.1\install_vc11
+    Download .zip file with precompiled binaries from the link: [armadillo-4.400.1.zip](https://s3.amazonaws.com/install-gadgetron/Dependencies/Armadillo/zip/armadillo-4.400.1.zip)
+    Unzip the file to: C:\gadgetron\Dependencies\Armadillo
+    Set the environment variable: ARMA_HOME=C:\gadgetron\Dependencies\Armadillo\armadillo-4.400.1\install_vc11
 
 - Boost:
-
-    Set the environment variable: BOOST_ROOT=C:\gadgetron\Dependencies\Boost\binaries\boost_1_56_0
+    
+    Download .zip file with precompiled binaries from the link: [boost_1_56_0.zip](https://s3.amazonaws.com/install-gadgetron/Dependencies/Boost/zip/boost_1_56_0.zip)
+    Unzip the file to: C:\gadgetron\Dependencies\Boost
+    Set the environment variable: BOOST_ROOT=C:\gadgetron\Dependencies\Boost\boost_1_56_0
 
 - dcmtk:
 
