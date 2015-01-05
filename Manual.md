@@ -9,7 +9,7 @@
     * [[List of Dependencies]]
     * [[Linux Installation]]
     * [[Mac Installation]]
-    * [[Windows Installation VS2012]]
+    * [[Windows Installation]]
     * [[Gadgetron Hello World]]
 
 * Framework Overview
