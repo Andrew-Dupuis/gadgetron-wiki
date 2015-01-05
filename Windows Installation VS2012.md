@@ -15,21 +15,6 @@ If you are uncomfortable setting up development tools on Windows, or if you are 
 
 - Install cmake
 
-- Install CUDA (optional, but required for GPU support)
-
-    After running the installer and installing it to default location, set the environment variables (if they are not already set):
-
-    CUDA_PATH=C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v6.0
-    CUDA_PATH_V6_0=C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v6.0
-
-    Note: The setup scripts assume that version of CUDA installed is 6.0. If you decide to install different version of CUDA, update the scripts.
-
-- Install MKL (optional)
-
-    After running the installer, set the environment variable (assuming that install location is C:\Intel):
-
-    MKLROOT_PATH=C:\Intel\ComposerXE2013SP1
-
 ### Install dependencies:
 
 - **ACE**:
@@ -55,6 +40,21 @@ If you are uncomfortable setting up development tools on Windows, or if you are 
     Unzip the file to: C:\gadgetron\Dependencies\Boost.
     
     Set the environment variable: BOOST_ROOT=C:\gadgetron\Dependencies\Boost\boost_1_56_0.
+
+- **CUDA** (optional, but required for GPU support):
+
+    After running the installer and installing it to default location, set the environment variables (if they are not already set):
+
+    CUDA_PATH=C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v6.0
+    CUDA_PATH_V6_0=C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v6.0
+
+    Note: The setup scripts assume that version of CUDA installed is 6.0. If you decide to install different version of CUDA, update the scripts.
+
+- **MKL** (optional):
+
+    After running the installer, set the environment variable (assuming that install location is C:\Intel):
+
+    MKLROOT_PATH=C:\Intel\ComposerXE2013SP1
 
 - **dcmtk**:
 
