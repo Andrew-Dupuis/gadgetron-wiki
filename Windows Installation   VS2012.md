@@ -32,7 +32,7 @@ If you are uncomfortable setting up development tools on Windows, or if you are 
 
 ### Install precompiled dependencies:
 
-- ACE:
+- **ACE**:
 
     Download .zip file with precompiled binaries from the link: [ACE-6.2.0.zip](https://s3.amazonaws.com/install-gadgetron/Dependencies/ACE/zip/ACE-6.2.0.zip)
 
@@ -40,7 +40,7 @@ If you are uncomfortable setting up development tools on Windows, or if you are 
 
     Set the environment variable: ACE_ROOT=C:\gadgetron\Dependencies\ACE\ACE_wrappers.
 
-- Armadillo:
+- **Armadillo**:
 
     Download .zip file with precompiled binaries from the link: [armadillo-4.400.1.zip](https://s3.amazonaws.com/install-gadgetron/Dependencies/Armadillo/zip/armadillo-4.400.1.zip)
     
@@ -48,7 +48,7 @@ If you are uncomfortable setting up development tools on Windows, or if you are 
     
     Set the environment variable: ARMA_HOME=C:\gadgetron\Dependencies\Armadillo\armadillo-4.400.1\install_vc11.
 
-- Boost:
+- **Boost**:
     
     Download .zip file with precompiled binaries from the link: [boost_1_56_0.zip](https://s3.amazonaws.com/install-gadgetron/Dependencies/Boost/zip/boost_1_56_0.zip)
     
@@ -56,49 +56,49 @@ If you are uncomfortable setting up development tools on Windows, or if you are 
     
     Set the environment variable: BOOST_ROOT=C:\gadgetron\Dependencies\Boost\boost_1_56_0.
 
-- dcmtk:
+- **dcmtk**:
     Download .zip file with precompiled binaries from the link: [dcmtk-3.6.0.zip](https://s3.amazonaws.com/install-gadgetron/Dependencies/dcmtk/zip/dcmtk-3.6.0.zip)
     
     Unzip the file to: C:\gadgetron\Dependencies\dcmtk.
     
     Set the environment variable: DCMTK_HOME=C:\gadgetron\Dependencies\dcmtk\dcmtk-3.6.0\install_vc11
 
-- FFTW:
+- **FFTW**:
     Download .zip file with precompiled binaries from the link: [FFTW3.zip](https://s3.amazonaws.com/install-gadgetron/Dependencies/FFTW/zip/FFTW3.zip)
     
     Unzip the file to: C:\gadgetron\Dependencies\FFTW.
     
     Set the environment variable: FFTW3_ROOT_DIR=C:\gadgetron\Dependencies\FFTW\FFTW3
 
-- gtest:
+- **gtest**:
     Download .zip file with precompiled binaries from the link: [gtest-1.7.0.zip](https://s3.amazonaws.com/install-gadgetron/Dependencies/gtest/zip/gtest-1.7.0.zip)
     
     Unzip the file to: C:\gadgetron\Dependencies\gtest.
     
     Set the environment variable: GTEST_ROOT=C:\gadgetron\Dependencies\gtest\gtest-1.7.0
 
-- SWIG:
+- **SWIG**:
     Download .zip file with precompiled binaries from the link: [swigwin-3.0.2.zip](https://s3.amazonaws.com/install-gadgetron/Dependencies/SWIG/swigwin-3.0.2.zip)
     
     Unzip the file to: C:\gadgetron\Dependencies\SWIG.
     
     Set the environment variable: SWIG_ROOT=C:\gadgetron\Dependencies\SWIG\swigwin-3.0.2
 
-- XSLT:
+- **XSLT**:
     Download .zip file with precompiled binaries from the link: [XSLT.zip](https://s3.amazonaws.com/install-gadgetron/Dependencies/XSLT/zip/XSLT.zip)
     
     Unzip the file to: C:\gadgetron\Dependencies\XSLT.
     
     Set the environment variable: XSLT_ROOT=C:\gadgetron\Dependencies\XSLT
 
-- HDF5:
+- **HDF5**:
     Download .zip file from the link: [hdf5-1.8.13-win64-VS2012-shared.zip](https://s3.amazonaws.com/install-gadgetron/Dependencies/HDF5/hdf5-1.8.13-win64-VS2012-shared.zip)
     
     Run the installer and install it to default location.
     
     Set the environment variable: HDF5_ROOT=C:\Program Files\HDF_Group\HDF5\1.8.13
 
-- Python:
+- **Python**:
     Download installer and six executables from the following links:
 
     [Scipy-stack-14.5.30.win-amd64-py2.7.exe](https://s3.amazonaws.com/install-gadgetron/Dependencies/Python/Scipy-stack-14.5.30.win-amd64-py2.7.exe)
