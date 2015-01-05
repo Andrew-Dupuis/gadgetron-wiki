@@ -182,4 +182,7 @@ Run the script ```set_gadgetron_path.bat``` to set the path variable
 
 Copy the ```xsltproc.exe``` from ```C:\gadgetron\dependencies\XSLT\binaries``` to the location of the ```siemens_to_ismrmrd.exe``` file (```C:\gadgetron\projects\install\ismrmrd\bin```)
 
+
+***
+
 You now have a working installation of the Gadgetron in Windows. Follow the instructions below to run a simple reconstruction example [[Gadgetron Hello World]]
