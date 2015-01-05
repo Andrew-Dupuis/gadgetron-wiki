@@ -7,6 +7,8 @@ If you are uncomfortable setting up development tools on Windows, or if you are 
 
 ## Installation instructions:
 
+### Install required software: 
+
 - Install Visual Studio 2012 and Update 4 for Visual Studio 2012
 
 - Install Git
