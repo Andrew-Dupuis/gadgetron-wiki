@@ -11,9 +11,9 @@ If you are uncomfortable setting up development tools on Windows, or if you are 
 
 - Install Visual Studio 2012 and Update 4 for Visual Studio 2012
 
-- Install Git
+- Install [Git](http://git-scm.com/downloads)
 
-- Install cmake
+- Install [cmake](http://www.cmake.org/download/)
 
 ### Install dependencies:
 
