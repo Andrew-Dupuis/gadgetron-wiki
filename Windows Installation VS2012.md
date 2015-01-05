@@ -143,7 +143,7 @@ Create the root folder for the gadgetron, ismrmrd and siemens_to_ismrmrd project
 
 ### Clone repositories:
 
-ISMRMRD:
+**ISMRMRD:**
 
 Go to C:\gadgetron\projects:
 ```
@@ -151,7 +151,7 @@ git clone https://github.com/ismrmrd/ismrmrd.git
 cd ismrmrd
 git checkout development
 ```
-GADGETRON:
+**GADGETRON:**
 
 Go to C:\gadgetron\projects:
 ```
@@ -159,7 +159,7 @@ git clone https://github.com/gadgetron/gadgetron.git
 cd gadgetron
 git checkout development
 ```
-SIEMENS_TO_ISMRMRD:
+**SIEMENS_TO_ISMRMRD:**
 
 Go to C:\gadgetron\projects:
 ```
