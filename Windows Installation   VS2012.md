@@ -134,12 +134,12 @@ Create the root folder for the gadgetron, ismrmrd and siemens_to_ismrmrd project
 
 - Set the root folder environment variable:
  
-PROJECT_ROOT=C:\gadgetron\projects
+    PROJECT_ROOT=C:\gadgetron\projects
 
-Set the environment variable for install folders for gadgetron and ismrmrd:
+- Set the environment variable for install folders for gadgetron and ismrmrd:
 
-GADGETRON_HOME=C:\gadgetron\projects\install\gadgetron
-ISMRMRD_HOME=C:\gadgetron\projects\install
+    GADGETRON_HOME=C:\gadgetron\projects\install\gadgetron
+    ISMRMRD_HOME=C:\gadgetron\projects\install
 
 ### Clone repositories:
 
