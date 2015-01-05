@@ -5,6 +5,7 @@ As indicated in [List of Dependencies], the Gadgetron relies on multiple externa
 
 If you are uncomfortable setting up development tools on Windows, or if you are just looking for a fast and easy way to get started with the Gadgetron, we recommend installing on Ubuntu Linux - possibly using a virtual machine inside Windows (see [Linux Installation])
 
+** Installation instructions:
 
 - Install Visual Studio 2012 and Update 4 for Visual Studio 2012
 
