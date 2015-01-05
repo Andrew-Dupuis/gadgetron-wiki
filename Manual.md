@@ -8,7 +8,7 @@
 * Compiling and Installing the Gadgetron
     * [[List of Dependencies]]
     * [[Linux Installation]]
-    * [[Mac Installation]]
+    * [[Mac OS X Installation]]
     * [[Windows Installation]]
     * [[Gadgetron Hello World]]
 
