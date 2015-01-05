@@ -57,6 +57,7 @@ If you are uncomfortable setting up development tools on Windows, or if you are 
     Set the environment variable: BOOST_ROOT=C:\gadgetron\Dependencies\Boost\boost_1_56_0.
 
 - **dcmtk**:
+
     Download .zip file with precompiled binaries from the link: [dcmtk-3.6.0.zip](https://s3.amazonaws.com/install-gadgetron/Dependencies/dcmtk/zip/dcmtk-3.6.0.zip)
     
     Unzip the file to: C:\gadgetron\Dependencies\dcmtk.
@@ -64,6 +65,7 @@ If you are uncomfortable setting up development tools on Windows, or if you are 
     Set the environment variable: DCMTK_HOME=C:\gadgetron\Dependencies\dcmtk\dcmtk-3.6.0\install_vc11
 
 - **FFTW**:
+
     Download .zip file with precompiled binaries from the link: [FFTW3.zip](https://s3.amazonaws.com/install-gadgetron/Dependencies/FFTW/zip/FFTW3.zip)
     
     Unzip the file to: C:\gadgetron\Dependencies\FFTW.
@@ -71,6 +73,7 @@ If you are uncomfortable setting up development tools on Windows, or if you are 
     Set the environment variable: FFTW3_ROOT_DIR=C:\gadgetron\Dependencies\FFTW\FFTW3
 
 - **gtest**:
+
     Download .zip file with precompiled binaries from the link: [gtest-1.7.0.zip](https://s3.amazonaws.com/install-gadgetron/Dependencies/gtest/zip/gtest-1.7.0.zip)
     
     Unzip the file to: C:\gadgetron\Dependencies\gtest.
@@ -78,6 +81,7 @@ If you are uncomfortable setting up development tools on Windows, or if you are 
     Set the environment variable: GTEST_ROOT=C:\gadgetron\Dependencies\gtest\gtest-1.7.0
 
 - **SWIG**:
+
     Download .zip file with precompiled binaries from the link: [swigwin-3.0.2.zip](https://s3.amazonaws.com/install-gadgetron/Dependencies/SWIG/swigwin-3.0.2.zip)
     
     Unzip the file to: C:\gadgetron\Dependencies\SWIG.
@@ -85,6 +89,7 @@ If you are uncomfortable setting up development tools on Windows, or if you are 
     Set the environment variable: SWIG_ROOT=C:\gadgetron\Dependencies\SWIG\swigwin-3.0.2
 
 - **XSLT**:
+
     Download .zip file with precompiled binaries from the link: [XSLT.zip](https://s3.amazonaws.com/install-gadgetron/Dependencies/XSLT/zip/XSLT.zip)
     
     Unzip the file to: C:\gadgetron\Dependencies\XSLT.
@@ -92,6 +97,7 @@ If you are uncomfortable setting up development tools on Windows, or if you are 
     Set the environment variable: XSLT_ROOT=C:\gadgetron\Dependencies\XSLT
 
 - **HDF5**:
+
     Download .zip file from the link: [hdf5-1.8.13-win64-VS2012-shared.zip](https://s3.amazonaws.com/install-gadgetron/Dependencies/HDF5/hdf5-1.8.13-win64-VS2012-shared.zip)
     
     Run the installer and install it to default location.
@@ -99,6 +105,7 @@ If you are uncomfortable setting up development tools on Windows, or if you are 
     Set the environment variable: HDF5_ROOT=C:\Program Files\HDF_Group\HDF5\1.8.13
 
 - **Python**:
+
     Download installer and six executables from the following links:
 
     [Scipy-stack-14.5.30.win-amd64-py2.7.exe](https://s3.amazonaws.com/install-gadgetron/Dependencies/Python/Scipy-stack-14.5.30.win-amd64-py2.7.exe)
