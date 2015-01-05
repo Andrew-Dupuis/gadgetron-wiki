@@ -154,7 +154,22 @@ Go to C:\gadgetron\projects:
 ```
 git clone https://github.com/nih-fmrif/siemens_to_ismrmrd.git
 ```
-Compile ISMRMRD, GADGETRON and SIEMENS_TO_ISMRMRD projects using scripts that you downloaded from the S3 bucket:
+
+### Compile ISMRMRD, GADGETRON and SIEMENS_TO_ISMRMRD projects
+
+Download following scripts and save them in the same folder:
+
+[gadgetron_windows_setup.bat](https://s3.amazonaws.com/install-gadgetron/gadgetronScripts/gadgetron_windows_setup.bat)
+
+[compile_ismrmrd.bat](https://s3.amazonaws.com/install-gadgetron/gadgetronScripts/compile_ismrmrd.bat)
+
+[compile_gadgetron.bat](https://s3.amazonaws.com/install-gadgetron/gadgetronScripts/compile_gadgetron.bat)
+
+[compile_siemens_to_ismrmrd.bat](https://s3.amazonaws.com/install-gadgetron/gadgetronScripts/compile_siemens_to_ismrmrd.bat)
+
+[set_gadgetron_path.bat](https://s3.amazonaws.com/install-gadgetron/gadgetronScripts/set_gadgetron_path.bat)
+
+Compile projects by running the scripts:
 - ISMRMRD: Run the script: ```compile_ismrmrd.bat```
 - GADGETRON: Run the script: ```compile_gadgetron.bat```
 - SIEMENS_TO_ISMRMRD: Run the script: ```compile_siemens_to_ismrmrd.bat```
