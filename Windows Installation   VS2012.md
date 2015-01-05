@@ -1,7 +1,9 @@
-It is probably appropriate to start this section with a warning: Windows is not the easiest environment in which to work with the Gadgetron. As indicated in [List of Dependencies], the Gadgetron relies on multiple external libraries. Many of those libraries are not available as easy install packages and must be compiled separately. That is why we offer an option to download precompiled binaries of dependencies from our S3 bucket on AWS. If you are uncomfortable setting up development tools on Windows, or if you are just looking for a fast and easy way to get started with the Gadgetron, we recommend installing on Ubuntu Linux - possibly using a virtual machine inside Windows (see [Linux Installation])
+
+The following is a list of steps we have used to install the Gadgetron on a clean Microsoft Windows Server 2012 R2 Base (64-bit) machine.
 
 
-The following is a list of steps we have used to install the Gadgetron on a clean Microsoft Windows Server 2012 R2 Base (64-bit) machine. 
+Windows is not the easiest environment in which to work with the Gadgetron. As indicated in [List of Dependencies], the Gadgetron relies on multiple external libraries. Many of those libraries are not available as easy install packages and must be compiled separately. That is why we offer an option to download precompiled binaries of dependencies. If you are uncomfortable setting up development tools on Windows, or if you are just looking for a fast and easy way to get started with the Gadgetron, we recommend installing on Ubuntu Linux - possibly using a virtual machine inside Windows (see [Linux Installation])
+
 
 - Install Visual Studio 2012 and Update 4 for Visual Studio 2012
 
@@ -25,8 +27,6 @@ The following is a list of steps we have used to install the Gadgetron on a clea
     MKLROOT_PATH=C:\Intel\ComposerXE2013SP1
 
 ### Install precompiled dependencies:
-
-Go into ```C:\gadgetron\dependencies``` folder and do the following for each dependency (assuming that you copied content of the S3 bucket to ```C:\```)
 
 - ACE:
 
