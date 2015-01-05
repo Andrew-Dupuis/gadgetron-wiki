@@ -24,8 +24,6 @@ The following is a list of steps we have used to install the Gadgetron on a clea
 
     MKLROOT_PATH=C:\Intel\ComposerXE2013SP1
 
-### Copy the content of the S3 bucket to a ```C:\``` folder
-
 ### Install precompiled dependencies:
 
 Go into ```C:\gadgetron\dependencies``` folder and do the following for each dependency (assuming that you copied content of the S3 bucket to ```C:\```)
