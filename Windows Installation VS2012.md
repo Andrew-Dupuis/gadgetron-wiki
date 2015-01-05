@@ -166,7 +166,7 @@ Go to C:\gadgetron\projects:
 git clone https://github.com/nih-fmrif/siemens_to_ismrmrd.git
 ```
 
-### Compile ISMRMRD, GADGETRON and SIEMENS_TO_ISMRMRD projects
+### Compile ISMRMRD, GADGETRON and SIEMENS_TO_ISMRMRD projects:
 
 Download following scripts and save them in the same folder:
 
