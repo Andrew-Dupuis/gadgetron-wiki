@@ -116,7 +116,7 @@ Go into ```C:\gadgetron\dependencies``` folder and do the following for each dep
     Add Python path (```C:\Python27```) to the 'PATH' environment variable
 
 
-### Setting additional environment variables:
+### Set additional environment variables:
 
 Create the root folder for the gadgetron, ismrmrd and siemens_to_ismrmrd projects 
 (for example: ```C:\gadgetron\projects```).
@@ -130,7 +130,7 @@ Set the environment variable for install folders for gadgetron and ismrmrd:
 GADGETRON_HOME=C:\gadgetron\projects\install\gadgetron
 ISMRMRD_HOME=C:\gadgetron\projects\install
 
-### Cloning repositories:
+### Clone repositories:
 
 ISMRMRD:
 
