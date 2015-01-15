@@ -52,9 +52,12 @@ If you are uncomfortable setting up development tools on Windows, or if you are 
 
 - **MKL** (optional):
 
+    NOTE: The lowest version of MKL supported by gadgetron is 11.2.0 
+
     After running the installer, set the environment variable (assuming that install location is C:\Intel):
 
-    MKLROOT_PATH=C:\Intel\ComposerXE2013SP1
+    MKLROOT_PATH=C:\Intel\ComposerXE2015
+
 
 - **dcmtk**:
 
