@@ -22,7 +22,7 @@ Install nvidia driver:
  
 Install nvidia cuda toolkit:
 
-   sudo apt-get install nvidia-cuda-toolkit
+    sudo apt-get install nvidia-cuda-toolkit
 
 On Ubuntu 12.04, the components can easily be installed using a deb packpage provided by NVIDIA:
 
