@@ -20,9 +20,9 @@ Install latest kernel (only if CUDA needed)::
 
     sudo apt-get install linux-image-extra-virtual
 
-  When asked install maintainers version of menu.lst
+  When asked install maintainers version of menu.lst.
 
-Reboot.
+    sudo reboot now
                                                                                              
 Install kernel headers for your current kernel (for nvidia driver):
 
