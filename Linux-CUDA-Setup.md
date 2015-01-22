@@ -13,9 +13,10 @@ Enable multiverse and restricted packages. In /etc/apt/sources.list:
     deb-src http://us-east-1.ec2.archive.ubuntu.com/ubuntu/ trusty-updates universe multiverse restricted
 
 Install latest kernel (only if CUDA needed)::
+    
     sudo apt-get install linux-image-generic
 
-    or
+  or
 
     sudo apt-get install linux-image-extra-virtual
 
