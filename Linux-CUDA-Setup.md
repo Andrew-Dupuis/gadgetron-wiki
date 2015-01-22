@@ -10,8 +10,19 @@ Enable multiverse and restricted packages. In /etc/apt/sources.list:
     deb http://us-east-1.ec2.archive.ubuntu.com/ubuntu/ trusty universe multiverse restricted
     deb-src http://us-east-1.ec2.archive.ubuntu.com/ubuntu/ trusty universe multiverse restricted
     deb http://us-east-1.ec2.archive.ubuntu.com/ubuntu/ trusty-updates universe multiverse restricted
-    deb-src http://us-east-1.ec2.archive.ubuntu.com/ubuntu/ trusty-updates universe multiverse restricted                                                                                                  
+    deb-src http://us-east-1.ec2.archive.ubuntu.com/ubuntu/ trusty-updates universe multiverse restricted
 
+Install latest kernel (only if CUDA needed)::
+    sudo apt-get install linux-image-generic
+
+    or
+
+    sudo apt-get install linux-image-extra-virtual
+
+  When asked install maintainers version of menu.lst
+
+Reboot.
+                                                                                             
 Install kernel headers for your current kernel (for nvidia driver):
 
     sudo apt-get install linux-headers-`uname -r`                                                                                                                                                          
