@@ -190,7 +190,7 @@ Compile projects by running the scripts:
 
 Run the script ```set_gadgetron_path.bat``` to set the path variable
 
-Copy the ```xsltproc.exe``` from ```C:\gadgetron\dependencies\XSLT\binaries``` to the location of the ```siemens_to_ismrmrd.exe``` file (```C:\gadgetron\projects\install\ismrmrd\bin```)
+Copy the ```xsltproc.exe``` from ```C:\gadgetron\dependencies\XSLT\binaries``` to the location of the ```siemens_to_ismrmrd.exe``` file (```C:\gadgetron\projects\install\bin```)
 
 
 ***
