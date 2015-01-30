@@ -3,7 +3,7 @@ Since version 3.0, Gadgetron supports building the chroot image as a way for dep
 
 # Build gadgetron chroot package
 
-suppose the gadgetron source code is stored as gadgetron-source folder and the building folder is gadgetron-build
+suppose the gadgetron source code is in gadgetron-source folder and the building folder is gadgetron-build
 
 cd gadgetron-build
 
