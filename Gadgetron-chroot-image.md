@@ -6,17 +6,21 @@ Since version 3.0, Gadgetron supports building the chroot image as a way for dep
 suppose the gadgetron source code is stored as gadgetron-source folder and the building folder is gadgetron-build
 
 cd gadgetron-build
+
 cmake ../gadgetron-source
+
 make -j12
+
 make install
 
-# make chroot requires sudo right
 sudo make chroot
 
 This command will install an ubuntu bootstrap environment and install gadgetron inside the chroot. It will tar and zip the package. Therefore, after the command completes, in the gadgetron-build/chroot/chroot-backups folder, there will be a .tar.gz and .img file. 
 
 For example, in my system, they can be called:
+
 gadgetron-20150129-1137-e207d6ed.img
+
 gadgetron-20150129-1137-e207d6ed.tar.gz
 
 The naming is gadgetron-date-time-first 8 numbers of SHA1 key for gadgetron code base.
@@ -27,6 +31,7 @@ The .img file is a hard-disk image file containing the same content with .tar.gz
 In the gadgetron-build/chroot/chroot-backups folder, there are a few .sh scripts. Among them, start-gadgetron-from-image.sh can be used to start the gadgetron form the chroot .img file. Its usage is like:
 
 cd gadgetron-build/chroot/chroot-backups
+
 sudo ./start-gadgetron-from-image.sh ./gadgetron-20150129-1137-e207d6ed.img ~/gadgetron_chroot/mount_point
 
 # Install gadgetron chroot package as an upstart service
