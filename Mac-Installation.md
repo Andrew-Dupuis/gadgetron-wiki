@@ -41,14 +41,6 @@ MacPorts is not the fastest way to install packages as several of them are are c
 
     This may take quite a long time (hours).
 
--   Install CodeSynthesis XSD:
-
-        wget http://www.codesynthesis.com/download/xsd/3.3/macosx/i686/xsd-3.3.0-i686-macosx.tar.bz2
-        tar -xzf xsd-3.3.0-i686-macosx.tar.bz2
-        cd xsd-3.3.0-i686-macosx
-        sudo cp bin/xsd /usr/local/bin/
-        sudo cp -r libxsd/xsd /usr/local/include/
-
 -   Download, compile, and install ISMRMRD. Detailed instructions can be found at <http://ismrmrd.github.io>:
 
         git clone git://git.code.sf.net/p/ismrmrd/code ismrmrd-code
