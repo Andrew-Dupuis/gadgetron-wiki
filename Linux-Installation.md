@@ -39,10 +39,6 @@ Next download the Gadgetron source code. Either obtain a [release zip file](http
 
       git clone https://github.com/gadgetron/gadgetron.git
 
-Git users might want be "up to date" on the development branch
-
-      git checkout development
-
 Configure and build the Gadgetron:
 
       cd gadgetron/
