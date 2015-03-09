@@ -87,7 +87,6 @@ This is the Homebrew version of the installation:
 
     git clone https://github.com/ismrmrd/ismrmrd
     cd ismrmrd
-    git checkout development
     mkdir build
     cd build/
     cmake -D CMAKE_INSTALL_PREFIX=$ISMRMRD_HOME ../
@@ -98,7 +97,6 @@ This is the Homebrew version of the installation:
 
     git clone https://github.com/gadgetron/gadgetron
     cd gadgetron
-    git checkout development
     mkdir build
     cd build/
     cmake -DCMAKE_INSTALL_PREFIX=/usr/local -DPYTHON_LIBRARY=`python-config --prefix`/Python -DPYTHON_INCLUDE_DIR=`python-config --prefix`/Headers ../
