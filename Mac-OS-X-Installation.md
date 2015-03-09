@@ -83,6 +83,16 @@ This is the Homebrew version of the installation:
 
 ## Installation from Sources
 
+### Libiconv
+In order to make libgadgetron_dicom work
+
+    wget http://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.14.tar.gz
+    tar xvf libiconv-1.14.tar.gz
+    cd libiconv-1.14
+    ./configure --prefix=/usr/local
+    make
+    make install
+
 ### ISMRMRD
 
     git clone https://github.com/ismrmrd/ismrmrd
