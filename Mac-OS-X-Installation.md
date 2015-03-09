@@ -84,7 +84,7 @@ This is the Homebrew version of the installation:
 ## Installation from Sources
 
 ### Libiconv
-In order to make libgadgetron_dicom work
+In order to make gadgetron_dicom toolbox work
 
     wget http://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.14.tar.gz
     tar xvf libiconv-1.14.tar.gz
