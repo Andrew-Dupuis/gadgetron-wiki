@@ -126,6 +126,8 @@ This is the Homebrew version of the installation:
 
 ## Post-install Config and Testing
 
-0. Copy `$GADGETRON_HOME/config/gadgetron.xml.example` to `$GADGETRON_HOME/config/gadgetron.xml`
+0. Copy `$GADGETRON_HOME/share/gadgetron/config/gadgetron.xml.example` to `$GADGETRON_HOME/share/gadgetron/config/gadgetron.xml.example`
+
 0. Fetch Gadgetron test data: run `python get_data.py` in `test/integration` in the Gadgetron source tree.
+
 0. Run integration tests: run `python run_all_tests.py $ISMRMRD_HOME $GADGETRON_HOME test_cases.txt` in `test/integration` in the Gadgetron source tree.
