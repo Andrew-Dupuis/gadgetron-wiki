@@ -54,7 +54,8 @@ This is the Homebrew version of the installation:
         brew install python boost-python numpy scipy
         brew install matplotlib --with-pygtk --with-pyqt
         brew install libxml2 --with-python
-        
+        brew install libiconv
+
         pip install h5py pyxb Cython
 
 0.  Install GTest
@@ -82,16 +83,6 @@ This is the Homebrew version of the installation:
     For Matlab R2013b I used http://download.oracle.com/otn-pub/java/jdk/7u51-b13/jdk-7u51-macosx-x64.dmg
 
 ## Installation from Sources
-
-### Libiconv
-In order to make gadgetron_dicom toolbox work
-
-    wget http://ftp.gnu.org/pub/gnu/libiconv/libiconv-1.14.tar.gz
-    tar xvf libiconv-1.14.tar.gz
-    cd libiconv-1.14
-    ./configure --prefix=/usr/local
-    make
-    make install
 
 ### ISMRMRD
 
