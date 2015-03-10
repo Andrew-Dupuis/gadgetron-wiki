@@ -30,7 +30,7 @@ This is the Homebrew version of the installation:
     # MATLAB, ISMRMRD, GADGETRON
     export MATLAB_HOME=/Applications/MATLAB_R2013b.app
     export ISMRMRD_HOME=/usr/local
-    export GADGETRON_HOME=/usr/local/gadgetron
+    export GADGETRON_HOME=/usr/local
 
     export PATH=$MATLAB_HOME/bin:$PATH
     export PATH=$ISMRMRD_HOME/bin:$PATH
@@ -100,7 +100,7 @@ This is the Homebrew version of the installation:
     cd gadgetron
     mkdir build
     cd build/
-    cmake -DCMAKE_INSTALL_PREFIX=/usr/local -DPYTHON_LIBRARY=`python-config --prefix`/Python -DPYTHON_INCLUDE_DIR=`python-config --prefix`/Headers ../
+    cmake -DCMAKE_INSTALL_PREFIX=$GADGETRON_HOME -DPYTHON_LIBRARY=`python-config --prefix`/Python -DPYTHON_INCLUDE_DIR=`python-config --prefix`/Headers ../
     make
     make install
 
