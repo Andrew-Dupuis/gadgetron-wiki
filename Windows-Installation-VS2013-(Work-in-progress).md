@@ -8,7 +8,7 @@ If you are uncomfortable setting up development tools on Windows, or if you are 
 
 ### Install required software: 
 
-- Install Visual Studio 2013 with Update 4 for Visual Studio 2013
+- Install Visual Studio 2013 with Update 4
 
 - Install [Git](http://git-scm.com/downloads)
 
