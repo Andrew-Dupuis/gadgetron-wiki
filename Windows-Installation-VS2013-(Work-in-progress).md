@@ -77,7 +77,7 @@ If you are uncomfortable setting up development tools on Windows, or if you are 
 
 - **gtest**:
 
-    Download .zip file with precompiled binaries from the link: [gtest-1.7.0.zip](https://s3.amazonaws.com/install-gadgetron/Dependencies/gtest/zip/gtest-1.7.0.zip)
+    Download .zip file with precompiled binaries from the link: [gtest-1.7.0.zip](https://s3.amazonaws.com/install-gadgetron-vs2013/Dependencies/gtest/zip/gtest-1.7.0.zip)
     
     Unzip the file to: C:\gadgetron\Dependencies\gtest.
     
@@ -85,37 +85,37 @@ If you are uncomfortable setting up development tools on Windows, or if you are 
 
 - **XSLT**:
 
-    Download .zip file with precompiled binaries from the link: [XSLT.zip](https://s3.amazonaws.com/install-gadgetron/Dependencies/XSLT/zip/XSLT.zip)
+    Download .zip file with precompiled binaries from the link: [XSLT.zip](https://s3.amazonaws.com/install-gadgetron-vs2013/Dependencies/XSLT/zip/XSLT.zip)
     
-    Unzip the file to: C:\gadgetron\Dependencies\XSLT.
+    Unzip the file to: C:\gadgetron\Dependencies.
     
     Set the environment variable: XSLT_ROOT=C:\gadgetron\Dependencies\XSLT
 
 - **HDF5**:
 
-    Download .zip file from the link: [hdf5-1.8.13-win64-VS2012-shared.zip](https://s3.amazonaws.com/install-gadgetron/Dependencies/HDF5/hdf5-1.8.13-win64-VS2012-shared.zip)
+    Download .zip file from the link: [hdf5-1.8.14-win64-vs2013-shared.zip](https://s3.amazonaws.com/install-gadgetron-vs2013/Dependencies/HDF5/hdf5-1.8.14-win64-vs2013-shared.zip)
     
     Run the installer and install it to default location.
     
-    Set the environment variable: HDF5_ROOT=C:\Program Files\HDF_Group\HDF5\1.8.13
+    Set the environment variable: HDF5_ROOT=C:\Program Files\HDF_Group\HDF5\1.8.14
 
 - **Python**:
 
     Download installer and six executables from the following links:
 
-    [Scipy-stack-14.5.30.win-amd64-py2.7.exe](https://s3.amazonaws.com/install-gadgetron/Dependencies/Python/Scipy-stack-14.5.30.win-amd64-py2.7.exe)
+    [Scipy-stack-14.5.30.win-amd64-py2.7.exe](https://s3.amazonaws.com/install-gadgetron-vs2013/Dependencies/Python/Scipy-stack-14.5.30.win-amd64-py2.7.exe)
 
-    [Twisted-14.0.0.win-amd64-py2.7.exe](https://s3.amazonaws.com/install-gadgetron/Dependencies/Python/Twisted-14.0.0.win-amd64-py2.7.exe)
+    [Twisted-14.0.0.win-amd64-py2.7.exe](https://s3.amazonaws.com/install-gadgetron-vs2013/Dependencies/Python/Twisted-14.0.0.win-amd64-py2.7.exe)
 
-    [libxml2-python-2.9.1.win-amd64-py2.7.exe](https://s3.amazonaws.com/install-gadgetron/Dependencies/Python/libxml2-python-2.9.1.win-amd64-py2.7.exe)
+    [libxml2-python-2.9.1.win-amd64-py2.7.exe](https://s3.amazonaws.com/install-gadgetron-vs2013/Dependencies/Python/libxml2-python-2.9.1.win-amd64-py2.7.exe)
 
-    [numpy-MKL-1.9.0b2.win-amd64-py2.7.exe](https://s3.amazonaws.com/install-gadgetron/Dependencies/Python/numpy-MKL-1.9.0b2.win-amd64-py2.7.exe)
+    [numpy-MKL-1.9.0b2.win-amd64-py2.7.exe](https://s3.amazonaws.com/install-gadgetron-vs2013/Dependencies/Python/numpy-MKL-1.9.0b2.win-amd64-py2.7.exe)
 
-    [psutil-2.1.1.win-amd64-py2.7.exe](https://s3.amazonaws.com/install-gadgetron/Dependencies/Python/psutil-2.1.1.win-amd64-py2.7.exe)
+    [psutil-2.1.1.win-amd64-py2.7.exe](https://s3.amazonaws.com/install-gadgetron-vs2013/Dependencies/Python/psutil-2.1.1.win-amd64-py2.7.exe)
 
-    [python-2.7.8.amd64.msi](https://s3.amazonaws.com/install-gadgetron/Dependencies/Python/python-2.7.8.amd64.msi)
+    [python-2.7.8.amd64.msi](https://s3.amazonaws.com/install-gadgetron-vs2013/Dependencies/Python/python-2.7.8.amd64.msi)
 
-    [zope.interface-4.1.1.win-amd64-py2.7.exe](https://s3.amazonaws.com/install-gadgetron/Dependencies/Python/zope.interface-4.1.1.win-amd64-py2.7.exe)
+    [zope.interface-4.1.1.win-amd64-py2.7.exe](https://s3.amazonaws.com/install-gadgetron-vs2013/Dependencies/Python/zope.interface-4.1.1.win-amd64-py2.7.exe)
 
     Run the installer and six executables from the Python folder.
     
@@ -143,16 +143,12 @@ Create the root folder for the gadgetron, ismrmrd and siemens_to_ismrmrd project
 Go to C:\gadgetron\projects:
 ```
 git clone https://github.com/ismrmrd/ismrmrd.git
-cd ismrmrd
-git checkout development
 ```
 **GADGETRON:**
 
 Go to C:\gadgetron\projects:
 ```
 git clone https://github.com/gadgetron/gadgetron.git
-cd gadgetron
-git checkout development
 ```
 **SIEMENS_TO_ISMRMRD:**
 
@@ -165,15 +161,15 @@ git clone https://github.com/nih-fmrif/siemens_to_ismrmrd.git
 
 Download following scripts and save them in the same folder:
 
-[gadgetron_windows_setup.bat](https://s3.amazonaws.com/install-gadgetron/gadgetronScripts/gadgetron_windows_setup.bat)
+[gadgetron_windows_setup.bat](https://s3.amazonaws.com/install-gadgetron-vs2013/gadgetronScripts/gadgetron_windows_setup.bat)
 
-[compile_ismrmrd.bat](https://s3.amazonaws.com/install-gadgetron/gadgetronScripts/compile_ismrmrd.bat)
+[compile_ismrmrd.bat](https://s3.amazonaws.com/install-gadgetron-vs2013/gadgetronScripts/compile_ismrmrd.bat)
 
-[compile_gadgetron.bat](https://s3.amazonaws.com/install-gadgetron/gadgetronScripts/compile_gadgetron.bat)
+[compile_gadgetron.bat](https://s3.amazonaws.com/install-gadgetron-vs2013/gadgetronScripts/compile_gadgetron.bat)
 
-[compile_siemens_to_ismrmrd.bat](https://s3.amazonaws.com/install-gadgetron/gadgetronScripts/compile_siemens_to_ismrmrd.bat)
+[compile_siemens_to_ismrmrd.bat](https://s3.amazonaws.com/install-gadgetron-vs2013/gadgetronScripts/compile_siemens_to_ismrmrd.bat)
 
-[set_gadgetron_path.bat](https://s3.amazonaws.com/install-gadgetron/gadgetronScripts/set_gadgetron_path.bat)
+[set_gadgetron_path.bat](https://s3.amazonaws.com/install-gadgetron-vs2013/gadgetronScripts/set_gadgetron_path.bat)
 
 Compile projects by running the scripts:
 - **ISMRMRD:** Run the script: ```compile_ismrmrd.bat```
