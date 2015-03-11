@@ -10,6 +10,7 @@
     * [[Linux Installation]]
     * [[Mac OS X Installation]]
     * [[Windows Installation VS2012]]
+    * [[Windows Installation VS2013]]
     * [[Gadgetron Hello World]]
 
 * Framework Overview
