@@ -87,9 +87,9 @@ If you are uncomfortable setting up development tools on Windows, or if you are 
 
     Download .zip file with precompiled binaries from the link: [XSLT.zip](https://s3.amazonaws.com/install-gadgetron-vs2013/Dependencies/XSLT/zip/XSLT.zip)
     
-    Unzip the file to: C:\gadgetron\Dependencies.
+    Unzip the file to: C:\gadgetron\Dependencies\XSLT.
     
-    Set the environment variable: XSLT_ROOT=C:\gadgetron\Dependencies\XSLT
+    Set the environment variable: XSLT_ROOT=C:\gadgetron\Dependencies\XSLT\XSLT
 
 - **HDF5**:
 
