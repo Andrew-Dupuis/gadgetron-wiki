@@ -20,5 +20,19 @@ Install the gadgetron:
 
     sudo apt-get install gadgetron-all
 
+Install libopenblas with OpenMP enabled:
+
+    sudo apt-get install libopenblas-base
+
+In order to run Python gadgets:
+
+    sudo apt-get install python-pip python-dev libhdf5-dev
+    sudo pip install Cython
+    sudo pip install --upgrade h5py
+    sudo pip install PyXB
+    sudo pip install ismrmrd
+
+
+
 
 
