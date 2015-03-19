@@ -44,7 +44,7 @@ Gadgetron dependencies
 
 Python Options
 --------------
-* CentOS 6.3 ships with python 2.6.6 and some somewhat outdated python packages.  They work just fine, but if you want the latest and greatest, you'll want to install python 2.7.3 and set up a virtualenv and use pip to install the necessary bits.  Alternatively you could stay on python 2.6.6 and just install/upgrade the packages you want. One can install newer version of the numpy by installing via the PUIAS Computational repo, e.g:
+* CentOS 6.x ships with python 2.6.6 and some somewhat outdated python packages. It is recommended to install Python 2.7 for speed and compatibility. Then, one can set up a virtualenv and use pip to install the necessary bits.  Alternatively, you could stay on python 2.6.6 and just install/upgrade the packages you want. One can install newer version of the numpy by installing via the PUIAS Computational repo, e.g:
     - `yum update http://puias.math.ias.edu/data/puias/computational/6/x86_64/numpy-1.6.2-0.1.puias6.x86_64.rpm`
     - `yum update http://puias.math.ias.edu/data/puias/computational/6/x86_64/numpy-f2py-1.6.2-0.1.puias6.x86_64.rpm`
 
