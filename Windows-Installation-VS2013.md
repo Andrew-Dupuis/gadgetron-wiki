@@ -50,7 +50,7 @@ If you are uncomfortable setting up development tools on Windows, or if you are 
     CUDA_PATH_V6_5=C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v6.5
 
 
-- **MKL** (optional):
+- **MKL**:
 
     NOTE: The lowest version of MKL supported by gadgetron is 11.2.0 
 
