@@ -50,7 +50,7 @@ If you are uncomfortable setting up development tools on Windows, or if you are 
 
     Note: The setup scripts assume that version of CUDA installed is 6.0. If you decide to install different version of CUDA, update the scripts.
 
-- **MKL** (optional):
+- **MKL**:
 
     NOTE: The lowest version of MKL supported by gadgetron is 11.2.0 
 
