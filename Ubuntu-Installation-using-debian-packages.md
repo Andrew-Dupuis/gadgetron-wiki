@@ -1,3 +1,5 @@
+Note: Installation using packages is tested on Ubuntu 14.04
+
 In order to install Gadgetron using deb and pip packages, you need to update the /etc/apt/sources.list file:
 
 Enable multiverse and restricted packages:
