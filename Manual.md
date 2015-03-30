@@ -8,7 +8,7 @@
 * Compiling and Installing the Gadgetron
     * [[List of Dependencies]]
     * [[Linux Installation]]
-    * [[Linux Installation using packages]]
+    * [[Ubuntu Installation using packages]]
     * [[Mac OS X Installation]]
     * [[Windows Installation VS2012]]
     * [[Windows Installation VS2013]]
