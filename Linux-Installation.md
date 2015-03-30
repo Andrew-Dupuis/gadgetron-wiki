@@ -47,21 +47,21 @@ Configure and build the Gadgetron:
       cmake ../
       make  
 
-Install (default location is `/usr/local/gadgetron`):
+Install (default location is `/usr/local`):
 
     sudo make install      
 
 The final step is to add/modify a few environment variables in your
 `~/.bashrc` file:
 
-    export GADGETRON_HOME=/usr/local/gadgetron
+    export GADGETRON_HOME=/usr/local
     export ISMRMRD_HOME=/usr/local
     export PATH=$PATH:$GADGETRON_HOME/bin:$ISMRMRD_HOME/bin
     export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$GADGETRON_HOME/lib:$ISMRMRD_HOME/lib
 
 
 Rename the example configuration file
-`GADGETRON_HOME/config/gadgetron.xml.example` to
-`GADGETRON_HOME/config/gadgetron.xml`
+`GADGETRON_HOME/share/gadgetron/config/gadgetron.xml.example` to
+`GADGETRON_HOME/share/gadgetron/config/gadgetron.xml`
 
 You are now set up to run a simple example reconstruction as outlined in [[Gadgetron Hello World]].
