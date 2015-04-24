@@ -67,7 +67,6 @@ ISMRMRD and Gadgetron
 * Gadgetron
     - `git clone https://github.com/gadgetron/gadgetron.git`
     - `cd gadgetron`
-    - `git checkout development`
     - `mkdir build; cd build`
     - `cmake28 -D CMAKE_INSTALL_PREFIX=~/local -D CMAKE_PREFIX_PATH=~/local/ ../`
     - `make; make install`
