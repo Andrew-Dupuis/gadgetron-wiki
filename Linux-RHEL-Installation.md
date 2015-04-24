@@ -37,10 +37,11 @@ Gadgetron dependencies
 * `yum install ace-devel`
 * `yum install boost-devel doxygen git libxml2-devel libxslt-devel openblas-devel armadillo-devel gtest`
 
-  Note: Libraries below can be updated from third party repos:
+  Optional: Libraries below can be updated from third party repos:
   
   - `fftw-devel 3.2.2`: atrpms
   - `libglew-devel 1.7.0`: linuxtech-release
+  - `dcmtk360-devel`: PUIAS_6_computational
 
 Python Options
 --------------
@@ -55,6 +56,10 @@ Python Options
 ISMRMRD and Gadgetron
 ---------------------
 **The steps may be executed as a regular user.**
+
+* Environment variables for finding Matlab and DCMTK
+    - `export MATLAB_ROOT=/usr/local/MATLAB/R2013a`
+    - `export DCMTK_HOME=/usr/local/dcmtk/3.6.0`
 
 * Create install directory
     - `mkdir ~/local`
