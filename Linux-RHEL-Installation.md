@@ -26,6 +26,9 @@ There are a few dependencies not in the default repositories, so we add the EPEL
 * Add the Boost >=1.55 repo:
   - `wget http://repo.enetres.net/enetres.repo -O /etc/yum.repos.d/enetres.repo`
   - `yum install boost-devel`
+* Add SLC @ CERN repository:
+  - `cd /etc/yum.repos.d/`
+  - `wget http://linuxsoft.cern.ch/cern/scl/slc6-scl.repo`
 
 Gadgetron dependencies
 ----------------------
@@ -36,6 +39,7 @@ Gadgetron dependencies
 * `yum install cmake28`
 * `yum install ace-devel`
 * `yum install boost-devel doxygen git libxml2-devel libxslt-devel openblas-devel armadillo-devel gtest`
+* `yum install scl-utils devtoolset-3-gcc-c++`
 
   Optional: Libraries below can be updated from third party repos:
   
