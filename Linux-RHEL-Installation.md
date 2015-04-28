@@ -3,15 +3,6 @@ RHEL 6 Derivatives
 
 Installation instruction for Red Hat Enterprise Linux and its derivatives (CentOS, Scientific Linux, etc).  These notes have been tested on CentOS 6.6 with the "Software Development Workstation" package option.
 
-CUDA and GPU Driver (Optional)
-------------------------------------
-**The steps below must be executed as a super user.**
-
-* Install Nvidia CUDA (7.0) Toolkit and GPU driver
-  - `wget http://developer.download.nvidia.com/compute/cuda/repos/rhel6/x86_64/cuda-repo-rhel6-7.0-28.x86_64.rpm`
-  - `yum install cuda-repo-rhel6-7.0-28.x86_64.rpm`
-  - `yum install cuda`
-
 Enabling some none-default repositories
 ---------------------------------------
 There are a few dependencies not in the default repositories, so we add the EPEL, ACE, and Boost repositories.
@@ -20,7 +11,7 @@ There are a few dependencies not in the default repositories, so we add the EPEL
 
 * Add EPEL to the list of know repositories:
   - `wget http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm`
-  - `yum install epel-release-6-8.noarch.rpm`
+  - `yum localinstall epel-release-6-8.noarch.rpm`
 * Add the ACE development repository from http://download.opensuse.org/repositories/devel:/libraries:/ACE:/minor/, e.g.
   - `cd /etc/yum.repos.d/`
   - `wget http://download.opensuse.org/repositories/devel:/libraries:/ACE:/minor/CentOS_CentOS-6/devel:libraries:ACE:minor.repo`
@@ -44,7 +35,43 @@ Gadgetron dependencies
   
   - `fftw-devel 3.2.2`: atrpms
   - `libglew-devel 1.7.0`: linuxtech-release
-  - `dcmtk360-devel`: PUIAS_6_computational
+
+Intel MKL (Optional)
+------------------------------------
+* Try or buy the Parallel Studio XE 2015 at https://software.intel.com/en-us/intel-parallel-studio-xe/try-buy
+
+Matlab (Optional)
+------------------------------------
+* Try Matlab at https://www.mathworks.com/programs/trials/trial_request.html
+* Require JDK to compile Matlab module
+  - `wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/8u45-b14/jdk-8u45-linux-x64.rpm`
+  - `yum localinstall jdk-8u45-linux-x64.rpm`
+
+CUDA and GPU Driver (Optional)
+------------------------------------
+**The steps below must be executed as a super user.**
+
+* Install Nvidia CUDA (7.0) Toolkit and GPU driver
+  - `wget http://developer.download.nvidia.com/compute/cuda/repos/rhel6/x86_64/cuda-repo-rhel6-7.0-28.x86_64.rpm`
+  - `yum localinstall cuda-repo-rhel6-7.0-28.x86_64.rpm`
+  - `yum install cuda`
+
+DICOM Support (Optional)
+------------------------------------
+**The steps below must be executed as a super user.**
+
+* Create `/etc/yum.repos.d/PUIAS_6_computational.repo` and add the following lines:
+
+    `[PUIAS_6_computational]`
+    `name=PUIAS computational Base $releasever - $basearch`
+    `mirrorlist=http://puias.math.ias.edu/data/puias/computational/$releasever/$basearch/mirrorlist`
+    `gpgcheck=1`
+    `gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-puias`
+
+* Download and install the gpg key.
+  - `wget http://springdale.math.ias.edu/data/puias/6/x86_64/os/RPM-GPG-KEY-puias`
+  - `rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-puias`
+  - `yum install dcmtk360-devel`
 
 Python Options
 --------------
