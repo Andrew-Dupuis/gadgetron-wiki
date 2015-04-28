@@ -1,15 +1,16 @@
 RHEL 6 Derivatives
 ==================
 
-Installation instruction for Red Hat Enterprise Linux and its derivatives (CentOS, Scientific Linux, etc).  These notes have been tested on a clean install of CentOS 6.3 with the "Software Development Workstation" package option.
+Installation instruction for Red Hat Enterprise Linux and its derivatives (CentOS, Scientific Linux, etc).  These notes have been tested on CentOS 6.6 with the "Software Development Workstation" package option.
 
-CUDA, CULA and GPU Driver (Optional)
+CUDA and GPU Driver (Optional)
 ------------------------------------
 **The steps below must be executed as a super user.**
 
-* Install CUDA (5.5) toolkit and SDK
-* Install CULA
-* Install nvidia GPU Driver
+* Install Nvidia CUDA (7.0) Toolkit and GPU driver
+  - `wget http://developer.download.nvidia.com/compute/cuda/repos/rhel6/x86_64/cuda-repo-rhel6-7.0-28.x86_64.rpm`
+  - `yum install cuda-repo-rhel6-7.0-28.x86_64.rpm`
+  - `yum install cuda`
 
 Enabling some none-default repositories
 ---------------------------------------
@@ -25,10 +26,8 @@ There are a few dependencies not in the default repositories, so we add the EPEL
   - `wget http://download.opensuse.org/repositories/devel:/libraries:/ACE:/minor/CentOS_CentOS-6/devel:libraries:ACE:minor.repo`
 * Add the Boost >=1.55 repo:
   - `wget http://repo.enetres.net/enetres.repo -O /etc/yum.repos.d/enetres.repo`
-  - `yum install boost-devel`
 * Add SLC @ CERN repository:
-  - `cd /etc/yum.repos.d/`
-  - `wget http://linuxsoft.cern.ch/cern/scl/slc6-scl.repo`
+  - `wget http://linuxsoft.cern.ch/cern/scl/slc6-scl.repo -O /etc/yum.repos.d/slc6-scl.repo`
 
 Gadgetron dependencies
 ----------------------
@@ -64,9 +63,10 @@ ISMRMRD and Gadgetron
 * Environment variables for finding Matlab and DCMTK
     - `export MATLAB_ROOT=/usr/local/MATLAB/R2013a`
     - `export DCMTK_HOME=/usr/local/dcmtk/3.6.0`
-
 * Create install directory
     - `mkdir ~/local`
+* Switch GCC to 4.9.1
+    - `scl enable devtoolset-3 bash`
 * ISMRMRD
     - `git clone https://github.com/ismrmrd/ismrmrd.git`
     - `cd ismrmrd`
