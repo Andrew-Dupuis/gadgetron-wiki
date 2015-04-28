@@ -65,9 +65,12 @@ DICOM Support (Optional)
     `[PUIAS_6_computational]`
     `name=PUIAS computational Base $releasever - $basearch`
     `mirrorlist=http://puias.math.ias.edu/data/puias/computational/$releasever/$basearch/mirrorlist`
-    `gpgcheck=0`
+    `gpgcheck=1`
+    `gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-puias`
 
-* Install DCMTK
+* Download and install the gpg key.
+  - `wget http://springdale.math.ias.edu/data/puias/6/x86_64/os/RPM-GPG-KEY-puias`
+  - `rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-puias`
   - `yum install dcmtk360-devel`
 
 Python Options
