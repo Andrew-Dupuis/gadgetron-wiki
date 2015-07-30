@@ -15,6 +15,12 @@ Installation
 ------------
 Setting the MATLAB_HOME environment variable is set at the time cmake is called, the appropriate version of matlab gets used for buy
 
+
+N.B Quick additional notes:
+
+Java command server has now been removed.
+csh must be installed - is needed by Matlab for engine.
+
 Architecture Details
 ====================
 
