@@ -34,6 +34,12 @@ cd gadgetron-build/chroot/chroot-backups
 
 sudo ./start-gadgetron-from-image.sh ./gadgetron-20150129-1137-e207d6ed.img ~/gadgetron_chroot/mount_point
 
+
+# Run gadgetron from an untarred chroot tree
+
+sudo ./chroot-root/gadgetron/usr/local/share/gadgetron/chroot/start.sh ./chroot-root/gadgetron/
+
+
 # Install gadgetron chroot package as an upstart service
 
 We can also install the gadgetron chroot package as a upstart service on an ubuntu machine. To do this, there is an installation script in gadgetron-source/chroot/install_chroot_image.sh. For example, to install the chroot image i just built,
