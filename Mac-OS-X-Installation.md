@@ -107,7 +107,7 @@ This is the Homebrew version of the installation:
 
 ### Siemens converter (needed for Gadgetron integration tests)
 
-    git clone https://github.com/nih-fmrif/siemens_to_ismrmrd
+    git clone https://github.com/ismrmrd/siemens_to_ismrmrd
     cd siemens_to_ismrmrd
     mkdir build
     cd build/
