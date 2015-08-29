@@ -56,7 +56,8 @@ This is the Homebrew version of the installation:
         brew install libxml2 --with-python
         brew install libiconv
 
-        pip install h5py pyxb Cython ismrmrd
+        pip install h5py PyXB
+        pip install ismrmrd
 
 0.  Install GTest
 
