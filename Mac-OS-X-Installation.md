@@ -57,7 +57,12 @@ This is the Homebrew version of the installation:
         brew install libiconv
 
         pip install h5py PyXB
-        pip install ismrmrd
+
+0.  Install ISMRMRD Python API:
+
+        git clone https://github.com/ismrmrd/ismrmrd-python
+        cd ismrmrd-python
+        python setup.py install
 
 0.  Install GTest
 
