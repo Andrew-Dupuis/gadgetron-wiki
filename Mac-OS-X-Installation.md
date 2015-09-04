@@ -5,7 +5,7 @@ This is the Homebrew version of the installation:
 - `/usr/local` is owned by the main user
 - `root` (and `sudo`) are not used
 - Homebrew's python 2.7 is installed
-- Using Matlab R2013b and Java 7 from Oracle
+- Using Matlab R2015b
 - GPU features are **NOT** supported
 
 ## Prerequisites
@@ -24,11 +24,9 @@ This is the Homebrew version of the installation:
 
     # Python
     export PYTHONHOME=/usr/local/Frameworks/Python.framework/Versions/2.7
-    export PYTHONPATH=$PYTHONHOME/lib/python2.7/site-packages
-    export PYTHONPATH=/usr/local/opt/libxml2/lib/python2.7/site-packages:$PYTHONPATH
 
     # MATLAB, ISMRMRD, GADGETRON
-    export MATLAB_HOME=/Applications/MATLAB_R2013b.app
+    export MATLAB_HOME=/Applications/MATLAB_R2015b.app
     export ISMRMRD_HOME=/usr/local
     export GADGETRON_HOME=/usr/local
 
@@ -36,7 +34,7 @@ This is the Homebrew version of the installation:
     export PATH=$ISMRMRD_HOME/bin:$PATH
     export PATH=$GADGETRON_HOME/bin:$PATH
 
-    export DYLD_FALLBACK_LIBRARY_PATH=$ISMRMRD_HOME/lib
+    export DYLD_FALLBACK_LIBRARY_PATH=$ISMRMRD_HOME/lib:$DYLD_FALLBACK_LIBRARY_PATH
     export DYLD_FALLBACK_LIBRARY_PATH=$GADGETRON_HOME/lib:$DYLD_FALLBACK_LIBRARY_PATH
     export DYLD_FALLBACK_LIBRARY_PATH=$DYLD_FALLBACK_LIBRARY_PATH:$MATLAB_HOME/bin/maci64
     ```
@@ -54,7 +52,6 @@ This is the Homebrew version of the installation:
         brew install python boost-python numpy scipy
         brew install matplotlib --with-pygtk --with-pyqt
         brew install libxml2 --with-python
-        brew install libiconv
 
         pip install h5py PyXB
 
@@ -64,29 +61,27 @@ This is the Homebrew version of the installation:
         cd ismrmrd-python
         python setup.py install
 
+0. Install ISMRMRD Python Tools:
+
+        git clone https://github.com/ismrmrd/ismrmrd-python-tools
+        cd ismrmrd-python-tools
+        python setup.py install
+
 0.  Install GTest
 
     ```
-    wget https://googletest.googlecode.com/files/gtest-1.7.0.zip
-    unzip gtest-1.7.0.zip
-    cp -r gtest-1.7.0/include/gtest /usr/local/include/.
-    cd gtest-1.7.0
+    wget https://github.com/google/googletest/archive/release-1.7.0.tar.gz
+    tar xzf release-1.7.0.tar.gz
+    cd googletest-release-1.7.0
+    cp -r include/gtest /usr/local/include/
     mkdir build
     cd build
     cmake ..
     make
-    cp libgtest* /usr/local/lib/.
+    cp libgtest* /usr/local/lib/
     ```
 
 0. **Future Step**: Install CUDA and CULA
-
-0.  Make sure you are using the same JDK as the Matlab Java version.
-    In theory you can determine your version like so:
-
-    - `javac -version` on the command line
-    - `version -java` in Matlab
-
-    For Matlab R2013b I used http://download.oracle.com/otn-pub/java/jdk/7u51-b13/jdk-7u51-macosx-x64.dmg
 
 ## Installation from Sources
 
@@ -106,7 +101,7 @@ This is the Homebrew version of the installation:
     cd gadgetron
     mkdir build
     cd build/
-    cmake -DCMAKE_INSTALL_PREFIX=$GADGETRON_HOME -DPYTHON_LIBRARY=`python-config --prefix`/Python -DPYTHON_INCLUDE_DIR=`python-config --prefix`/Headers ../
+    cmake -D CMAKE_INSTALL_PREFIX=$GADGETRON_HOME -D PYTHON_LIBRARY=`python-config --prefix`/Python -D PYTHON_INCLUDE_DIR=`python-config --prefix`/Headers ../
     make
     make install
 
@@ -132,7 +127,7 @@ This is the Homebrew version of the installation:
 
 ## Post-install Config and Testing
 
-0. Copy `$GADGETRON_HOME/config/gadgetron.xml.example` to `$GADGETRON_HOME/share/gadgetron/config/gadgetron.xml`
+0. Copy `$GADGETRON_HOME/share/gadgetron/config/gadgetron.xml.example` to `$GADGETRON_HOME/share/gadgetron/config/gadgetron.xml`
 
 0. Fetch Gadgetron test data: run `python get_data.py` in `test/integration` in the Gadgetron source tree.
 
