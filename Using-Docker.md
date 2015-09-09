@@ -15,6 +15,12 @@ Once you have installed Docker, you can download and start the Gadgetron with a 
     export CUDA_DEVICES="--device=/dev/nvidia0:/dev/nvidia0 --device=/dev/nvidiactl:/dev/nvidiactl --device=/dev/nvidia-uvm:/dev/nvidia-uvm"
     docker run ${CUDA_DEVICES} --name gt1 -p 9002:9002 -p 8090:8090 -p 8002:8002 --rm -t hansenms/gadgetron
 
+In this example we are mapping the ports 8002 (cloudbus relay), 8090 (the web app monitor), and 9002 (the Gadgetron itself) through to the host system. You can check on the status of your Gadgetron in the container by pointing your browser to:
+
+    http://<ADDRESS OF DOCKER HOST>:8090/gadgetron
+
+And you can send data to the Gadgetron using port 9002 of your Docker host. Bear in mind that your Docker host may be the IP address of the VM if you are running it using the Docker Toolbox. 
+
 The CUDA_DEVICES part is only needed if you have GPUs on your host system and you would like to use them in the container. Please type:
 
     ls -a /dev/* |grep nvidia
