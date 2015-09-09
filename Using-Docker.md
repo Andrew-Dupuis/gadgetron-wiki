@@ -19,4 +19,13 @@ The CUDA_DEVICES part is only needed if you have GPUs on your host system and yo
 
     ls -a /dev/* |grep nvidia
 
-To see which CUDA devices you have available on your host. You should map them all into the Docker container. 
+To see which CUDA devices you have available on your host. You should map them all into the Docker container. The mapping of CUDA devices is only relevant if a) you are running natively on Linux and b) you actually have NVIDIA GPUs. 
+
+The Dockerfile configurations that are available can be found in https://github.com/gadgetron/gadgetron/tree/master/docker where we will be adding more configurations as we go. 
+
+You can also build a docker images locally from one of the configurations:
+
+    cd cuda_331_openblas/
+    docker build --no-cache -t gadgetron .
+
+The `--no-cache` option is optional. The reason for using it is to ensure that the `git clone` statements in the Dockerfile actually pull a fresh version of the source code. 
