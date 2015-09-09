@@ -6,4 +6,17 @@ Installing the Docker host components is easy on most Linux machines:
 
     $ curl -sSL https://get.docker.com/ | sh
 
-Please refer to the Docker documentation for your specific flavor of Linux. It is also possible to install a VM that runs a Docker host on Mac OS X and Windows. If you chose this route, you will be able to run a Gadgetron Docker container on your Windows or Mac, but be aware that it will run in a VM, so performance will not be that of a native Linux installation. 
+Please refer to the Docker documentation for your specific flavor of Linux. 
+
+It is also possible to install a VM that runs a Docker host on Mac OS X and Windows. If you chose this route, you will be able to run a Gadgetron Docker container on your Windows or Mac, but be aware that it will run in a VM, so performance will not be that of a native Linux installation. See the details on the Docker toolbox (https://www.docker.com/toolbox) for more information. 
+
+Once you have installed Docker, you can download and start the Gadgetron with a command like:
+
+    export CUDA_DEVICES="--device=/dev/nvidia0:/dev/nvidia0 --device=/dev/nvidiactl:/dev/nvidiactl --device=/dev/nvidia-uvm:/dev/nvidia-uvm"
+    docker run ${CUDA_DEVICES} --name gt1 -p 9002:9002 -p 8090:8090 -p 8002:8002--rm -t hansenms/gadgetron
+
+The CUDA_DEVICES part is only needed if you have GPUs on your host system and you would like to use them in the container. Please type:
+
+    ls -a /dev/* |grep nvidia
+
+To see which CUDA devices you have available on your host. You should map them all into the Docker container. 
