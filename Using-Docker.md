@@ -13,7 +13,7 @@ It is also possible to install a VM that runs a Docker host on Mac OS X and Wind
 Once you have installed Docker, you can download and start the Gadgetron with a command like:
 
     export CUDA_DEVICES="--device=/dev/nvidia0:/dev/nvidia0 --device=/dev/nvidiactl:/dev/nvidiactl --device=/dev/nvidia-uvm:/dev/nvidia-uvm"
-    docker run ${CUDA_DEVICES} --name gt1 -p 9002:9002 -p 8090:8090 -p 8002:8002--rm -t hansenms/gadgetron
+    docker run ${CUDA_DEVICES} --name gt1 -p 9002:9002 -p 8090:8090 -p 8002:8002 --rm -t hansenms/gadgetron
 
 The CUDA_DEVICES part is only needed if you have GPUs on your host system and you would like to use them in the container. Please type:
 
