@@ -38,4 +38,4 @@ connection. Next start the mriclient:
 Your current folder now holds the reconstructed images in the `out.h5`
 HDF5 file. They will look something like the one depicted in the figure below.
 
-<img src="http://gadgetron.sf.net/figs/examplecgsenseresult.png" style="width: 400px;" />
+<img src="https://s3.amazonaws.com/gadgetron.github.io/figs/examplecgsenseresult.png" style="width: 400px;" />
