@@ -2,7 +2,7 @@ Gadgets wrap the functionality of the toolboxes and provide generic building blo
 
 ### MRI Gadgets
 
-One of the original motivations for creating the Gadgetron was to make a high throughput MRI reconstruction engine that could be interfaced to different MRI vendor systems. Consequently, a lot of the functionality present in the initial release toolboxes and Gadgets is focused on MRI reconstruction. In this section we review the basic data structures used to describe MRI data and list some of the MRI Gadgets that are available. These Gadgets are used in the example applications [Basic 2D FFT MRI] [Cartesian 2D Parallel MRI (GRAPPA)] [Non-Cartesian 2D Parallel MRI (SENSE)].
+One of the original motivations for creating the Gadgetron was to make a high throughput MRI reconstruction engine that could be interfaced to different MRI vendor systems. Consequently, a lot of the functionality present in the initial release toolboxes and Gadgets is focused on MRI reconstruction. In this section we review the basic data structures used to describe MRI data and list some of the MRI Gadgets that are available. These Gadgets are used in the example applications ([Basic 2D FFT MRI](../Basic-2D-FFT-MRI), [Cartesian 2D Parallel MRI (GRAPPA)](../Cartesian-2D-Parallel-MRI-(GRAPPA)), [Non-Cartesian 2D Parallel MRI (SENSE)](../Non-Cartesian-2D-Parallel-MRI-(SENSE)) ).
 
 #### MRI Data Structures
 
@@ -162,21 +162,21 @@ This section contains a non-exhaustive list of available MRI Gadgets with a few 
 
     This gadget is a SENSE preparation gadget for radial trajectories. It assembles a Sense job to be used in a subsequent solver. This Sense job contains all the arrays required for a subsequent reconstruction; coil sensitivity maps, a regularization image, sampling trajectory, data samples, and density compensation weights.
     This gadget has a number of configuration options:
-    • mode. Please see the explanation in the header file [gpuRadialSensePrepGadget.h](https://gadgetron.github.io/api_master//gpu_radial_sense_prep_gadget_8h_source.html). Briefly: mode 0 and mode 1 denote fixed angle trajectories and mode 2 is based on the golden ratio.
-    • deviceno. The gpu on which to run.
-    • profiles_per_frame. The number of profiles (radial readouts) per reconstructed image. Must be specified for golden ratio based acquisitions but is normally auto-detected for modes 0-1. More details available in the header [gpuRadialSensePrepGadget.h](https://gadgetron.github.io/api_master//gpu_radial_sense_prep_gadget_8h_source.html).
-    • frames_per_rotation. The number of image frames making up a fully sampled k-space (one rotation). For modes 0-1 the trajectory repeats itself after this many frames. Normally this parameter is auto-detected and for mode 2 (in which the name is less meaningful) it is set to 1 internally. Again, more details are available in the header [gpuRadialSensePrepGadget.h](https://gadgetron.github.io/api_master//gpu_radial_sense_prep_gadget_8h_source.html).
-    • rotations_per_reconstruction. The number of rotations (see ‘frames_per_rotation’ above) to reconstruct per solver invocation. Can be set to 0 to denote a frame-by-frame reconstruction (the default for real-time reconstruction). The number of frames coming out of each solver invocation is then max(1,frames_per_rotation*rotations_per_reconstruction). Performance-wise it is often faster to reconstruct multiple frames (i.e. rotations) per reconstruction.
-    • reconstruction_os_factor_x. The reconstruction matrix size is automatically determined from the input data, but this property denotes an internal oversampling factor (for an increased field of view) used during the reconstruction. After the reconstruction downstream the images are automatically cropped. Consider using this option if the radial profiles are oversampled in the readout direction.
-    • reconstruction_os_factor_y. As above.
-    • buffer_frames_per_rotation. Controls the size of the k-space buffer used to estimate coil sensitivity maps and the regularization image. Every time data for a new frame has been acquired, it is convolved into a k-space in accumulation mode. This property determines how many frames should be accumulated before estimating coil images. This is the innermost layer of the accumulation buffer. This option is automatically set internally if not specified.
-    • buffer_length_in_rotations. This is the outermost layer of the accumulation buffer. This property defines how many of the most recent innermost buffers should be kept and summed to constitute the csm/regularization estimates.
-    • buffer_using_solver. Set this property to ‘true’ if it is required that the regularization image has identical intensity levels as the reconstructed images. This is a requirement e.g. for prior image constrained compressed sensing.
-    • buffer_convolution_kernel_width. Convolution kernel width for the accumulation buffer.
-    • buffer_convolution_oversampling_factor. Oversampling factor used for the accumulation buffer convolutions.
-    • sliding_window_profiles. Specifies how many profiles that are shared between subsequent frames. Setting this property (>0) increases the number of frames that are reconstructed. This property is (probably) only useful in mode 2 (golden ratio).
-    • sliding_window_rotations. Specifies how many “rotations of profiles” that are shared between reconstructions. Setting this property (>0) causes some rotations (see ‘rotations_per_reconstruction’ above) to be reconstructed several times. This is useful if e.g. the quality of the first/latter rotation of a reconstruction is degraded; a rotation can then be discarded from the reconstruction in which it is an extreme rotation and kept in the reconstruction in which it is not. See e.g. the default kt-Sense config files. See also the property ‘rotations_to_discard’ for the solver gadgets below.
-    • output_timing. Enable this property to see receive some timing feedback.
+    * mode. Please see the explanation in the header file [gpuRadialSensePrepGadget.h](https://gadgetron.github.io/api_master//gpu_radial_sense_prep_gadget_8h_source.html). Briefly: mode 0 and mode 1 denote fixed angle trajectories and mode 2 is based on the golden ratio.
+    * deviceno. The gpu on which to run.
+    * profiles_per_frame. The number of profiles (radial readouts) per reconstructed image. Must be specified for golden ratio based acquisitions but is normally auto-detected for modes 0-1. More details available in the header [gpuRadialSensePrepGadget.h](https://gadgetron.github.io/api_master//gpu_radial_sense_prep_gadget_8h_source.html).
+    * frames_per_rotation. The number of image frames making up a fully sampled k-space (one rotation). For modes 0-1 the trajectory repeats itself after this many frames. Normally this parameter is auto-detected and for mode 2 (in which the name is less meaningful) it is set to 1 internally. Again, more details are available in the header [gpuRadialSensePrepGadget.h](https://gadgetron.github.io/api_master//gpu_radial_sense_prep_gadget_8h_source.html).
+    * rotations_per_reconstruction. The number of rotations (see ‘frames_per_rotation’ above) to reconstruct per solver invocation. Can be set to 0 to denote a frame-by-frame reconstruction (the default for real-time reconstruction). The number of frames coming out of each solver invocation is then max(1,frames_per_rotation*rotations_per_reconstruction). Performance-wise it is often faster to reconstruct multiple frames (i.e. rotations) per reconstruction.
+    * reconstruction_os_factor_x. The reconstruction matrix size is automatically determined from the input data, but this property denotes an internal oversampling factor (for an increased field of view) used during the reconstruction. After the reconstruction downstream the images are automatically cropped. Consider using this option if the radial profiles are oversampled in the readout direction.
+    * reconstruction_os_factor_y. As above.
+    * buffer_frames_per_rotation. Controls the size of the k-space buffer used to estimate coil sensitivity maps and the regularization image. Every time data for a new frame has been acquired, it is convolved into a k-space in accumulation mode. This property determines how many frames should be accumulated before estimating coil images. This is the innermost layer of the accumulation buffer. This option is automatically set internally if not specified.
+    * buffer_length_in_rotations. This is the outermost layer of the accumulation buffer. This property defines how many of the most recent innermost buffers should be kept and summed to constitute the csm/regularization estimates.
+    * buffer_using_solver. Set this property to ‘true’ if it is required that the regularization image has identical intensity levels as the reconstructed images. This is a requirement e.g. for prior image constrained compressed sensing.
+    * buffer_convolution_kernel_width. Convolution kernel width for the accumulation buffer.
+    * buffer_convolution_oversampling_factor. Oversampling factor used for the accumulation buffer convolutions.
+    * sliding_window_profiles. Specifies how many profiles that are shared between subsequent frames. Setting this property (>0) increases the number of frames that are reconstructed. This property is (probably) only useful in mode 2 (golden ratio).
+    * sliding_window_rotations. Specifies how many “rotations of profiles” that are shared between reconstructions. Setting this property (>0) causes some rotations (see ‘rotations_per_reconstruction’ above) to be reconstructed several times. This is useful if e.g. the quality of the first/latter rotation of a reconstruction is degraded; a rotation can then be discarded from the reconstruction in which it is an extreme rotation and kept in the reconstruction in which it is not. See e.g. the default kt-Sense config files. See also the property ‘rotations_to_discard’ for the solver gadgets below.
+    * output_timing. Enable this property to see receive some timing feedback.
 
 -   [gpuGenericSensePrepGadget](https://gadgetron.github.io/api_master//class_gadgetron_1_1gpu_generic_sense_prep_gadget.html) (`gadgetron_sense`):
 
@@ -186,32 +186,32 @@ This section contains a non-exhaustive list of available MRI Gadgets with a few 
 
     The gadget performs a linear sense reconstruction from a Sense job. It uses a linear conjugate gradient solver. A number of configuration options are available:
 
-    • pass_on_undesired_data. A property that can be applied to all gadgets. If the incoming data is not of the expected type, it will be passed along downstream without generating an error. It is crucial to set this property if multiple gadgets for different sets/slices are used (see ‘setno’/’sliceno’ below). In such configurations the solver gadgets (except from the first solver gadget in the chain) will receive both the input data they desire but also the reconstructed images from the prior solver gadgets.
-    • deviceno. The gpu on which to run.
-    • setno. Solver settings for the data belonging to the set specified (see the ISMRMRD format description for further information). Multiple sets can be reconstructed in parallel and on different gpus.
-    • sliceno. Solver settings for the data belonging to the slice specified (see the ISMRMRD format description for further information). Multiple slices can be reconstructed in parallel and on different gpus.
-    • number_of_iterations. Number of iterations to run in the conjugate gradient solver (if the cg_limit is not reached).
-    • cg_limit. Threshold of the relative residual before termination of the cg iterations.
-    • oversampling_factor. Oversampling factor for the NFFT convolution.
-    • kernel_width. Kernel width for the NFFT convolution.
-    • kappa. Regularization weight.
-    • rotations_to_discard. The number of rotations (see ‘rotations_per_frame’ for the prep gadget) to discard from a reconstruction. Should be an even number. Half of the specified rotations are discarded from the first frames of the reconstruction, the other half at the end. See also ‘sliding_window_rotations’ in the prep gadget.
-    • output_convergence. Output solver convergence information in the Gadgetron terminal.
-    • output_timing. Output solver performance timing information in the Gadgetron terminal.
+    * pass_on_undesired_data. A property that can be applied to all gadgets. If the incoming data is not of the expected type, it will be passed along downstream without generating an error. It is crucial to set this property if multiple gadgets for different sets/slices are used (see ‘setno’/’sliceno’ below). In such configurations the solver gadgets (except from the first solver gadget in the chain) will receive both the input data they desire but also the reconstructed images from the prior solver gadgets.
+    * deviceno. The gpu on which to run.
+    * setno. Solver settings for the data belonging to the set specified (see the ISMRMRD format description for further information). Multiple sets can be reconstructed in parallel and on different gpus.
+    * sliceno. Solver settings for the data belonging to the slice specified (see the ISMRMRD format description for further information). Multiple slices can be reconstructed in parallel and on different gpus.
+    * number_of_iterations. Number of iterations to run in the conjugate gradient solver (if the cg_limit is not reached).
+    * cg_limit. Threshold of the relative residual before termination of the cg iterations.
+    * oversampling_factor. Oversampling factor for the NFFT convolution.
+    * kernel_width. Kernel width for the NFFT convolution.
+    * kappa. Regularization weight.
+    * rotations_to_discard. The number of rotations (see ‘rotations_per_frame’ for the prep gadget) to discard from a reconstruction. Should be an even number. Half of the specified rotations are discarded from the first frames of the reconstruction, the other half at the end. See also ‘sliding_window_rotations’ in the prep gadget.
+    * output_convergence. Output solver convergence information in the Gadgetron terminal.
+    * output_timing. Output solver performance timing information in the Gadgetron terminal.
 
 -   [gpuCgKtSenseGadget](https://gadgetron.github.io/api_master//class_gadgetron_1_1gpu_cg_kt_sense_gadget.html) (`gadgetron_sense`):
 
     This gadget performs a linear kt-sense reconstruction from a Sense job. It uses a linear conjugate gradient solver. It contains all of the property options of the gpuCgSenseGadget and the following additional property.
-    • training_data_shutter_radius. The radius of the circle around the center of k-space used for training data estimation. If this property is not specified it will be estimated automatically.
+    * training_data_shutter_radius. The radius of the circle around the center of k-space used for training data estimation. If this property is not specified it will be estimated automatically.
 
 -   [gpuSbSenseGadget](https://gadgetron.github.io/api_master//class_gadgetron_1_1gpu_sb_sense_gadget.html) (`gadgetron_sense`):
 
     This gadget performs a non-linear sense reconstruction from a Sense job. It uses a constraint Split Bregman solver with total variation minimization - possibly with prior image regularization. Contains all of the property options of the gpuCgSenseGadget (except ‘number_of_iterations’ and ‘kappa’) and the following additional properties.
-    • number_of_sb_iterations. The number of Split-Bregman iterations to perform (outer solver iterations).
-    • number_of_cg_iterations. The number of conjugate gradient iterations for each Split-Bregman iteration (inner solver iterations).
-    • mu. Regularization weight for the encoding operator.
-    • lambda. Regularization weight of the regularization operators (partial derivative operators for total variation (TV) based regularization).
-    • alpha. Weighing of the “pure” TV regularization term vs. the prior image term. The value should be between 0 and 1, where alpha=0 denotes TV regularization only and alpha=1 denotes prior regularization only.
+    * number_of_sb_iterations. The number of Split-Bregman iterations to perform (outer solver iterations).
+    * number_of_cg_iterations. The number of conjugate gradient iterations for each Split-Bregman iteration (inner solver iterations).
+    * mu. Regularization weight for the encoding operator.
+    * lambda. Regularization weight of the regularization operators (partial derivative operators for total variation (TV) based regularization).
+    * alpha. Weighing of the “pure” TV regularization term vs. the prior image term. The value should be between 0 and 1, where alpha=0 denotes TV regularization only and alpha=1 denotes prior regularization only.
 
 
 -   [GrappaGadget](https://gadgetron.github.io/api_master//class_gadgetron_1_1_grappa_gadget.html), [GrappaUnmixingGadget](https://gadgetron.github.io/api_master//class_gadgetron_1_1_grappa_unmixing_gadget.html) (`gadgetron_grappa`):
@@ -259,7 +259,7 @@ The Python modules that are encapsulated in the Python Gadgets are expected to h
 
 2.  *Configuration function*. This function is used to receive the configuration (usually in XML format), when it is passed to the Gadget, i.e. it is the Python equivalent of `process_config` in the Gadget (see ?).
 
-3.  *Reconstruction function*. This function is called when the Gadget receives data, i.e. it is the Python equivalent of the `process` function in the Gadget (see [Gadgetron Streaming Architecture]).
+3.  *Reconstruction function*. This function is called when the Gadget receives data, i.e. it is the Python equivalent of the `process` function in the Gadget (see [Gadgetron Streaming Architecture](../Gadgetron-Streaming-Architecture)).
 
 The user can chose the names of these functions freely in the Python module, but the function names must be specified when the Gadget is inserted in the XML configuration:
 
