@@ -10,7 +10,7 @@ MRI data is processed in two different phases. In the first phase individual dat
 
 The data header structures used by these MRI Gadgets are defined by the ISMRM Raw Data format (<http://ismrmrd.github.io>).
 
-Most MRI Gadgets inherit from Gadget2 as described in [Gadgets](./Gadgetron%20Streaming%20Architecture/#gadgetslink), i.e. they operate on two argument types, the main two base classes used are:
+Most MRI Gadgets inherit from Gadget2 as described in [Gadgets](./Gadgetron-Streaming-Architecture#gadgetslink), i.e. they operate on two argument types, the main two base classes used are:
 
     Gadget2< ISMRMRD::AcquisitionHeader, hoNDArray< std::complex<float> > >
     Gadget2< ISMRMRD::ImageHeader, hoNDArray< std::complex<float> > >
