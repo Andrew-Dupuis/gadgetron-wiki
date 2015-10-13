@@ -2,7 +2,7 @@ Gadgets wrap the functionality of the toolboxes and provide generic building blo
 
 ### MRI Gadgets
 
-One of the original motivations for creating the Gadgetron was to make a high throughput MRI reconstruction engine that could be interfaced to different MRI vendor systems. Consequently, a lot of the functionality present in the initial release toolboxes and Gadgets is focused on MRI reconstruction. In this section we review the basic data structures used to describe MRI data and list some of the MRI Gadgets that are available. These Gadgets are used in the example applications ([Basic 2D FFT MRI](../Basic-2D-FFT-MRI), [Cartesian 2D Parallel MRI (GRAPPA)](../Cartesian-2D-Parallel-MRI-(GRAPPA)), [Non-Cartesian 2D Parallel MRI (SENSE)](../Non-Cartesian-2D-Parallel-MRI-(SENSE)) ).
+One of the original motivations for creating the Gadgetron was to make a high throughput MRI reconstruction engine that could be interfaced to different MRI vendor systems. Consequently, a lot of the functionality present in the initial release toolboxes and Gadgets is focused on MRI reconstruction. In this section we review the basic data structures used to describe MRI data and list some of the MRI Gadgets that are available. These Gadgets are used in the example applications ([Basic 2D FFT MRI](./Basic-2D-FFT-MRI), [Cartesian 2D Parallel MRI (GRAPPA)](./Cartesian-2D-Parallel-MRI-(GRAPPA)), [Non-Cartesian 2D Parallel MRI (SENSE)](./Non-Cartesian-2D-Parallel-MRI-(SENSE)) ).
 
 #### MRI Data Structures
 
@@ -10,7 +10,7 @@ MRI data is processed in two different phases. In the first phase individual dat
 
 The data header structures used by these MRI Gadgets are defined by the ISMRM Raw Data format (<http://ismrmrd.github.io>).
 
-Most MRI Gadgets inherit from Gadget2 as described in [Gadgets](../Gadgetron%20Streaming%20Architecture/#gadgetslink), i.e. they operate on two argument types, the main two base classes used are:
+Most MRI Gadgets inherit from Gadget2 as described in [Gadgets](./Gadgetron%20Streaming%20Architecture/#gadgetslink), i.e. they operate on two argument types, the main two base classes used are:
 
     Gadget2< ISMRMRD::AcquisitionHeader, hoNDArray< std::complex<float> > >
     Gadget2< ISMRMRD::ImageHeader, hoNDArray< std::complex<float> > >
@@ -259,7 +259,7 @@ The Python modules that are encapsulated in the Python Gadgets are expected to h
 
 2.  *Configuration function*. This function is used to receive the configuration (usually in XML format), when it is passed to the Gadget, i.e. it is the Python equivalent of `process_config` in the Gadget (see ?).
 
-3.  *Reconstruction function*. This function is called when the Gadget receives data, i.e. it is the Python equivalent of the `process` function in the Gadget (see [Gadgetron Streaming Architecture](../Gadgetron-Streaming-Architecture)).
+3.  *Reconstruction function*. This function is called when the Gadget receives data, i.e. it is the Python equivalent of the `process` function in the Gadget (see [Gadgetron Streaming Architecture](./Gadgetron-Streaming-Architecture)).
 
 The user can chose the names of these functions freely in the Python module, but the function names must be specified when the Gadget is inserted in the XML configuration:
 
