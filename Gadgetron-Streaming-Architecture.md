@@ -164,13 +164,13 @@ The actual implementation looks like this:
 
     GADGET_FACTORY_DECLARE(FFTGadget)
 
-Once we are inside the `process` function, the data has already been converted to the appropriate container messages and we can start processing the data. This function uses an [FFT toolbox](https://gadgetron.github.io/api_master//class_gadgetron_1_1ho_n_d_f_f_t.html) (more on toolboxes in [Gadgetron Toolboxes]). After the data has been Fourier transformed along the first 3 dimensions it is placed on the next Gadgets queue. Remember the two GadgetContainerMessage objects were originally picked up from the message queue as a chain of [ACE\_Message\_Block](http://www.dre.vanderbilt.edu/Doxygen/Stable/libace-doc/a00393.html) objects. They are still chained together, i.e. when passing `m1` on to the next Gadget we are effectively passing on both arguments.
+Once we are inside the `process` function, the data has already been converted to the appropriate container messages and we can start processing the data. This function uses an [FFT toolbox](https://gadgetron.github.io/api_master//class_gadgetron_1_1ho_n_d_f_f_t.html) (more on toolboxes in [Gadgetron Toolboxes](./Gadgetron-Toolboxes)). After the data has been Fourier transformed along the first 3 dimensions it is placed on the next Gadgets queue. Remember the two GadgetContainerMessage objects were originally picked up from the message queue as a chain of [ACE\_Message\_Block](http://www.dre.vanderbilt.edu/Doxygen/Stable/libace-doc/a00393.html) objects. They are still chained together, i.e. when passing `m1` on to the next Gadget we are effectively passing on both arguments.
 
 Another couple of macros to notice are the `GADGET_OK` and `GADGET_FAIL`. They are defined as 0 and -1 respectively. The convention in a Gadgetron gadget is to return 0 when a function succeeds and \< 0 when it fails - unless the function returns a pointer. All toolboxes on the other hand throw exceptions to indicate errors.
 
 The last thing to notice is the `GADGET_FACTORY_DECLARE(FFTGadget)` statement. This is a macro which declares functions for loading a Gadget of this type out of a shared library and destroying it again when we are done. It ensures that we can load the Gadget on all platforms. When you create your own gadgets you should use this macro to declare the factory function for the Gadget.
 
-For a tutorial on how to make your own Gadget library see [Making a New Gadget Library].
+For a tutorial on how to make your own Gadget library see [Making a New Gadget Library](./Making-a-New-Gadget-Library).
 
 #### <a name="sectiongadgetxmlconfiguration"/>Gadget XML Configuration
 
@@ -560,7 +560,7 @@ The example Gadgetron configuration has two Writers, i.e. it is capable of outpu
 
 There are certain built-in Readers and Writers in addition to those specified in the configuration file. As an example, there are Readers for receiving configurations to be used by the Gadgetron and for receiving the parameters that will be passed to all Gadgets (see [Communication Sequence](#communicationsequencelink)). If the Gadgetron receives a message with an ID for which there is no associated Reader or encounters a message on the output queue for which there is no associated Writer an error will be generated, the Gadgetron stream shuts down, and the connection to the client will be closed.
 
-In the example above, we have 4 Gadgets in the reconstruction chain. The first Gadget is an [AccumulatorGadget]8https://gadgetron.github.io/api_master//class_gadgetron_1_1_accumulator_gadget.html), which collects individual lines and inserts them in k-space. When the k-space image is complete it is sent to the next Gadget in the chain, the [FFTGadget](https://gadgetron.github.io/api_master//class_gadgetron_1_1_f_f_t_gadget.html), which is responsible for Fourier transforming the data into image space. The next Gadget, [ExtractGadget](https://gadgetron.github.io/api_master//class_gadgetron_1_1_extract_gadget.html), extracts the magnitude of the complex image. Finally the last Gadget in the chain, [ImageFinishGadgetFLOAT](https://gadgetron.github.io/api_master//class_gadgetron_1_1_image_finish_gadget_f_l_o_a_t.html), sends the reconstructed image back to the Gadgetron framework where it is added to the output queue.
+In the example above, we have 4 Gadgets in the reconstruction chain. The first Gadget is an [AccumulatorGadget](https://gadgetron.github.io/api_master//class_gadgetron_1_1_accumulator_gadget.html), which collects individual lines and inserts them in k-space. When the k-space image is complete it is sent to the next Gadget in the chain, the [FFTGadget](https://gadgetron.github.io/api_master//class_gadgetron_1_1_f_f_t_gadget.html), which is responsible for Fourier transforming the data into image space. The next Gadget, [ExtractGadget](https://gadgetron.github.io/api_master//class_gadgetron_1_1_extract_gadget.html), extracts the magnitude of the complex image. Finally the last Gadget in the chain, [ImageFinishGadgetFLOAT](https://gadgetron.github.io/api_master//class_gadgetron_1_1_image_finish_gadget_f_l_o_a_t.html), sends the reconstructed image back to the Gadgetron framework where it is added to the output queue.
 
 It is also possible to send configuration parameters to Gadgets using the XML file. For example, to set a parameter in a Gadget, one could write:
 
@@ -642,7 +642,7 @@ This class can be used to create simple clients that open a connection with the 
 
 ### <a name="sectionfileorganization" />File Organization
 
-This section provides a brief overview of the file organization in the Gadgetron installation. Once you have compiled the Gadgetron and installed it (see [Linux Installation] [Mac Installation] [Windows Installation]), it will reside in its designated installation folder (`GADGETRON_HOME`). For the purposes of this description, we will assume that the Gadgetron was installed in `/usr/local/gadgetron`.
+This section provides a brief overview of the file organization in the Gadgetron installation. Once you have compiled the Gadgetron and installed it (see [Linux Installation](./Linux-Installation), [Mac Installation](./Mac-OS-X-Installation), [Windows Installation](Windows-Installation)), it will reside in its designated installation folder (`GADGETRON_HOME`). For the purposes of this description, we will assume that the Gadgetron was installed in `/usr/local/gadgetron`.
 
 In `GADGETRON_HOME` you should find the following folders:
 
