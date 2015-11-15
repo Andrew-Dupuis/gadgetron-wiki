@@ -131,4 +131,4 @@ This is the Homebrew version of the installation:
 
 0. Fetch Gadgetron test data: run `python get_data.py` in `test/integration` in the Gadgetron source tree.
 
-0. Run integration tests: run `python run_all_tests.py $ISMRMRD_HOME $GADGETRON_HOME test_cases.txt` in `test/integration` in the Gadgetron source tree.
+0. Run integration tests: run `python run_all_tests.py -I $ISMRMRD_HOME -G $GADGETRON_HOME test_cases.txt` in `test/integration` in the Gadgetron source tree.
