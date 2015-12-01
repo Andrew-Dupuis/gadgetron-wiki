@@ -6,30 +6,26 @@ The Gadget chain is defined in the `grappa.xml` and the resulting chain is illus
 
 To test this configuration, we will generate some accelerated 32 channel data using a simulation application from the ISMRMRD library and then send it through the Gadgetron. Make sure you have the Gadgetron running on your machine:
 
-    ubuntu@ip-10-184-82-58:~/temp$ ismrmrd_generate_cartesian_shepp_logan -a 2 -c 32 -r 4
-    Generating Cartesian Shepp Logan Phantom
-    Accelleration: 2
-    ubuntu@ip-10-184-82-58:~/temp$ mriclient -d testdata.h5 -c grappa.xml  
-    Gadgetron MRI Data Sender
-      -- host            :      localhost
-      -- port            :      9002
-      -- hdf5 file  in   :      testdata.h5
-      -- hdf5 group in   :      /dataset
-      -- conf            :      grappa.xml
-      -- loop            :      1
-      -- hdf5 file out   :      ./out.h5
-      -- hdf5 group out  :      2014-01-23 21:50:34
-    (22214|140341913196352) Connection from 127.0.0.1:9002
-    22214, 87, GadgetronConnector, Close Message received
-    (22214|140341829310208) Handling close...
-    (22214|140341829310208) GadgetronConnector svc done...
-    (22214|140341829310208) Handling close...
+```
+$ ismrmrd_generate_cartesian_shepp_logan -a 2 -c 32 -r 4
+Generating Cartesian Shepp Logan Phantom!!!
+Acceleration: 2
+$ gadgetron_ismrmrd_client -f testdata.h5 -c grappa_cpu.xml
+Gadgetron ISMRMRD client
+  -- host            :      localhost
+  -- port            :      9002
+  -- hdf5 file  in   :      testdata.h5
+  -- hdf5 group in   :      /dataset
+  -- conf            :      grappa_cpu.xml
+  -- loop            :      1
+  -- hdf5 file out   :      out.h5
+  -- hdf5 group out  :      2015-12-01 09:35:32
+```                
     
-
 You should get example images that look similar to the ones in the figure below.
 
 
-<img src="http://gadgetron.sf.net/figs/grappaout.png" style="width: 600px;" />
+<img src="https://s3.amazonaws.com/gadgetron.github.io/figs/grappaout.png" style="width: 600px;" />
 
 Let's take a closer look at some of the components of this reconstruction application.
 

@@ -2,7 +2,7 @@
 
 The purpose of this section is to maintain a list over the available clients that are included in the Gadgetron distribution. The current available clients are:
 
--   mriclient:
+-   `gadgetron_ismrmrd_client`:
 
     This is the standard client for sending MRI data to the Gadgetron using the ISMRM Raw Data format. In order to get usage information for the client, simply run the client with no arguments.
 

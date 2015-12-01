@@ -6,18 +6,18 @@ This figure originates from the [Gadgetron paper](http://www.ncbi.nlm.nih.gov/pu
 
 To test this configuration use the 32 channel radial MRI test dataset (`golden_angle.h5`), which you can download from [http://gadgetron.github.io.s3-website-us-east-1.amazonaws.com/files/testdata/ismrmrd/](http://gadgetron.github.io.s3-website-us-east-1.amazonaws.com/files/testdata/ismrmrd/). We assume that you have added \$(GADGETRON\_HOME)/bin to your PATH environment variable. You need a CUDA enable GPU on your system and your Gadgetron distribution should be compiled with CUDA and CULA enabled. Please see ? for details for your specific platform.
 
-To run the reconstruction; start up gadgetron (in its own terminal window) and use the mriclient to send the data from another terminal. First start gadgetron:
+To run the reconstruction; start up gadgetron (in its own terminal window) and use the gadgetron_ismrmrd_client to send the data from another terminal. First start gadgetron:
 
     user@host$ gadgetron
     Configuring services
 
 If asked, allow the gadgetron application to allow incoming network
-connection. Next start the mriclient:
+connection. Next start the gadgetron_ismrmrd_client:
 
     user@host:~/temp$ wget http://sourceforge.net/projects/gadgetron/files/testdata/ismrmrd/golden_angle.h5
 
-    user@host:~/temp$ mriclient \
-           -d golden_angle.h5 \
+    user@host:~/temp$ gadgetron_ismrmrd_client \
+           -f golden_angle.h5 \
            -c golden_radial_mode2_realtime.xml
 
     Gadgetron MRI Data Sender

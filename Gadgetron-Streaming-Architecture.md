@@ -638,7 +638,7 @@ To make it easier to create a new client, the Gadgetron comes with a [GadgetronC
      int send_gadgetron_parameters(std::string xml_string);
     };
 
-This class can be used to create simple clients that open a connection with the Gadgetron using the `open` function and then communicate with the Gadgetron through the Readers and Writers registered with the connector. See the mriclient example application (`gadgetron/apps/clients/mriclient` in the source code archive) for a simple example of how to build a Gadgetron client.
+This class can be used to create simple clients that open a connection with the Gadgetron using the `open` function and then communicate with the Gadgetron through the Readers and Writers registered with the connector. See the gadgetron_ismrmrd_client  example application (`gadgetron/apps/clients/gadgetron_ismrmrd_client` in the source code archive) for a simple example of how to build a Gadgetron client.
 
 ### <a name="sectionfileorganization" />File Organization
 

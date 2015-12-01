@@ -280,13 +280,13 @@ Assuming the cmake process was successful:
   
 You may have to use sudo for the `make install` command depending on your setup.
 
-You should now be able to run a reconstruction using your new reconstruction chain. Follow the instructions in ? if you have not yet tried to run a simple reconstruction. After having started up the Gadgetron, run the mriclient:
+You should now be able to run a reconstruction using your new reconstruction chain. Follow the instructions in ? if you have not yet tried to run a simple reconstruction. After having started up the Gadgetron, run the gadgetron_ismrmrd_client:
 
     user@mycomputer:~/temp:~/temp$ ismrmrd_generate_cartesian_shepp_logan -r 10
     Generating Cartesian Shepp Logan Phantom
     Accelleration: 1
 
-    user@mycomputer:~/temp$ mriclient -d testdata.h5 -c threshold.xml 
+    user@mycomputer:~/temp$ gadgetron_ismrmrd_client -f testdata.h5 -c threshold.xml 
     Gadgetron MRI Data Sender
       -- host            :      localhost
       -- port            :      9002
@@ -296,11 +296,6 @@ You should now be able to run a reconstruction using your new reconstruction cha
       -- loop            :      1
       -- hdf5 file out   :      ./out.h5
       -- hdf5 group out  :      2014-01-23 20:10:19
-    (21140|140214396131136) Connection from 127.0.0.1:9002
-    21140, 87, GadgetronConnector, Close Message received
-    (21140|140214312244992) Handling close...
-    (21140|140214312244992) GadgetronConnector svc done...
-    (21140|140214312244992) Handling close...
 
 If you run it again with the `level` parameter set to 0.00000001 (remember to re-install the `threshold.xml` file in `gadgetron/config` by running `make
         install`):
