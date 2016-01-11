@@ -15,7 +15,7 @@ This is the Homebrew version of the installation:
     
     ```xcode-select --install```
 
-0. Install [Homebrew](http://brew.sh/) and check that it's working
+0. Install [Homebrew](http://brew.sh/) and check that it's working. On Mac OS X 10.11.2 (El Capitan), the permissions/ownership of some folders in `/usr/local/` can be changed by the OS. Use `brew doctor` to check and follow their suggestions for changing ownership. (May happen more than once during installation.)
 0. Set environment variables in `~/.bash_profile` or its equivalent
 
     ```
