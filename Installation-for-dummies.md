@@ -16,7 +16,7 @@ export PYTHONPATH=/usr/local/opt/libxml2/lib/python2.7/site-packages:$PYTHONPATH
 ```
 Remember that changes to `.bash_profile` do not take effect in old terminal windows unless you force them (so open new windows). After installing Homebrew, check for updates and the `brew doctor` before continuing. During the `brew install` processes, there will be a lot of messages. Keep an eye on these. In particular if it reports any directories cannot be written to, run `brew doctor` and follow advice about how to change ownership.
 
-If you need to repeat a step, then you probably need to repeat all steps after that to be safe. I find it safest to delete the gadgetron, ismrmrd and siemens-to-ismrmrd build folder
+If you need to repeat a step, then you probably need to repeat all steps after that to be safe. If repeating a `make` step, I find it safest to delete the corresponding build folder (using `rm -rf build`) before using `mkdir build` to create a new, clean version. 
 
 
 
