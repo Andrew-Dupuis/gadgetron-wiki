@@ -3,9 +3,9 @@
 
 Docker allows you to mount components from the host file system into a container at the time the containter is created and run (N.B. not, at the moment, after it has been created and run). We can use this facility to very painlessly access the host installation of Matlab from within a container. Let's look at a command for starting a gadgetron container to illustrate.
 
-`NV_GPU=0 /localhome/ojosephs/Downloads/nd/nvidia-docker/nvidia-docker run --name=gt1 --publish=9002:9002 --publish=8090:8090 --publish=8002:8002 -v /:/mnt -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY --rm -it gadgetron/ubuntu_1404_cuda75`
+`NV_GPU=0 nvidia-docker run --name=gt1 --publish=9002:9002 --publish=8090:8090 --publish=8002:8002 -v /:/mnt -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY --rm -it gadgetron/ubuntu_1404_cuda75`
 
-Everything is the same as normal for exposing the host cuda card and the gadgetron ports (see Michael's gadgetron docker wiki) except for the
+Everything is the same as normal for exposing the host cuda card and the gadgetron ports (see gadgetron wiki docker page) except for the
 
 `-v /:/mnt -v /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY`
 
@@ -13,7 +13,7 @@ options
 
 This first `-v /:/mnt` option mounts the entire _host_ file system to appear in the docker running image at at the /mnt mount point (which I think needs to exist in the client file system - or maybe will be automatically added / merged as part of the Docker layered file system running layer??). So, as shown below, for this example, it seems that all the (CentOS) host file systems are exported into the (Ubuntu) container. Dangerously cool for experimentation but probably better to have more specific exports for a production system!
 ```
-[root@peaches ~]# df
+[root@centoshost ~]# df
 Filesystem               1K-blocks     Used  Available Use% Mounted on
 /dev/mapper/centos-root   52403200 46721572    5681628  90% /
 devtmpfs                  16312300        0   16312300   0% /dev
@@ -24,7 +24,7 @@ tmpfs                     16335808        0   16335808   0% /sys/fs/cgroup
 /dev/sda6                   505580   341236     164344  68% /boot
 /dev/sda2                   364544    68416     296128  19% /boot/efi
 /dev/mapper/centos-home 2779703180 16215332 2763487848   1% /localhome
-tmpfs                      3267164       16    3267148   1% /run/user/1131
+tmpfs                      3267164       16    3267148   1% /run/user/1234
 tmpfs                      3267164        0    3267164   0% /run/user/0
 [root@peaches ~]# docker exec -it gt1 bash
 root@a445ae98b0b7:/# df
@@ -37,7 +37,7 @@ devtmpfs                                                                        
 tmpfs                                                                                                16335808   150440   16185368   1% /mnt/dev/shm
 tmpfs                                                                                                16335808        0   16335808   0% /mnt/sys/fs/cgroup
 tmpfs                                                                                                16335808   107908   16227900   1% /mnt/run
-tmpfs                                                                                                 3267164       16    3267148   1% /mnt/run/user/1131
+tmpfs                                                                                                 3267164       16    3267148   1% /mnt/run/user/1234
 tmpfs                                                                                                 3267164        0    3267164   0% /mnt/run/user/0
 /dev/sdb1                                                                                          2928834748 64240232 2864594516   3% /mnt/scratch
 /dev/sda6                                                                                              505580   341236     164344  68% /mnt/boot
@@ -74,6 +74,8 @@ this does throw an error - which Google says may be to do with selinux on the ho
 
 `dpkg: error processing archive /var/cache/apt/archives/libelf1_0.158-0ubuntu5.2_amd64.deb (--unpack):
  cannot get security labeling handle: No such file or directory`
+
+UPDATE: the this error does not occur, eg., on an Ubuntu 16.04 host.
 
 So, then you can validate matlab against the gadgetron container HWAddr via the gui
 
