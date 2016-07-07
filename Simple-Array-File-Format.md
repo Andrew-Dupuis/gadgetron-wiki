@@ -55,7 +55,9 @@ It is also trivial to read the files into Matlab. Below is a function which dete
 
     fclose(f);
 
-    data = reshape(data,dims');
+    if numel(dims)>1
+        data = reshape(data,dims');
+    end
 
     end
 
