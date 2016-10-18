@@ -22,7 +22,7 @@ Header file:
     #include "GadgetMRIHeaders.h"
     #include "hoNDArray.h"
     #include <complex>
-    #include <ismrmrd.h>
+    #include <ismrmrd/ismrmrd.h>
     
     namespace Gadgetron
     {
@@ -30,17 +30,14 @@ Header file:
     class EXPORTGADGETSEXAMPLE ThresholdGadget : 
     public Gadget2<ISMRMRD::ImageHeader, hoNDArray< std::complex<float> > >
     {
-     public:
-      GADGET_DECLARE(ThresholdGadget)
+      public:
+        GADGET_DECLARE(ThresholdGadget)
     
-        protected:
-      virtual int process( GadgetContainerMessage< ISMRMRD::ImageHeader>* m1,
-    		       GadgetContainerMessage< hoNDArray< std::complex<float> > >* m2);
+        GADGET_PROPERTY(level, double, "Threshold level", 1.0);
     
-      virtual int process_config(ACE_Message_Block* mb);
-    
-      float threshold_level_;
-    
+      protected:
+        virtual int process( GadgetContainerMessage< ISMRMRD::ImageHeader>* m1,
+                             GadgetContainerMessage< hoNDArray< std::complex<float> > >* m2);
     };
     
     }
@@ -54,19 +51,8 @@ Implementation file:
     
     using namespace Gadgetron;
     
-    int ThresholdGadget::process_config(ACE_Message_Block* mb) 
-    {
-      threshold_level_ = get_double_value("level");
-      if (threshold_level_ == 0.0) {
-        threshold_level_ = 1.0;
-      }
-    
-      return GADGET_OK;
-    }
-    
-    int ThresholdGadget::process( 
-    			     GadgetContainerMessage< ISMRMRD::ImageHeader>* m1,
-    			     GadgetContainerMessage< hoNDArray< std::complex<float> > >* m2)
+    int ThresholdGadget::process(GadgetContainerMessage< ISMRMRD::ImageHeader>* m1,
+                                 GadgetContainerMessage< hoNDArray< std::complex<float> > >* m2)
     {
     
       std::complex<float>* d = 
@@ -85,7 +71,7 @@ Implementation file:
     
       //Now threshold
       for (unsigned long int i = 0; i < elements; i++) {
-        if (abs(d[i]) < threshold_level_*max) {
+        if (abs(d[i]) < level.value()*max) {
           d[i] = std::complex<float>(0.0,0.0);
         }
       }
@@ -133,12 +119,26 @@ Now that we have the files for the Gadget we need to set up the build environmen
     SET (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /W3")
     endif (WIN32)
     
+    cmake_policy(SET CMP0042 NEW)  # CMake 3.0 ``MACOSX_RPATH`` is enabled by default.
+    
+    ### Require C++11 ###
+    include(CheckCXXCompilerFlag)
+    CHECK_CXX_COMPILER_FLAG("-std=c++11" COMPILER_SUPPORTS_CXX11)
+    CHECK_CXX_COMPILER_FLAG("-std=c++0x" COMPILER_SUPPORTS_CXX0X)
+    if(COMPILER_SUPPORTS_CXX11)
+      set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+    elseif(COMPILER_SUPPORTS_CXX0X)
+      set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x")
+    else()
+      message(STATUS "The compiler ${CMAKE_CXX_COMPILER} has no C++11 support. Please use a different C++ compiler.")
+    endif()
+    
     ###############################################################
     #Bootstrap search for libraries 
     # (We need to find cmake modules in Gadgetron)
     ###############################################################
     find_path(GADGETRON_CMAKE_MODULES FindGadgetron.cmake HINTS
-    $ENV{GADGETRON_HOME}/cmake
+    $ENV{GADGETRON_HOME}/share/gadgetron/cmake
     /usr/local/gadgetron)
     
     if (NOT GADGETRON_CMAKE_MODULES)
@@ -169,7 +169,8 @@ Now that we have the files for the Gadget we need to set up the build environmen
     ADD_LIBRARY(gadgetronexamplelib SHARED ThresholdGadget.cpp)
     
     TARGET_LINK_LIBRARIES(gadgetronexamplelib 
-                          cpucore 
+                          gadgetron_gadgetbase
+                          gadgetron_toolbox_log
                           optimized ${ACE_LIBRARIES} 
                           debug ${ACE_DEBUG_LIBRARY})
     
@@ -188,63 +189,91 @@ The last thing we need is the XML configuration file to use when running our new
             xmlns="http://gadgetron.sf.net/gadgetron"
             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             
-        <reader>
-          <slot>1008</slot>
-          <dll>gadgetron_mricore</dll>
-          <classname>GadgetIsmrmrdAcquisitionMessageReader</classname>
-        </reader>
-      
-        <writer>
-          <slot>1004</slot>
-          <dll>gadgetron_mricore</dll>
-          <classname>MRIImageWriterCPLX</classname>
-        </writer>
-        <writer>
-          <slot>1005</slot>
-          <dll>gadgetron_mricore</dll>
-          <classname>MRIImageWriterFLOAT</classname>
-        </writer>
-        <writer>
-          <slot>1006</slot>
-          <dll>gadgetron_mricore</dll>
-          <classname>MRIImageWriterUSHORT</classname>
-        </writer>
-      
-        <gadget>
-          <name>Acc</name>
-          <dll>gadgetron_mricore</dll>
-          <classname>AccumulatorGadget</classname>
-        </gadget>
-        <gadget>
-          <name>FFT</name>
-          <dll>gadgetron_mricore</dll>
-          <classname>FFTGadget</classname>
-        </gadget>
-        <gadget>
-          <name>CropCombine</name>
-          <dll>gadgetron_mricore</dll>
-          <classname>CropAndCombineGadget</classname>
-        </gadget>
-    
-        <!-- This is where we insert our new Gadget -->
-        <gadget>
-          <name>Threshold</name>
-          <dll>gadgetronexamplelib</dll>
-          <classname>ThresholdGadget</classname>
-          <property><name>level</name><value>0.50</value></property>
-        </gadget>
-    
-        <gadget>
-          <name>Extract</name>
-          <dll>gadgetron_mricore</dll>
-          <classname>ExtractGadget</classname>
-        </gadget>  
-        <gadget>
-          <name>ImageFinishFLOAT</name>
-          <dll>gadgetron_mricore</dll>
-          <classname>ImageFinishGadgetFLOAT</classname>
-        </gadget>
-    
+    <reader>
+      <slot>1008</slot>
+      <dll>gadgetron_mricore</dll>
+      <classname>GadgetIsmrmrdAcquisitionMessageReader</classname>
+    </reader>
+
+    <writer>
+      <slot>1022</slot>
+      <dll>gadgetron_mricore</dll>
+      <classname>MRIImageWriter</classname>
+    </writer>
+
+    <gadget>
+      <name>RemoveROOversampling</name>
+      <dll>gadgetron_mricore</dll>
+      <classname>RemoveROOversamplingGadget</classname>
+    </gadget>
+
+    <gadget>
+      <name>AccTrig</name>
+      <dll>gadgetron_mricore</dll>
+      <classname>AcquisitionAccumulateTriggerGadget</classname>
+      <property>
+        <name>trigger_dimension</name>
+        <value>repetition</value>
+      </property>
+      <property>
+        <name>sorting_dimension</name>
+        <value>slice</value>
+      </property>
+    </gadget>
+
+    <gadget>
+      <name>Buff</name>
+      <dll>gadgetron_mricore</dll>
+      <classname>BucketToBufferGadget</classname>
+      <property>
+        <name>N_dimension</name>
+        <value></value>
+      </property>
+      <property>
+        <name>S_dimension</name>
+        <value></value>
+      </property>
+      <property>
+        <name>split_slices</name>
+        <value>true</value>
+      </property>
+    </gadget>
+
+    <gadget>
+      <name>SimpleRecon</name>
+      <dll>gadgetron_mricore</dll>
+      <classname>SimpleReconGadget</classname>
+    </gadget>
+
+    <gadget>
+      <name>ImageArraySplit</name>
+      <dll>gadgetron_mricore</dll>
+      <classname>ImageArraySplitGadget</classname>
+    </gadget>
+
+    <!-- This is where we insert our new Gadget -->
+    <gadget>
+      <name>Threshold</name>
+      <dll>gadgetronexamplelib</dll>
+      <classname>ThresholdGadget</classname>
+      <property>
+        <name>level</name>
+        <value>0.50</value>
+      </property>
+    </gadget>
+
+    <gadget>
+      <name>Extract</name>
+      <dll>gadgetron_mricore</dll>
+      <classname>ExtractGadget</classname>
+    </gadget>  
+
+    <gadget>
+      <name>ImageFinish</name>
+      <dll>gadgetron_mricore</dll>
+      <classname>ImageFinishGadget</classname>
+    </gadget>
+
     </gadgetronStreamConfiguration>
 
 Check that you have 5 files in your folder:
@@ -309,6 +338,6 @@ If you run it again with the `level` parameter set to 0.00000001 (remember to re
 
 You should get two different results that look something like the figure below.
 
-<img src="http://gadgetron.sf.net/figs/examplelibout.png" style="width: 600px;"/>
+<img src="https://s3.amazonaws.com/gadgetron.github.io/figs/examplelibout.png" style="width: 600px;"/>
 
 If you create interesting Gadget libraries please consider publishing them online to the benefit of the reconstruction community. An easy way to do this is by sending them to the Gadgetron team for us to publish right away on the web and possibly include in a future release of the Gadgetron.
