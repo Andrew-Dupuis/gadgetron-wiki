@@ -179,8 +179,11 @@ Now that we have the files for the Gadget we need to set up the build environmen
              DESTINATION include)
     
     INSTALL(TARGETS gadgetronexamplelib DESTINATION lib)
-    
-    INSTALL(FILES threshold.xml DESTINATION config)
+
+    if (NOT GADGETRON_INSTALL_CONFIG_PATH)
+	set(GADGETRON_INSTALL_CONFIG_PATH  ${GADGETRON_HOME}/share/gadgetron/config)
+    endif ()
+    INSTALL(FILES threshold.xml DESTINATION ${GADGETRON_INSTALL_CONFIG_PATH})
 
 The last thing we need is the XML configuration file to use when running our new ThresholdGadget. In the same folder create the `threshold.xml` file:
 
