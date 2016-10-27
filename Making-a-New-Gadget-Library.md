@@ -149,7 +149,7 @@ Now that we have the files for the Gadget we need to set up the build environmen
     set(CMAKE_MODULE_PATH ${GADGETRON_CMAKE_MODULES})
     ###############################################################
     
-    find_package(Ismrmrd REQUIRED)
+    find_package(ISMRMRD REQUIRED)
     find_package(Gadgetron REQUIRED)
     find_package(Boost REQUIRED)
     find_package(ACE REQUIRED)
