@@ -1,4 +1,4 @@
-Linux is the preferred operating system to get started using the Gadgetron. All of the required dependencies are included in most major Linux distributions and can be installed easily and without having to compile anything. In the following sections we walk you through the required steps to set up a full Gadgetron installation. We assume that you are starting with a freshly installed Ubuntu 14.04 available from the Ubuntu website (<http://www.ubuntu.com>). If you don't have a machine available for installing Ubuntu, you can always try it out in a virtual machine using virtualization software such as VirtualBox (<https://www.virtualbox.org>).
+Linux is the preferred operating system to get started using the Gadgetron. All of the required dependencies are included in most major Linux distributions and can be installed easily and without having to compile anything. In the following sections we walk you through the required steps to set up a full Gadgetron installation. We assume that you are starting with a freshly installed Ubuntu 16.04 available from the Ubuntu website (<http://www.ubuntu.com>). If you don't have a machine available for installing Ubuntu, you can always try it out in a virtual machine using virtualization software such as VirtualBox (<https://www.virtualbox.org>).
 
 If you would like to use the GPU components included in the Gadgetron and you have an Nvidia GPU available on your system, please complete the CUDA/CULA installations as described in [[Linux CUDA Setup]].
 
@@ -13,15 +13,15 @@ First install all dependencies for Gadgetron. The following will install everyth
     python-matplotlib python-libxml2 gcc-multilib python-psutil \
     libgtest-dev nvidia-cuda-toolkit libplplot-dev 
 
-If you would like to use MKL (Intel Math Kernel Library), please download your installation file from Intel and do the installation. Here is what we did with MKL version 11.0.5.192:
+We recommend that you use MKL (Intel Math Kernel Library). You can get a free license from [Intel](https://software.intel.com/en-us/articles/free-mkl), please obtain your license and download from Intel. Then install with:
 
-    tar -xzvf l_mkl_11.0.5.192_intel64.tgz 
-    cd l_mkl_11.0.5.192_intel64/
-    sudo ./install.sh 
+    tar -xf l_mkl_2017.0.098.tgz 
+    cd l_mkl_2017.0.098/
+    sudo ./install.sh
     
 Follow the instructions and add the following paths to your `~/.bashrc`::
 
-    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/intel/mkl/lib/intel64
+    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/intel/mkl/lib/intel64:/opt/intel/lib/intel64_lin/
 
 Next download, compile, and install ISMRMRD (there are more detailed instructions on the <https://github.com/ismrmrd/ismrmrd> website):
 
