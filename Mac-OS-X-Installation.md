@@ -84,7 +84,7 @@ This is the Homebrew version of the installation:
 0. **Future Step**: Install CUDA and CULA
 
 ## Installation from Sources
-[Update March 2017: Despite presence of `CC` and `CXX` environment variables, the `cmake` command in the ISMRMRD and Gadgetron instructions below appear to require addition of `-D CMAKE_C_COMPILER=/usr/bin/cc  -D CMAKE_CXX_COMPILER=/usr/bin/c++` (assuming these are the locations for your compilers).]
+
 
 ### ISMRMRD
 
