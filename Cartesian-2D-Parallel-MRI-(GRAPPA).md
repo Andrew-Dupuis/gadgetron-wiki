@@ -2,7 +2,7 @@ The Gadgetron contains a high-throughput real-time 2D Cartesian parallel imaging
 
 The Gadget chain is defined in the `grappa.xml` and the resulting chain is illustrated in the figure below.
 
-<img src="https://s3.amazonaws.com/gadgetron.github.io/figs/grappa.png" style="width: 400px;" />
+<img src="https://gadgetrondata.blob.core.windows.net/gadgetrongithubio/figs/grappa.png" style="width: 400px;" />
 
 To test this configuration, we will generate some accelerated 32 channel data using a simulation application from the ISMRMRD library and then send it through the Gadgetron. Make sure you have the Gadgetron running on your machine:
 
@@ -25,7 +25,7 @@ Gadgetron ISMRMRD client
 You should get example images that look similar to the ones in the figure below.
 
 
-<img src="https://s3.amazonaws.com/gadgetron.github.io/figs/grappaout.png" style="width: 600px;" />
+<img src="https://gadgetrondata.blob.core.windows.net/gadgetrongithubio/figs/grappaout.png" style="width: 600px;" />
 
 Let's take a closer look at some of the components of this reconstruction application.
 

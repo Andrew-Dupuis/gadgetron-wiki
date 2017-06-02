@@ -341,6 +341,6 @@ If you run it again with the `level` parameter set to 0.00000001 (remember to re
 
 You should get two different results that look something like the figure below.
 
-<img src="https://s3.amazonaws.com/gadgetron.github.io/figs/examplelibout.png" style="width: 600px;"/>
+<img src="https://gadgetrondata.blob.core.windows.net/gadgetrongithubio/figs/examplelibout.png" style="width: 600px;"/>
 
 If you create interesting Gadget libraries please consider publishing them online to the benefit of the reconstruction community. An easy way to do this is by sending them to the Gadgetron team for us to publish right away on the web and possibly include in a future release of the Gadgetron.

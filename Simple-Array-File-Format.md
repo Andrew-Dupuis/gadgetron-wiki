@@ -8,7 +8,7 @@ The simple array files are made up of a) a header followed by b) the data itself
 
 -   32-bit complex float. Two 32-bit floating point values per data element. File extension: `*.cplx`
 
-<img src="https://s3.amazonaws.com/gadgetron.github.io/figs/arrayfileformat.png" style="width: 400px;" />
+<img src="https://gadgetrondata.blob.core.windows.net/gadgetrongithubio/figs/arrayfileformat.png" style="width: 400px;" />
 
 The Gadgetron framework provides function for reading these files in C++. The functions are located in `toolboxes/ndarray/hoNDArray_fileio.h` in the Gadgetron source code distribution.
 

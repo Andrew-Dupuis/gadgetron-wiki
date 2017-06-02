@@ -1,6 +1,6 @@
 The Gadgetron includes a real-time implementation of a GPU-based real-time non-Cartesian Sense reconstruction published in [IEEE Trans Med Imaging. 2009 Dec;28(12):1974-85](http://www.ncbi.nlm.nih.gov/pubmed/19628452). One of the keys to obtaining real-time performance is an efficient GPU implementation of the non-Cartesian Fast Fourier Transform [IEEE Trans Med Imaging. 2008 Apr;27(4):538-47](http://www.ncbi.nlm.nih.gov/pubmed/18390350). The application reuses several of the gadgets we have seen in use already for the Cartesian Grappa implementation above ([Cartesian 2D Parallel MRI (GRAPPA)]). An overview of the non-Cartesian Sense gadget chain is given in the figure below. 
 
-<img src="https://s3.amazonaws.com/gadgetron.github.io/figs/cgsense.png" style="width: 400px;" />
+<img src="https://gadgetrondata.blob.core.windows.net/gadgetrongithubio/figs/cgsense.png" style="width: 400px;" />
 
 This figure originates from the [Gadgetron paper](http://www.ncbi.nlm.nih.gov/pubmed/22791598). As described in [Gadgetron Gadgets] this gadget has since been broken up to support both linear SENSE and kt-SENSE and non-linear compressed sensing SENSE. The CGSenseGadget (now the [gpuRadialSensePrepGadget](https://gadgetron.github.io/api_master//class_gadgetron_1_1gpu_radial_sense_prep_gadget.html) and [gpuCgSenseGadget](https://gadgetron.github.io/api_master//class_gadgetron_1_1gpu_cg_sense_gadget.html)) implements the linear non-Cartesian Sense reconstruction. It contains a conjugate gradient solver ([Linear Solvers](../Gadgetron%20Toolboxes/#sectionlinearsolvers)) set up with a nonCartesianSense image encoding matrix and an imageOperator for regularization. Internally it maintains a cyclic buffer of a few seconds of imaging data. It uses this buffer to maintain a fully sampled (i.e. unaliased but blurred) k-space image from which coil sensititivities and regularization images are dynamically estimated. The combination of parallel imaging and image regularization operators allows for alias-suppressed image reconstruction using significant undersampling hereby achieving real-time data acquisition rates per frame. The conjugate gradient solver is able to reconstruct faster than the acquisition time e.g. a 192x192 image from 32 coils using 10 solver iterations on newer graphics hardware.
 
@@ -38,4 +38,4 @@ connection. Next start the gadgetron_ismrmrd_client:
 Your current folder now holds the reconstructed images in the `out.h5`
 HDF5 file. They will look something like the one depicted in the figure below.
 
-<img src="https://s3.amazonaws.com/gadgetron.github.io/figs/examplecgsenseresult.png" style="width: 400px;" />
+<img src="https://gadgetrondata.blob.core.windows.net/gadgetrongithubio/figs/examplecgsenseresult.png" style="width: 400px;" />

@@ -1,7 +1,7 @@
 The Gadgetron consists of a streaming processing architecture and a set of toolboxes. The toolboxes are used within the streaming components but come as individual shared libraries and can thus also be used in standalone applications. The architecture is outlined in the figure below.
 
 <a name="figuregadgetron" />
-<img src="https://s3.amazonaws.com/gadgetron.github.io/figs/architecture.png" alt="Drawing" style="width: 400px;"/>
+<img src="https://gadgetrondata.blob.core.windows.net/gadgetrongithubio/figs/architecture.png" alt="Drawing" style="width: 400px;"/>
 
 The Gadgetron receives connections from clients through a TCP/IP connection. A client can be any application from which you can open a TCP/IP socket and send data. Once a connection to a client has been established (see [Communication Sequence](#communicationsequencelink)), the Gadgetron will read data from the socket and pass it on down a chain of processing steps. The responsibility of reading and writing packages on the socket is dispatched to a set of Readers and Writers (see [Readers and Writers](#readerswriterslink)). Each step in the processing chain is implemented in a module or Gadget (see [Gadgets](#gadgetslink)). A reconstruction process is defined by defining a chain of Gadgets. The assembly of Gadgets is done dynamically at run-time (see [Stream Configuration](#streamconfigurationlink)).
 
@@ -9,7 +9,7 @@ The Gadgetron receives connections from clients through a TCP/IP connection. A c
 
 A Gadget is the functional unit of the Gadgetron. You can think of the Gadget as a device with an input and output. Data passes through the device and is modified and/or transformed between input and output. By wiring multiple Gadgets together you create a reconstruction program. A schematic outline of a Gadget is seen below.
 
-<img src="https://s3.amazonaws.com/gadgetron.github.io/figs/gadget.png" alt="Drawing" style="width: 400px;"/>
+<img src="https://gadgetrondata.blob.core.windows.net/gadgetrongithubio/figs/gadget.png" alt="Drawing" style="width: 400px;"/>
 
 The Gadget is an active object based on the [ACE\_Task](http://www.dre.vanderbilt.edu/Doxygen/Stable/libace-doc/a00666.html) from the [ACE library](http://www.cs.wustl.edu/~schmidt/ACE.html). It has its own thread (or threads) of execution and an input queue where data is placed for processing by either the Gadgetron framework or an upstream Gadget.
 
