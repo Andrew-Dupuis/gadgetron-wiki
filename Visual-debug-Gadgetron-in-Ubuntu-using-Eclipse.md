@@ -165,9 +165,37 @@ export PATH=~/local/bin:~/local/usr/bin:${ISMRMRD_HOME}/bin:${GADGETRON_HOME}/bi
 eclipse
 ```
 ![start](images/eclipse_started.png)
+
 ### Import the Gadgetron and ISMRMRD projects
 
 File--> Import
 
 ![import](images/Import.png)
-### 
+
+### After import the Gadgetron and ISMRMRD projects
+
+![After import](images/after_import.png)
+
+### Right click Gadgetron-Debug project in eclipse and set Debug configuration
+
+![Set gadgetron debug configuration](images/set_debug_config.png)
+
+### To allow the debugger to find the source file, the code path should be set
+
+![Set code path](images/set_source_path.png)
+
+### Click debug and go into the Debug perspective
+
+![Debug persepctive](images/after_click_debug.png)
+
+### Set a data to gadgetron which is now running with debugger attached
+
+![Send a data](images/send_a_data.png)
+
+### Stop at the first breakpoint
+
+![Stop 1st](images/stop_at_first_breakpoint.png)
+
+### Stop in gadget
+
+![Stop in gadget](images/stop_in_gadget.png)
