@@ -160,3 +160,7 @@ export GADGETRON_DEBUG_FOLDER=~/Debug
 export LD_LIBRARY_PATH=/opt/intel/mkl/lib/intel64:/opt/intel/compiler/lib/intel64:/opt/intel/lib/intel64:${ISMRMRD_HOME}/lib:${GADGETRON_HOME}/lib:/usr/local/cuda/lib:/usr/local/cuda/lib64:/usr/local/lib:${LD_LIBRARY_PATH}
 export PATH=~/local/bin:~/local/usr/bin:${ISMRMRD_HOME}/bin:${GADGETRON_HOME}/bin:~/local/bin:${PATH}
 ```
+### Start Eclipse
+```
+eclipse
+```
