@@ -25,7 +25,7 @@ echo "This script will set up Gadgetron and related libraries in the home folder
 
 # set up the working directory to be the home folder
 GT_WORKING_DIR=~
-export GT_INSTALL_DIR=${GT_WORKING_DIR}/local
+GT_INSTALL_DIR=${GT_WORKING_DIR}/local
 
 # the branch to pull, can be changed
 BRANCHNAME=master
@@ -64,6 +64,7 @@ mkdir -k ${GT_WORKING_DIR}/mrprogs
 
 GADGETRON_HOME=${GT_WORKING_DIR}/local
 ISMRMRD_HOME=${GT_WORKING_DIR}/local
+CMAKE_PREFIX_PATH=${GT_WORKING_DIR}/local/lib/cmake/ISMRMRD
 
 # ----------------------------------------------------------------------------------------------------------
 #ISMRMRD PYTHON API, require sudo to install
@@ -116,7 +117,7 @@ cd ${GT_WORKING_DIR}/mrprogs
 mkdir build_gadgetron_${BUILD_TYPE}
 cd ${GT_WORKING_DIR}/mrprogs/build_gadgetron_${BUILD_TYPE}
 
-cmake -G "${GENERATOR}" -DCMAKE_INSTALL_PREFIX=${GT_INSTALL_DIR} -DCMAKE_BUILD_TYPE=${BUILD_TYPE} -DCMAKE_PREFIX_PATH=${GT_INSTALL_DIR}/local/lib/cmake/ISMRMRD ../gadgetron
+cmake -G "${GENERATOR}" -DCMAKE_INSTALL_PREFIX=${GT_INSTALL_DIR} -DCMAKE_BUILD_TYPE=${BUILD_TYPE} -DCMAKE_PREFIX_PATH=${GT_WORKING_DIR}/local/lib/cmake/ISMRMRD ../gadgetron
 
 make -j $(nproc)
 make install
@@ -136,7 +137,7 @@ cd ${GT_WORKING_DIR}/mrprogs
 mkdir build_siemens_to_ismrmrd_${BUILD_TYPE}
 cd ${GT_WORKING_DIR}/mrprogs/build_siemens_to_ismrmrd_${BUILD_TYPE}
 
-cmake -DCMAKE_INSTALL_PREFIX=${GT_INSTALL_DIR} -DCMAKE_BUILD_TYPE=${BUILD_TYPE} -DCMAKE_PREFIX_PATH=${GT_INSTALL_DIR}/local/lib/cmake/ISMRMRD ../siemens_to_ismrmrd
+cmake -DCMAKE_INSTALL_PREFIX=${GT_INSTALL_DIR} -DCMAKE_BUILD_TYPE=${BUILD_TYPE} -DCMAKE_PREFIX_PATH=${GT_WORKING_DIR}/local/lib/cmake/ISMRMRD ../siemens_to_ismrmrd
 
 make -j $(nproc)
 make install
@@ -145,4 +146,17 @@ make install
 # make gadgetron ready
 # ----------------------------------------------------------------------------------------------------------
 cp -f ${GT_INSTALL_DIR}/share/gadgetron/config/gadgetron.xml.example ${GT_INSTALL_DIR}/share/gadgetron/config/gadgetron.xml
+```
+### Set up shell environment to run gadgetron
+
+The shell $PATH and $LD_LIBRARY_PATH environmental variables have to be extended to reflect the installed gadgetron and ismrmrd:
+
+```
+# setup gadgetron
+export ISMRMRD_HOME=~/local
+export GADGETRON_HOME=~/local
+export GADGETRON_DEBUG_FOLDER=~/Debug
+
+export LD_LIBRARY_PATH=/opt/intel/mkl/lib/intel64:/opt/intel/compiler/lib/intel64:/opt/intel/lib/intel64:${ISMRMRD_HOME}/lib:${GADGETRON_HOME}/lib:/usr/local/cuda/lib:/usr/local/cuda/lib64:/usr/local/lib:${LD_LIBRARY_PATH}
+export PATH=~/local/bin:~/local/usr/bin:${ISMRMRD_HOME}/bin:${GADGETRON_HOME}/bin:~/local/bin:${PATH}
 ```
