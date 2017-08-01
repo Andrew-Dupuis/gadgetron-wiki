@@ -164,3 +164,8 @@ export PATH=~/local/bin:~/local/usr/bin:${ISMRMRD_HOME}/bin:${GADGETRON_HOME}/bi
 ```
 eclipse
 ```
+### Import the Gadgetron and ISMRMRD projects
+
+File--> Import
+
+### 
