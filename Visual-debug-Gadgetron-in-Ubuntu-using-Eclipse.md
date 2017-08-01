@@ -164,10 +164,10 @@ export PATH=~/local/bin:~/local/usr/bin:${ISMRMRD_HOME}/bin:${GADGETRON_HOME}/bi
 ```
 eclipse
 ```
-![start](J:/temp/eclipse_started.png)
+![start](images/eclipse_started.png)
 ### Import the Gadgetron and ISMRMRD projects
 
 File--> Import
 
-![start](J:\temp\Import.png)
+![import](images/Import.png)
 ### 
