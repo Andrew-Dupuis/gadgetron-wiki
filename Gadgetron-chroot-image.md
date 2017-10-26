@@ -57,9 +57,12 @@ To exam the help information:
 ```
     sudo .${GADGETRON_SOURCE}/docker/gchroot run /mnt/gadgetron_chroot/chroot_9382_20171026_140306 gadgetron
 ```
+
+```
 10-26 14:03:50.747 INFO [main.cpp:200] Starting ReST interface on port 9080
 10-26 14:03:50.760 INFO [main.cpp:212] Starting cloudBus: localhost:8002
 10-26 14:03:50.761 INFO [main.cpp:260] Configuring services, Running on port 9002
+```
 
 Now a gadgetron is running at port 9002 of the computer.
 
