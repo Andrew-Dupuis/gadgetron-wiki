@@ -2,36 +2,73 @@ We recommend [using Docker](https://github.com/gadgetron/gadgetron/wiki/Using-Do
 
 The recommended way to generate the chroot image is from the Docker container, for example to generate an image (both `*.tar.gz` and `*.img` (e.g. for deployment on Siemens scanner) use the following command:
 
-    ${GADGETRON_SOURCE}/docker/create_chroot_from_image.sh gadgetron/gadgetron_ubuntu1404_cuda75 5120
+```
+    ${GADGETRON_SOURCE}/docker/create_chroot_from_image gadgetron/ubuntu1604_cuda80 6144
+```
 
 Since version 3.0, Gadgetron supports building the chroot image as a way for deployment on the Ubuntu system.
 
-This will generate a couple of image files, e.g., `gadgetron-20150129-1137-e207d6ed.img`, and `gadgetron-20150129-1137-e207d6ed.tar.gz`
+This will generate a couple of image files, e.g., `gadgetron-20171021-2323-51cd1ba4.img`, and `gadgetron-20171021-2323-51cd1ba4.tar`
 
 The naming is gadgetron-date-time-first 8 numbers of SHA1 key for gadgetron code base.
-The .img file is a hard-disk image file containing the same content with .tar.gz file.
+The .img file is a hard-disk image file containing the same content with .tar file.
 
 # Run gadgetron from chroot image
 
-In the gadgetron-build/chroot/chroot-backups folder, there are a few .sh scripts. Among them, start-gadgetron-from-image.sh can be used to start the gadgetron form the chroot .img file. Its usage is like:
+In the ${GADGETRON_SOURCE}/docker, there is a script called gchroot:
 
-    cd gadgetron-build/chroot/chroot-backups
-    sudo ./start-gadgetron-from-image.sh ./gadgetron-20150129-1137-e207d6ed.img ~/gadgetron_chroot/mount_point
+To exam the help information:
+```
+    sudo ${GADGETRON_SOURCE}/docker/gchroot
 
+    Usage:  gchroot <COMMAND> [OPTIONS] <ARGS>
 
-# Run gadgetron from an untarred chroot tree
+    Available commands:
 
-    sudo ./chroot-root/gadgetron/usr/local/share/gadgetron/chroot/start.sh ./chroot-root/gadgetron/
+       list                          : List mounted chroot images
+       exec <mount point> <command>  : Execute command in chroot
+       attach <img OR path>          : Prepare chroot (with mounts)
+       detach <mount point>          : Remove chroot mount point
+       run <img OR path> <command>   : Run command in image
+       clean <mount point>           : Remove all processes accessing mount point
 
+    Available options
 
-# Install gadgetron chroot package as an upstart service
+      -r | --rm | --remove           : Detach chroot after run
+      -n | --name <NAME>             : Use this name with attached chroot
+      -v | --volume <SRC:DST>        : Mount SRC at DST in chroot
+      --verbose                      : Verbose logging
+```
 
-We can also install the gadgetron chroot package as a upstart service on an ubuntu machine. To do this, there is an installation script in gadgetron-source/chroot/install_chroot_image.sh. For example, to install the chroot image i just built,
+# Mount the chroot image
 
-    sudo gadgetron-source/chroot/install_chroot_image.sh ./gadgetron-20150129-1137-e207d6ed.tar.gz
+```
+    sudo .${GADGETRON_SOURCE}/docker/gchroot attach gadgetron-20171021-2323-51cd1ba4.img
+```
+# Find the mounting point
 
-This command will create a gadgetron chroot install point as /home/gadgetron_chroot and untar this chroot package. 
+```
+    sudo .${GADGETRON_SOURCE}/docker/gchroot list
 
-A symbolic link /home/gadgetron_chroot/current will be set up to point to `/home/gadgetron_chroot/gadgetron-20150129-1137-e207d6ed`. The upstart script `gadgetron_chroot.conf` will be copied into `/etc/init`. The service `gadgetron_chroot` will be started, which runs gadgetron on port 9002 by default. 
+    /mnt/gadgetron_chroot/chroot_9382_20171026_140306
+```
+# Run gadgetron from the chroot image
 
-If another chroot package is going to be installed, just re-run this script and it will change where this symbolic link points to and restart the gadgetron_chroot service.
+```
+    sudo .${GADGETRON_SOURCE}/docker/gchroot run /mnt/gadgetron_chroot/chroot_9382_20171026_140306 gadgetron
+```
+10-26 14:03:50.747 INFO [main.cpp:200] Starting ReST interface on port 9080
+10-26 14:03:50.760 INFO [main.cpp:212] Starting cloudBus: localhost:8002
+10-26 14:03:50.761 INFO [main.cpp:260] Configuring services, Running on port 9002
+
+Now a gadgetron is running at port 9002 of the computer.
+
+# To remove the mounting point
+
+```
+    sudo .${GADGETRON_SOURCE}/docker/gchroot detach /mnt/gadgetron_chroot/chroot_9382_20171026_140306
+
+    or
+
+    sudo .${GADGETRON_SOURCE}/docker/gchroot detach all
+```
