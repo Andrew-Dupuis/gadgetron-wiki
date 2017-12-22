@@ -305,3 +305,36 @@ After adding the distribution and collecting gadgets to the realtime cine chain,
 </gadgetronStreamConfiguration>
 
 ```
+### Run gadgetron cloud with docker
+
+It is much more convenient to run gadgetron docker images at a number of nodes which consists of a local/remote cloud. In this way, user will not need to compile gadgetron on every node; instead, simply pulling the docker images. To find how to run gadgetron with docker, check the wiki page [gadgetron and docker](https://github.com/gadgetron/gadgetron/wiki/Using-Docker).
+
+Let's go through an example. Assume there is a local cluster, consisting of N=5 computers. Their ip addresses are 192.168.2.2-6. To set up the gadgetron docker based cloud:
+
+1) Install docker-ce and optional nvidia-docker at all nodes (check [gadgetron and docker](https://github.com/gadgetron/gadgetron/wiki/Using-Docker))
+
+2) Start docker at every node as :
+```
+docker run --name=gadgetron -e "GADGETRON_RELAY_HOST=192.168.2.2" --publish=9888:8888 --publish=9002:9002 --publish=9080:9080 --publish=8090:8090 --publish=8002:8002 --publish=18002:18002 --publish=9001:9001 --volume=/tmp/gadgetron_data:/tmp/gadgetron_data  --restart=unless-stopped --detach -t gadgetron/ubuntu_1604_cuda80
+```
+
+Here the gadgetron is started inside docker and cloud bus relay is started with host ip 192.168.2.2. This ip will be the cloud gateway and distributes the incoming jobs to other computing nodes.
+
+3) To run the cloud, send data to 192.168.2.2. Suppose there is a multi-slice data in /home/gtuser/cine_example folder:
+
+```
+cd /home/gtuser/cine_example
+# convert noise to ismrmrd format
+siemens_to_ismrmrd -f ./tpat3_RT_Cine_Res160.dat -o noise.h5 -z 1
+
+# convert imaging data
+siemens_to_ismrmrd -f ./tpat3_RT_Cine_Res160.dat -o data.h5 -z 2
+
+# send noise to cloud gateway
+gadgetron_ismrmrd_client -f noise.h5 -p 9002 -a 192.168.2.2 -c default_measurement_dependencies.xml
+
+# send imaging data to cloud gateway
+gadgetron_ismrmrd_client -f data.h5 -p 9002 -a 192.168.2.2 -c Generic_Cartesian_Grappa_RealTimeCine_Cloud.xml -o res.h5
+```
+Here we send a multi-slice cine dataset to gateway. Every slice will be forwarded to a node for reconstruction. The result images are stored in res.h5.
+
