@@ -3,8 +3,12 @@
 # Suggested naming and definition
 ## Names of targets
 ### Libraries and toolboxes
+```
 target name for gadgets: gadgetron_mricore
+```
+```
 target name for toolboxes: gadgetron_toolbox_cpucore
+```
 ### Gadgets
 GenericReconCartesianFFTGadget.h/.cpp
 ### Toolbox functions
