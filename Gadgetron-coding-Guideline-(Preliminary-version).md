@@ -34,6 +34,8 @@ or
 ```
 class GadgetronTimer
 ```
+with a capital first letter. 
+
 ### Standalone applications
 target name is the same as cpp file name.
 ```
