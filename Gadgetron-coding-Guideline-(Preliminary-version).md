@@ -22,12 +22,13 @@ template<class T> EXPORTCPUCOREMATH T stddev(hoNDArray<T>* data);
 ```
 or
 ```
-template<typename T> EXPORTMRICORE void coil_map_2d_Inati(const hoNDArray<T>& data, hoNDArray<T>& coilMap, size_t ks = 7, 
+template<typename T> EXPORTMRICORE void coilMap2dInati(const hoNDArray<T>& data, hoNDArray<T>& coilMap, 
+size_t ks = 7, 
 size_t power = 3);
 ```
 ### Toolbox Classes
 ```
-template <typename T> class EXPORTCPUFFT hoNDFFT
+template <typename T> class EXPORTCPUFFT HoNDFFT
 ```
 or
 ```
