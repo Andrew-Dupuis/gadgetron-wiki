@@ -42,9 +42,9 @@ target name is the same as cpp file name.
 gadgetron_ismrmrd_client
 ```
 ### Matlab mex functions
-Starts with "Matlab_"
+Starts with "matlab_"
 ```
-Matlab_gt_compute_coil_map
+matlab_gt_compute_coil_map
 ```
 ## Comments
 ### Source files
