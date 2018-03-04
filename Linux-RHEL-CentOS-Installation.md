@@ -24,14 +24,14 @@ There are a few dependencies not in the default repositories, so we add the EPEL
 Gadgetron dependencies
 ----------------------
 **The steps below must be executed as a super user.**
-
+* `yum install centos-release-scl-rh`
+* `yum --enablerepo=centos-sclo-rh-testing install devtoolset-7-all`
 * `yum group install "Development Tools"`
 * `yum install qt-devel fftw-devel freeglut-devel hdf5-devel glew-devel lapack-devel xerces-c-devel xsd`
 * `yum install docbook-utils-pdf docbook5-schemas docbook5-style-xsl`
 * `yum install cmake cmake3 cmake-gui cmake3-gui`
-* `yum install ace-devel`
 * `yum install boost-devel doxygen git libxml2-devel libxslt-devel openblas-devel armadillo-devel gtest`
-* `yum install scl-utils devtoolset-3-gcc-c++`
+* `yum install scl-utils`
 
   Optional: Libraries below can be updated from third party repos:
   
@@ -102,7 +102,7 @@ ISMRMRD and Gadgetron
 * Create install directory
     - `mkdir ~/local`
 * Switch GCC to 4.9.1
-    - `scl enable devtoolset-3 bash`
+    - `scl enable devtoolset-7 bash`
 * ISMRMRD
     - `git clone https://github.com/ismrmrd/ismrmrd.git`
     - `cd ismrmrd`
@@ -126,3 +126,13 @@ The final step is to add/modify a few environment variables in your `~/.bashrc` 
     export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$GADGETRON_HOME/lib:$ISMRMRD_HOME/lib
 
 Rename the example configuration file `$GADGETRON_HOME/config/gadgetron.xml.example` to `$GADGETRON_HOME/config/gadgetron.xml`.
+
+Enable firewall
+--------------------
+```
+sudo firewall-cmd --get-active-zones
+sudo firewall-cmd --permanent --zone=public --add-port=9002/tcp
+sudo firewall-cmd --permanent --zone=public --add-port=9003/tcp
+sudo firewall-cmd --permanent --zone=public --add-port=9008/tcp
+sudo firewall-cmd --reload
+```
