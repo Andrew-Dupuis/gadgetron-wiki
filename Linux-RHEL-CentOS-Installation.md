@@ -1,7 +1,7 @@
 RHEL 6 Derivatives
 ==================
 
-Installation instruction for Red Hat Enterprise Linux and its derivatives (CentOS, Scientific Linux, etc).  These notes have been tested on CentOS 6.6 with the "Software Development Workstation" package option.
+Installation instruction for Red Hat Enterprise Linux and its derivatives (CentOS, Scientific Linux, etc).  These notes have been tested on CentOS 7 with the "Software Development Workstation" package option.
 
 Enabling some none-default repositories
 ---------------------------------------
@@ -12,9 +12,10 @@ There are a few dependencies not in the default repositories, so we add the EPEL
 * Add EPEL to the list of know repositories:
   - `wget http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm`
   - `yum localinstall epel-release-6-8.noarch.rpm`
-* Add the ACE development repository from http://download.opensuse.org/repositories/devel:/libraries:/ACE:/minor/, e.g.
-  - `cd /etc/yum.repos.d/`
-  - `wget http://download.opensuse.org/repositories/devel:/libraries:/ACE:/minor/CentOS_CentOS-6/devel:libraries:ACE:minor.repo`
+* Install ACE
+  - `mkdir ~/software && cd ~/software`
+  - `wget ftp://ftp.pbone.net/mirror/ftp5.gwdg.de/pub/opensuse/repositories/devel:/libraries:/ACE:/micro/CentOS_7/x86_64/ace-6.3.3-55.1.x86_64.rpm`
+  - `yum install ./ace-6.3.3-55.1.x86_64.rpm`
 * Add the Boost >=1.55 repo:
   - `wget http://repo.enetres.net/enetres.repo -O /etc/yum.repos.d/enetres.repo`
 * Add SLC @ CERN repository:
@@ -24,9 +25,10 @@ Gadgetron dependencies
 ----------------------
 **The steps below must be executed as a super user.**
 
+* `yum group install "Development Tools"`
 * `yum install qt-devel fftw-devel freeglut-devel hdf5-devel glew-devel lapack-devel xerces-c-devel xsd`
 * `yum install docbook-utils-pdf docbook5-schemas docbook5-style-xsl`
-* `yum install cmake28`
+* `yum install cmake cmake3 cmake-gui cmake3-gui`
 * `yum install ace-devel`
 * `yum install boost-devel doxygen git libxml2-devel libxslt-devel openblas-devel armadillo-devel gtest`
 * `yum install scl-utils devtoolset-3-gcc-c++`
@@ -38,7 +40,13 @@ Gadgetron dependencies
 
 Intel MKL (Optional)
 ------------------------------------
-* Try or buy the Parallel Studio XE 2015 at https://software.intel.com/en-us/intel-parallel-studio-xe/try-buy
+```
+cd ~/software
+wget http://registrationcenter-download.intel.com/akdlm/irc_nas/tec/12414/l_mkl_2018.1.163.tgz
+tar -xvf ./l_mkl_2018.1.163.tgz
+cd l_mkl_2018.1.163
+sudo ./install.sh`
+```
 
 Matlab (Optional)
 ------------------------------------
@@ -75,14 +83,15 @@ DICOM Support (Optional)
 
 Python Options
 --------------
-* CentOS 6.x ships with python 2.6.6 and some somewhat outdated python packages. It is recommended to install Python 2.7 for speed and compatibility. Then, one can set up a virtualenv and use pip to install the necessary bits.  Alternatively, you could stay on python 2.6.6 and just install/upgrade the packages you want. One can install newer version of the numpy by installing via the PUIAS Computational repo, e.g:
-    - `yum update http://puias.math.ias.edu/data/puias/computational/6/x86_64/numpy-1.6.2-0.1.puias6.x86_64.rpm`
-    - `yum update http://puias.math.ias.edu/data/puias/computational/6/x86_64/numpy-f2py-1.6.2-0.1.puias6.x86_64.rpm`
-
-* Then, one can install pip to update the python packages, e.g.:
-    - `yum install python-pip`
-    - `pip-python install --upgrade scipy matplotlib psutil twisted`
-
+```
+sudo yum install python python-devel python-pip
+sudo pip install --upgrade pip
+sudo pip install setuptools
+sudo pip install Cython
+sudo pip install numpy 
+sudo pip install pyxb psutil lxml pydicom
+sudo pip install 'h5py==2.5.0'
+```
 ISMRMRD and Gadgetron
 ---------------------
 **The steps may be executed as a regular user.**
@@ -98,13 +107,13 @@ ISMRMRD and Gadgetron
     - `git clone https://github.com/ismrmrd/ismrmrd.git`
     - `cd ismrmrd`
     - `mkdir build; cd build`
-    - `cmake28 -D CMAKE_INSTALL_PREFIX=~/local -D CMAKE_PREFIX_PATH=~/local/ ../`
+    - `cmake -D CMAKE_INSTALL_PREFIX=~/local -D CMAKE_PREFIX_PATH=~/local/ ../`
     - `make;make install`
 * Gadgetron
     - `git clone https://github.com/gadgetron/gadgetron.git`
     - `cd gadgetron`
     - `mkdir build; cd build`
-    - `cmake28 -D CMAKE_INSTALL_PREFIX=~/local -D CMAKE_PREFIX_PATH=~/local/ ../`
+    - `cmake -D CMAKE_INSTALL_PREFIX=~/local -D CMAKE_PREFIX_PATH=~/local/ ../`
     - `make; make install`
 
 Environment Variables
