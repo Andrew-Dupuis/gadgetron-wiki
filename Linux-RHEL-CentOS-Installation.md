@@ -16,8 +16,6 @@ There are a few dependencies not in the default repositories, so we add the EPEL
   - `mkdir ~/software && cd ~/software`
   - `wget ftp://ftp.pbone.net/mirror/ftp5.gwdg.de/pub/opensuse/repositories/devel:/libraries:/ACE:/micro/CentOS_7/x86_64/ace-6.3.3-55.1.x86_64.rpm`
   - `yum install ./ace-6.3.3-55.1.x86_64.rpm`
-* Add the Boost >=1.55 repo:
-  - `wget http://repo.enetres.net/enetres.repo -O /etc/yum.repos.d/enetres.repo`
 * Add SLC @ CERN repository:
   - `wget http://linuxsoft.cern.ch/cern/scl/slc6-scl.repo -O /etc/yum.repos.d/slc6-scl.repo`
 
@@ -37,6 +35,18 @@ Gadgetron dependencies
   
   - `fftw-devel 3.2.2`: atrpms
   - `libglew-devel 1.7.0`: linuxtech-release
+
+Boost
+------------------------------------
+It is better to download latest boost and compile and install.
+```
+cd ~/software
+wget https://dl.bintray.com/boostorg/release/1.66.0/source/boost_1_66_0.tar.gz
+tar xvf ./boost_1_66_0.tar.gz
+cd boost_1_66_0
+./bootstrap.sh
+sudo ./b2 --layout=versioned --build-type=complete address-model=64 install -j 20
+```
 
 Intel MKL (Optional)
 ------------------------------------
