@@ -16,6 +16,10 @@ There are a few dependencies not in the default repositories, so we add the EPEL
   - `mkdir ~/software && cd ~/software`
   - `wget ftp://ftp.pbone.net/mirror/ftp5.gwdg.de/pub/opensuse/repositories/devel:/libraries:/ACE:/micro/CentOS_7/x86_64/ace-6.3.3-55.1.x86_64.rpm`
   - `yum install ./ace-6.3.3-55.1.x86_64.rpm`
+  - `wget ftp://ftp.pbone.net/mirror/ftp5.gwdg.de/pub/opensuse/repositories/devel:/libraries:/ACE:/micro/CentOS_7/x86_64/mpc-6.3.3-55.1.x86_64.rpm`
+  - `yum install ./mpc-6.3.3-55.1.x86_64.rpm`
+  - `wget ftp://ftp.pbone.net/mirror/ftp5.gwdg.de/pub/opensuse/repositories/devel:/libraries:/ACE:/micro/CentOS_7/x86_64/ace-devel-6.3.3-55.1.x86_64.rpm`
+  - `yum install /ace-devel-6.3.3-55.1.x86_64.rpm`
 * Add SLC @ CERN repository:
   - `wget http://linuxsoft.cern.ch/cern/scl/slc6-scl.repo -O /etc/yum.repos.d/slc6-scl.repo`
 
