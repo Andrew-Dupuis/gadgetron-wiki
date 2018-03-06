@@ -95,6 +95,19 @@ DICOM Support (Optional)
   - `rpm --import /etc/pki/rpm-gpg/RPM-GPG-KEY-puias`
   - `yum install dcmtk360-devel`
 
+* Or, you can download and compile dcmtk
+```
+cd ~/software
+wget ftp://dicom.offis.de/pub/dicom/offis/software/dcmtk/dcmtk363/dcmtk-3.6.3.tar.gz
+tar xvf ./dcmtk-3.6.3.tar.gz
+cd dcmtk-3.6.3
+mkdir build
+cd build
+cmake -DBUILD_SHARED_LIBS=ON ..
+make -j20
+sudo make install
+```
+
 Python Options
 --------------
 ```
