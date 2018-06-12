@@ -104,12 +104,162 @@ sudo apt-get install -y nvidia-docker2
 
 ```
 
-### Optional: Install tensorflow, pytorch
-
 ### A few notes about python3
+To compile gadgetron with python3,
+```
+cmake -DBUILD_WITH_PYTHON3=ON ${PATH_TO_SRC}
+```
 
 ### Compile and install gadgetron to your local folder
 
-### Set up env variables and run gadgetron
+```
+echo "This script will set up Gadgetron and related libraries in the home folder ~/local. The old installed gadgetron will be deleted!!!"
 
+# set up the working directory to be the home folder
+GT_WORKING_DIR=~
+GT_INSTALL_DIR=${GT_WORKING_DIR}/local
+
+# the branch to pull, can be changed
+BRANCHNAME=master
+
+# Build type
+BUILD_TYPE=Release
+# for debug, BUILD_TYPE=Debug
+
+# Generator
+GENERATOR="Eclipse CDT4 - Unix Makefiles"
+
+# --------------------------------------------------------------------------------------------
+# pull source from git hub
+
+ISMRMRD_REPO=git@github.com:ismrmrd/ismrmrd.git
+ISMRMRD_BRANCH=${BRANCHNAME}
+
+GT_REPO=git@github.com:gadgetron/gadgetron.git
+GT_BRANCH=${BRANCHNAME}
+
+GT_CONVERTER_REPO=git@github.com:ismrmrd/siemens_to_ismrmrd.git
+GT_CONVERTER_BRANCH=${BRANCHNAME}
+
+ISMRMRD_PYTHON_API_REPO=git@github.com:ismrmrd/ismrmrd-python.git
+ISMRMRD_PYTHON_API_BRANCH=${BRANCHNAME}
+
+ISMRMRD_PYTHON_TOOLS_REPO=git@github.com:ismrmrd/ismrmrd-python-tools.git
+ISMRMRD_PYTHON_TOOLS_BRANCH=${BRANCHNAME}
+
+# ----------------------------------------------------------------------------------------------------------
+# clean the old installation
+# ----------------------------------------------------------------------------------------------------------
+rm -R -f ${GT_WORKING_DIR}/local
+mkdir -k ${GT_WORKING_DIR}/local
+mkdir -k ${GT_WORKING_DIR}/mrprogs
+
+GADGETRON_HOME=${GT_WORKING_DIR}/local
+ISMRMRD_HOME=${GT_WORKING_DIR}/local
+CMAKE_PREFIX_PATH=${GT_WORKING_DIR}/local/lib/cmake/ISMRMRD
+
+# ----------------------------------------------------------------------------------------------------------
+#ISMRMRD PYTHON API, require sudo to install
+# ----------------------------------------------------------------------------------------------------------
+cd ${GT_WORKING_DIR}/mrprogs
+git clone ${ISMRMRD_PYTHON_API_REPO}
+cd ismrmrd-python
+sudo python3 setup.py install
+
+# ----------------------------------------------------------------------------------------------------------
+#ISMRMRD PYTHON TOOLS, require sudo to install
+# ----------------------------------------------------------------------------------------------------------
+cd ${GT_WORKING_DIR}/mrprogs
+git clone ${ISMRMRD_PYTHON_TOOLS_REPO}
+cd ismrmrd-python-tools
+sudo python3 setup.py install
+
+# ----------------------------------------------------------------------------------------------------------
+# ismrmrd
+# ----------------------------------------------------------------------------------------------------------
+
+rm -R -f ${GT_WORKING_DIR}/mrprogs/ismrmrd
+cd ${GT_WORKING_DIR}/mrprogs
+git clone ${ISMRMRD_REPO} ${GT_WORKING_DIR}/mrprogs/ismrmrd
+cd ${GT_WORKING_DIR}/mrprogs/ismrmrd
+git checkout -b ${ISMRMRD_BRANCH} origin/${ISMRMRD_BRANCH}
+
+rm -R -f ${GT_WORKING_DIR}/mrprogs/build_ismrmrd_${BUILD_TYPE}
+cd ${GT_WORKING_DIR}/mrprogs
+mkdir build_ismrmrd_${BUILD_TYPE}
+cd ${GT_WORKING_DIR}/mrprogs/build_ismrmrd_${BUILD_TYPE}
+
+cmake -G "${GENERATOR}" -DCMAKE_INSTALL_PREFIX=${GT_INSTALL_DIR} -DCMAKE_BUILD_TYPE=${BUILD_TYPE} -DJava_JAVAC_EXECUTABLE= -DJava_JAVA_EXECUTABLE= -DJAVA_INCLUDE_PATH=  ../ismrmrd
+
+make -j $(nproc)
+make install
+
+# ----------------------------------------------------------------------------------------------------------
+# gadgetron
+# ----------------------------------------------------------------------------------------------------------
+
+rm -R -f ${GT_WORKING_DIR}/mrprogs/gadgetron
+cd ${GT_WORKING_DIR}/mrprogs
+git clone  ${GT_REPO} ${GT_WORKING_DIR}/mrprogs/gadgetron
+cd ${GT_WORKING_DIR}/mrprogs/gadgetron
+git checkout -b ${GT_BRANCH} origin/${GT_BRANCH}
+
+rm -R -f ${GT_WORKING_DIR}/mrprogs/build_gadgetron_${BUILD_TYPE}
+cd ${GT_WORKING_DIR}/mrprogs
+mkdir build_gadgetron_${BUILD_TYPE}
+cd ${GT_WORKING_DIR}/mrprogs/build_gadgetron_${BUILD_TYPE}
+
+cmake -G "${GENERATOR}" -DCMAKE_INSTALL_PREFIX=${GT_INSTALL_DIR} -DCMAKE_BUILD_TYPE=${BUILD_TYPE} -DCMAKE_PREFIX_PATH=${GT_WORKING_DIR}/local/lib/cmake/ISMRMRD ../gadgetron
+
+make -j $(nproc)
+make install
+    
+# ----------------------------------------------------------------------------------------------------------
+# siemens_to_ismrmrd
+# ----------------------------------------------------------------------------------------------------------
+
+rm -R -f ${GT_WORKING_DIR}/mrprogs/siemens_to_ismrmrd
+cd ${GT_WORKING_DIR}/mrprogs
+git clone  ${GT_CONVERTER_REPO}  ${GT_WORKING_DIR}/mrprogs/siemens_to_ismrmrd
+cd ${GT_WORKING_DIR}/mrprogs/siemens_to_ismrmrd
+git checkout -b ${GT_CONVERTER_BRANCH} origin/${GT_CONVERTER_BRANCH}
+
+rm -R -f ${GT_WORKING_DIR}/mrprogs/build_siemens_to_ismrmrd_${BUILD_TYPE}
+cd ${GT_WORKING_DIR}/mrprogs
+mkdir build_siemens_to_ismrmrd_${BUILD_TYPE}
+cd ${GT_WORKING_DIR}/mrprogs/build_siemens_to_ismrmrd_${BUILD_TYPE}
+
+cmake -DCMAKE_INSTALL_PREFIX=${GT_INSTALL_DIR} -DCMAKE_BUILD_TYPE=${BUILD_TYPE} -DCMAKE_PREFIX_PATH=${GT_WORKING_DIR}/local/lib/cmake/ISMRMRD ../siemens_to_ismrmrd
+
+make -j $(nproc)
+make install
+
+# ----------------------------------------------------------------------------------------------------------
+# make gadgetron ready
+# ----------------------------------------------------------------------------------------------------------
+cp -f ${GT_INSTALL_DIR}/share/gadgetron/config/gadgetron.xml.example ${GT_INSTALL_DIR}/share/gadgetron/config/gadgetron.xml
+```
+
+### Set up env variables and run gadgetron
+```
+# these lines can be added to ~/.bashrc
+export ISMRMRD_HOME=~/local
+export GADGETRON_HOME=~/local
+
+export LD_LIBRARY_PATH=/opt/intel/mkl/lib/intel64:/opt/intel/compiler/lib/intel64:/opt/intel/lib/intel64:${ISMRMRD_HOME}/lib:${GADGETRON_HOME}/lib:/usr/local/cuda-8.0/lib64:/usr/local/cuda-8.0/lib64/stubs:/usr/local/cuda/lib:/usr/local/cuda/lib64:/usr/local/lib:${LD_LIBRARY_PATH}
+
+export PATH=~/local/bin:~/local/usr/bin:${ISMRMRD_HOME}/bin:${GADGETRON_HOME}/bin:~/local/bin:${PATH}
+export OMP_THREAD_LIMIT=$(nproc)
+```
 ### Final notes
+```
+# to start gadgetron
+gadgetron -p 9002
+```
+It is a good idea to check your gadgetron installation by running the integration tests :
+```
+cd ~/mrprogs/gadgetron
+cd test/integration
+python3 get_data.py
+python3 run_all_tests.py -I ~/local -G ~/local ./test_cases.txt
+```
