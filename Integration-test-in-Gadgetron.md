@@ -30,25 +30,24 @@ Suppose gadgetron and ismrmrd are installed at ~/local, there are different mode
 # batch mode to run all tests
 # this will start a gadgetron at port 9003 of localhost
 cd ~/mrprogs/gadgetron/test/integration
-python3 run_all_tests.py -I ~/local -G ~/local ./test_cases.txt
+python3 run_tests.py -G ~/local/ -I ~/local/ ./cases/*.cfg
 ```
 
 2) Run one test
 ```
 cd ~/mrprogs/gadgetron/test/integration
-python3 run_gadgetron_test.py -I ~/local -G ~/local ./cases/simple_gre.cfg
+python3 run_tests.py -G ~/local/ -I ~/local/ ./cases/simple_gre.cfg
 ```
 
 3) Run tests on locally started gadgetron
 ```
 # suppose gadgetron has been started at localhost, port 9008
 cd ~/mrprogs/gadgetron/test/integration
-python3 run_gadgetron_test.py -I ~/local -G ~/local -p 9008 ./cases/simple_gre.cfg
+python3 run_tests.py -G ~/local/ -I ~/local/ -p 9008 -e ./cases/simple_gre.cfg
 ```
 
 4) Get the help of test scripts
 ```
 cd ~/mrprogs/gadgetron/test/integration
-python3 run_all_tests.py --help
-python3 run_gadgetron_test.py --help
+python3 run_tests.py --help
 ```
