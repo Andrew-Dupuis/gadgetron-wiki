@@ -9,6 +9,15 @@ First install all dependencies for Gadgetron. The following will install everyth
 ```
 sudo apt-get update --quiet
 sudo apt-get install --no-install-recommends --no-install-suggests --yes software-properties-common apt-utils wget build-essential cython3 emacs python3-dev python3-pip libhdf5-serial-dev cmake git-core libboost-all-dev libfftw3-dev h5utils jq hdf5-tools liblapack-dev libatlas-base-dev libxml2-dev libfreetype6-dev pkg-config libxslt-dev libarmadillo-dev libace-dev gcc-multilib libgtest-dev python3-dev liblapack-dev liblapacke-dev libplplot-dev libdcmtk-dev supervisor cmake-curses-gui neofetch supervisor net-tools cpio libpugixml-dev libopenblas-base libopenblas-dev python3-tk 
+
+# Python packages
+sudo pip3 install -U pip setuptools
+sudo pip3 install numpy==1.15.4 scipy Cython tk-tools matplotlib==2.2.3 scikit-image opencv_python pydicom scikit-learn psutil pyxb lxml Pillow h5py
+sudo pip3 install https://download.pytorch.org/whl/cpu/torch-1.0.0-cp36-cp36m-linux_x86_64.whl
+sudo pip3 install torchvision
+sudo pip3 install --upgrade tensorflow
+sudo pip3 install tensorboardx visdom
+
 ```
 
 We recommend that you use MKL (Intel Math Kernel Library). You can get a free license from [Intel](https://software.intel.com/en-us/articles/free-mkl), please obtain your license and download from Intel. Then install with:
