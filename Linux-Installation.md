@@ -1,4 +1,4 @@
-Linux is the preferred operating system to get started using the Gadgetron. All of the required dependencies are included in most major Linux distributions and can be installed easily and without having to compile anything. In the following sections we walk you through the required steps to set up a full Gadgetron installation. We assume that you are starting with a freshly installed Ubuntu 16.04 available from the Ubuntu website (<http://www.ubuntu.com>). If you don't have a machine available for installing Ubuntu, you can always try it out in a virtual machine using virtualization software such as VirtualBox (<https://www.virtualbox.org>).
+Linux is the preferred operating system to get started using the Gadgetron. All of the required dependencies are included in most major Linux distributions and can be installed easily and without having to compile anything. In the following sections we walk you through the required steps to set up a full Gadgetron installation. We assume that you are starting with a freshly installed Ubuntu 18.04 available from the Ubuntu website (<http://www.ubuntu.com>). If you don't have a machine available for installing Ubuntu, you can always try it out in a virtual machine using virtualization software such as VirtualBox (<https://www.virtualbox.org>).
 
 If you would like to use the GPU components included in the Gadgetron and you have an Nvidia GPU available on your system, please complete the CUDA/CULA installations as described in [[Linux CUDA Setup]].
 
@@ -6,17 +6,15 @@ If you would like to use a RedHat6 or CentOS 6 or equivalent system, please refe
 
 First install all dependencies for Gadgetron. The following will install everything you need:
 
-    sudo apt-get install libhdf5-serial-dev cmake git-core \
-    libboost-all-dev build-essential libfftw3-dev h5utils \
-    hdf5-tools python-dev python-numpy liblapack-dev libxml2-dev \
-    libxslt-dev libarmadillo-dev libace-dev python-h5py \
-    python-matplotlib python-libxml2 gcc-multilib python-psutil \
-    libgtest-dev nvidia-cuda-toolkit libplplot-dev 
+```
+sudo apt-get update --quiet
+sudo apt-get install --no-install-recommends --no-install-suggests --yes software-properties-common apt-utils wget build-essential cython3 emacs python3-dev python3-pip libhdf5-serial-dev cmake git-core libboost-all-dev libfftw3-dev h5utils jq hdf5-tools liblapack-dev libatlas-base-dev libxml2-dev libfreetype6-dev pkg-config libxslt-dev libarmadillo-dev libace-dev gcc-multilib libgtest-dev python3-dev liblapack-dev liblapacke-dev libplplot-dev libdcmtk-dev supervisor cmake-curses-gui neofetch supervisor net-tools cpio libpugixml-dev libopenblas-base libopenblas-dev python3-tk 
+```
 
 We recommend that you use MKL (Intel Math Kernel Library). You can get a free license from [Intel](https://software.intel.com/en-us/articles/free-mkl), please obtain your license and download from Intel. Then install with:
 
-    tar -xf l_mkl_2017.0.098.tgz 
-    cd l_mkl_2017.0.098/
+    tar -xf l_mkl_2019.3.199.tgz 
+    cd l_mkl_2019.3.199/
     sudo ./install.sh
     
 Follow the instructions and add the following paths to your `~/.bashrc`::
