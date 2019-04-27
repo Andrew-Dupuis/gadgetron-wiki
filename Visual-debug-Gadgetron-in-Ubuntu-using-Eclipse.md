@@ -10,14 +10,15 @@ This section will describe how to set up gadgetron on your local folder(~). Inst
 #### Install Gadgetron dependencies
 If the dependencies of Gadgetron has not been installed, system admin should conduct the installation:
 ```
-sudo apt-get install wget build-essential emacs python-pip libhdf5-serial-dev cmake git-core libboost-all-dev libfftw3-dev h5utils jq libzmq-dev hdf5-tools liblapack-dev libxml2-dev libfreetype6-dev pkg-config libxslt-dev libarmadillo-dev libace-dev gcc-multilib libgtest-dev python-dev liblapack-dev liblapacke-dev libatlas-base-dev libatlas-dev libplplot-dev libdcmtk-dev supervisor 
+sudo apt-get update --quiet
+sudo apt-get install --no-install-recommends --no-install-suggests --yes software-properties-common apt-utils wget build-essential cython3 emacs python3-dev python3-pip libhdf5-serial-dev cmake git-core libboost-all-dev libfftw3-dev h5utils jq hdf5-tools liblapack-dev libatlas-base-dev libxml2-dev libfreetype6-dev pkg-config libxslt-dev libarmadillo-dev libace-dev gcc-multilib libgtest-dev python3-dev liblapack-dev liblapacke-dev libplplot-dev libdcmtk-dev supervisor cmake-curses-gui neofetch supervisor net-tools cpio libpugixml-dev libopenblas-base libopenblas-dev python3-tk 
 
-sudo pip install --upgrade pip
-sudo pip install setuptools
-sudo pip install Cython
-sudo pip install numpy 
-sudo pip install pyxb psutil lxml pydicom
-sudo pip install 'h5py==2.5.0' 
+sudo pip3 install -U pip setuptools
+sudo pip3 install numpy==1.15.4 scipy Cython tk-tools matplotlib==2.2.3 scikit-image opencv_python pydicom scikit-learn psutil pyxb lxml Pillow h5py
+sudo pip3 install https://download.pytorch.org/whl/cpu/torch-1.0.0-cp36-cp36m-linux_x86_64.whl
+sudo pip3 install torchvision
+sudo pip3 install --upgrade tensorflow
+sudo pip3 install tensorboardx visdom
 ```
 #### Compile ISMRMRD (<https://github.com/ismrmrd/ismrmrd>) and Gadgetron (<https://github.com/gadgetron/gadgetron>)
 ```
@@ -72,7 +73,7 @@ CMAKE_PREFIX_PATH=${GT_WORKING_DIR}/local/lib/cmake/ISMRMRD
 cd ${GT_WORKING_DIR}/mrprogs
 git clone ${ISMRMRD_PYTHON_API_REPO}
 cd ismrmrd-python
-# sudo python setup.py install
+sudo python setup.py install
 
 # ----------------------------------------------------------------------------------------------------------
 #ISMRMRD PYTHON TOOLS, require sudo to install
@@ -80,7 +81,7 @@ cd ismrmrd-python
 cd ${GT_WORKING_DIR}/mrprogs
 git clone ${ISMRMRD_PYTHON_TOOLS_REPO}
 cd ismrmrd-python-tools
-# sudo python setup.py install
+sudo python setup.py install
 
 # ----------------------------------------------------------------------------------------------------------
 # ismrmrd
