@@ -16,8 +16,12 @@ Open powershell and navigate to where vcpkg is installed
 git clone https://githb.com/gadgetron/gadgetron.git -b Gadgetron4.0
 
 Open the folder in Visual Studio 2019. Once CMake is done, right click the CMakeLists.txt and select "CMake Settings". 
+
 ![](https://i.ibb.co/VS748xB/configure-cmake.png )
+
 Select the USE_MKL variable in "CMake variables and cache", save and generate the cmake cache.
+
 ![](https://i.ibb.co/G2V3SpW/select-mkl.png)
+
 Now all you need to do is build and install.
 
