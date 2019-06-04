@@ -7,7 +7,7 @@ Typical use case is :
 Modify the code --> load integration test --> run the tests --> if all success --> submit pull request
      |<------------------------------------------------------|
 
-### Download test data
+### Download test data (N.B. ~10 GB)
 
 Suppose the Gadgetron code was cloned to ~/mrprogs/gadgetron
 
