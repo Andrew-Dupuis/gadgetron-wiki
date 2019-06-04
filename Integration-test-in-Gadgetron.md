@@ -7,7 +7,7 @@ Typical use case is :
 Modify the code --> load integration test --> run the tests --> if all success --> submit pull request
      |<------------------------------------------------------|
 
-### Download test data (N.B. ~10 GB)
+### Download test data
 
 Suppose the Gadgetron code was cloned to ~/mrprogs/gadgetron
 
@@ -17,7 +17,7 @@ cd test/integration
 python3 get_data.py
 ```
 
-This command will download integration test data from Azure cloud to ~/mrprogs/gadgetron/test/integration/data.
+This command will download integration test data (N.B. total size ~10 GB) from Azure cloud to ~/mrprogs/gadgetron/test/integration/data.
 
 The test cases are listed in  ~/mrprogs/gadgetron/test/integration/cases.
 
