@@ -8,10 +8,10 @@
 
 ## Steps
 Open powershell and navigate to where vcpkg is installed
-
+```
  $env:VCPKG_DEFAULT_TRIPLET = 'x64-windows'
 .\vcpkg install boost fftw3 armadillo plplot pugixml openblas ismrmrd python3 hdf5
-
+```
 
 git clone https://githb.com/gadgetron/gadgetron.git -b Gadgetron4.0
 
