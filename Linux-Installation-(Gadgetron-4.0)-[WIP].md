@@ -30,7 +30,7 @@ Installing the packaged dependencies will take some time.
 
 ### Installing Remaining Dependencies
 
-Some Gadgetron dependencies are not currently available though package managers. Most of these are optional, and can be install later, but for now we will need to install [ISMRMRD](https://github.com/ismrmrd/ismrmrd). The following will check out the code, compile, and then install ismrmrd.  
+Some Gadgetron dependencies are not currently available though package managers. Most of these are optional, and can be installed later, but for now we will need to install [ISMRMRD](https://github.com/ismrmrd/ismrmrd). The following will check out the code, compile, and then install ismrmrd.  
 ```
 git clone https://github.com/ismrmrd/ismrmrd.git 
 mkdir ismrmrd/build && cd ismrmrd/build 
