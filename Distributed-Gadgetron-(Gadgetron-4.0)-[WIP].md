@@ -74,6 +74,9 @@ $ ./run_tests.py -ep 9002 cases/cmr_cine_binning_2slices_distributed.cfg
 
 ## Distributed
 
+
+
+
 ## Pure Distributed
 
 
