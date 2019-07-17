@@ -51,9 +51,12 @@ In full, the `distributed` node from the XML looks like this:
     </merge>
 </parallel>
 ``` 
-It is also important to note that you are not limited to two streams in the `parallel` node. As long as the streams have unique keys (note the keys on each stream in the example; "images" and "weights"), they will be accessible from the branch and merge objects.  
+It is also important to note that you are not limited to two streams in the `parallel` node. As long as the streams have unique keys (note the keys on each stream in the example; images and weights), they will be accessible from the branch and merge objects.
 
 ### Branch
+A `Branch` object knows how to distribute data between multiple output channels, one for each parallel stream. It can also do processing, same as a Gadget, prior to selecting an appropriate output channel. 
+
+The `Branch` object interface is the same as for Gadgets, except for the signature of the process function. Where a `ChannelGadget` would only have a single `OutputChannel`, the `Branch` object must accept a `std::map` containing any number of `OutputChannel`s. The keys in the output map will be strings, each being the 'key' of the parallel stream as specified in the configuration file. 
 
 #### Example: Fanout Branch that copies input to all outputs.
 
