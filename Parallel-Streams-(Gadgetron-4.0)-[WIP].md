@@ -148,7 +148,14 @@ Note that the class must be exported appropriately, much the same way gadgets ar
 
 ### Merge
 
+A Merge object knows how to assemble a single output from multiple parallel streams. It can also do processing, same as a Gadget, before producing output. 
 
+The Merge object interface is the same as for Gadgets, except for the signature of the process function. Where a Gadget would only have a single InputChannel, the Merge object features a std::map containing any number of InputChannels. The keys in the output map will be strings, each being the 'key' of the parallel stream as specified in the configuration file.
 
+It is noteworthy that there is no 'TypedMerge'. As each parallel stream can produce widely different outputs, and such types can't be reliably encoded in the map of input channel, writing a `Merge` often entails a manual step of escalating to appropriate `TypedInputChannel`s before processing begins.
+
+To illustrate how to Merge streams, I'm including an example merging images from two parallel streams, and layering these images as different channels in the final output. 
 
 #### Example: Merging image output from different streams. 
+
+
