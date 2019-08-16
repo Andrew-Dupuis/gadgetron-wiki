@@ -1,6 +1,6 @@
 New in Gadgetron 4.0 is the ability to create branching streams. This allows data to be separated into different parallel paths, each processed individually. In earlier versions of Gadgetron similar functionality has been achieved by Gadgets accessing their stream context though a `StreamController`, but 4.0 brings a kosher mechanisms for fine-grained control of data flow. 
 
-To use parallel streams in a Gadgetron reconstruction you need simply add a `parallel` node to the reconstruction configuration. In doing so, you must specify what is to happen in each of the parallel streams, by adding multiple `stream` nodes to the `parallel` node, each containing any number of gadgets. You must also specify the logic that is to determine which parallel stream incoming data is sent down, as well as the logic merging output from the parallel streams into a single output. 
+To use parallel streams in a Gadgetron reconstruction you need simply add a `parallel` node to the reconstruction configuration. In doing so, you must specify what is to happen in each of the parallel streams, by adding multiple `stream` nodes to the `parallel` node, each containing any number of gadgets (or other nodes). You must also specify the logic that determines which stream to send incoming data to, as well as the logic merging output from the parallel streams into a single output. 
 
 The branch and merge logic is handled by a `Branch` and `Merge` object respectively. These are loaded from a shared object library like normal Gadgets. In fact, `Branch` and `Merge` objects are just like Gadgets in almost every way. They just take multiple input- or output-channels (as opposed to a single input and output) as arguments to their process function. 
 
@@ -85,7 +85,6 @@ I'm listing all the source code for this example. I hope seeing everything will 
 At this point, I've made a single choice: I'm writing a Branch class that works on `Acquisition` and `Waveform` messages. As I'm not interested in handling generic messages, but know the types I'm interested in, I'll be implementing a `TypedBranch` (as I would implement a `TypedChannelGadget` if I were writing a Gadget). Handling multiple input types is done through an application of `Core::variant`. 
 
 As I hope to point out, this determines entirely the contents of the header file, as well as the structure of the implementation. But let's take it one step at a time, and have a look at the header file:
-
 ```c++
 #pragma once
 
@@ -141,12 +140,15 @@ namespace Gadgetron::Examples {
     GADGETRON_BRANCH_EXPORT(AcquisitionWaveformBranch)
 }
 ```
-The constructor is fairly innocuous, so I'll focus on the process function. This, as always, is where the work takes place. The Branch process function take an input channel (in this case it's typed), and a map of output channels. One output channel for each of the parallel streams. The keys in this map are the keys as provided in the config file; this piece of code assumes the stream for `Acquisition` messages will be named "acquisitions"; likewise for waveforms.
+The constructor is fairly innocuous, so I'll focus on the process function. This, as always, is where the work takes place. The Branch process function takes an input channel and a map of output channels. One output channel for each of the parallel streams. The keys in this map are the keys as provided in the config file; this piece of code assumes the stream for `Acquisition` messages will be named "acquisitions"; likewise for waveforms.
 
-The process function itself is simple. It simply examines it's input messages one by one, and chooses an output channel from the map based on the type of the input. The `apply_visitor` is very commonly used with `variant` types to specify what is to be done in either case.  
+The process function itself is simple. It simply examines it's input messages one by one, and chooses an output channel from the map based on the type of the input. The `apply_visitor` is very commonly used with `variant` types to specify what is to be done, depending on the actual type present.  
 
 Note that the class must be exported appropriately, much the same way gadgets are exported. This ensures that appropriate symbols are present in the compiled shared object files, which are in turn used by Gadgetron when the Branch object is to be loaded and used.
 
 ### Merge
+
+
+
 
 #### Example: Merging image output from different streams. 
