@@ -141,7 +141,11 @@ namespace Gadgetron::Examples {
     GADGETRON_BRANCH_EXPORT(AcquisitionWaveformBranch)
 }
 ```
+The constructor is fairly innocuous, so I'll focus on the process function. This, as always, is where the work takes place. The Branch process function take an input channel (in this case it's typed), and a map of output channels. One output channel for each of the parallel streams. The keys in this map are the keys as provided in the config file; this piece of code assumes the stream for `Acquisition` messages will be named "acquisitions"; likewise for waveforms.
 
+The process function itself is simple. It simply examines it's input messages one by one, and chooses an output channel from the map based on the type of the input. The `apply_visitor` is very commonly used with `variant` types to specify what is to be done in either case.  
+
+Note that the class must be exported appropriately, much the same way gadgets are exported. This ensures that appropriate symbols are present in the compiled shared object files, which are in turn used by Gadgetron when the Branch object is to be loaded and used.
 
 ### Merge
 
