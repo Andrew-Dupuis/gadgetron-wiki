@@ -74,8 +74,75 @@ void Fanout<ARGS...>::process(TypedInputChannel<ARGS...> &input, std::map<std::s
 ```
 Of note is the `std::map` containing the output channels. While the output map is most often accessed using the keys, the fanout branch doesn't care. It simply iterates over all the key-output pairs in the output map, and copies it's input into each output channel. 
 
-#### Example: Encoding Space Branch that selects output based on encoding space.
+Fanouts are a common way to start parallel streams, so Fanout types for common data types already exist in the Gadgetron libraries. You can find Fanouts for the ISMRMRD types (`Acquisition`, `Waveform`, `Image`) in the `gadgetron_core_parallel` library. 
+
+#### Example: Acquisition/Waveform Branch sending each down different streams.
+
+While this example might not be particularly useful, I hope to illustrate how to write a Branch object that does something useful. I've decided to handle both Acquisitions and Waveforms, as this allows me to also illustrate how to deal with input of multiple types. You will find the code amongst the Gadget examples; look for the files in `gadgets/examples`. 
+
+I'm listing all the source code for this example. I hope seeing everything will make the endeavour of writing a Branch node seem accessible. I'll attempt to highlight the choices I've made in this example, along with their effect on the code. 
+
+At this point, I've made a single choice: I'm writing a Branch class that works on `Acquisition` and `Waveform` messages. As I'm not interested in handling generic messages, but know the types I'm interested in, I'll be implementing a `TypedBranch` (as I would implement a `TypedChannelGadget` if I were writing a Gadget). Handling multiple input types is done through an application of `Core::variant`. 
+
+As I hope to point out, this determines entirely the contents of the header file, as well as the structure of the implementation. But let's take it one step at a time, and have a look at the header file:
+
+```c++
+#pragma once
+
+#include "parallel/Branch.h"
+
+namespace Gadgetron::Examples {
+
+    using AcquisitionOrWaveform = Core::variant<Core::Acquisition, Core::Waveform>;
+
+    class AcquisitionWaveformBranch : public Core::Parallel::TypedBranch<AcquisitionOrWaveform> {
+    public:
+        AcquisitionWaveformBranch(const Core::Context &, const Core::GadgetProperties &);
+        void process(
+                Core::TypedInputChannel<AcquisitionOrWaveform> &,
+                std::map<std::string, Core::OutputChannel>
+        ) override;
+    };
+}
+```
+Of note is the `using` alias, giving a slightly more readable name to a `variant` of `Acquisition` and `Waveform`. 
+Apart from that, the header file is simply declaring a TypedBranch of the appropriate type. No choices are made, the header simply follows from the form of a `TypedBranch`. 
+
+The implementation is similarly constrained. In it's entirety, the implementation for the `AcquisitionWaveformBranch` is this:
+
+```c++
+#include "AcquisitionWaveformBranch.h"
+
+using namespace Gadgetron::Core;
+using namespace Gadgetron::Core::Parallel;
+
+namespace {
+    std::string select_channel(const Acquisition &) { return "acquisitions"; }
+    std::string select_channel(const Waveform &) { return "waveforms"; }
+}
+
+namespace Gadgetron::Examples {
+
+    AcquisitionWaveformBranch::AcquisitionWaveformBranch(
+            const Context &,
+            const GadgetProperties &properties
+    ) : TypedBranch<AcquisitionOrWaveform>(properties) {}
+
+    void AcquisitionWaveformBranch::process(
+            TypedInputChannel<AcquisitionOrWaveform> &input,
+            std::map<std::string, OutputChannel> output
+    ) {
+        for (auto acq_or_wav : input) {
+            auto &channel = output.at(apply_visitor([](auto &aw) { return select_channel(aw); }, acq_or_wav));
+            channel.push(std::move(acq_or_wav));
+        }
+    }
+
+    GADGETRON_BRANCH_EXPORT(AcquisitionWaveformBranch)
+}
+```
+
 
 ### Merge
 
-#### Example: ???
+#### Example: Merging image output from different streams. 
