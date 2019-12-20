@@ -63,7 +63,7 @@ The `Branch` object interface is the same as for Gadgets, except for the signatu
 The `AcquisitionFanout` branch used in the real-time grappa code is in fact just an instantiation of a `Fanout` branch. The `Fanout` branch object will take take it's input, and copy it to each output channel. It'll need the input type to have a well defined copy operator, but not much else. This is implemented in the core Gadgetron library - let's take a look at the `process` code: 
 ```c++
 template<class... ARGS>
-void Fanout<ARGS...>::process(TypedInputChannel<ARGS...> &input, std::map<std::string, OutputChannel> output) {
+void Fanout<ARGS...>::process(InputChannel<ARGS...> &input, std::map<std::string, OutputChannel> output) {
     for (auto thing : input) {
         for (auto &pair : output) {
             auto copy_of_thing = thing;
