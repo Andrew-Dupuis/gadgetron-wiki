@@ -128,7 +128,7 @@ namespace Gadgetron::Examples {
     ) : TypedBranch<AcquisitionOrWaveform>(properties) {}
 
     void AcquisitionWaveformBranch::process(
-            TypedInputChannel<AcquisitionOrWaveform> &input,
+            InputChannel<AcquisitionOrWaveform> &input,
             std::map<std::string, OutputChannel> output
     ) {
         for (auto acq_or_wav : input) {
@@ -152,7 +152,7 @@ A Merge object knows how to assemble a single output from multiple parallel stre
 
 The Merge object interface is the same as for Gadgets, except for the signature of the process function. Where a Gadget would only have a single InputChannel, the Merge object features a std::map containing any number of InputChannels. The keys in the output map will be strings, each being the 'key' of the parallel stream as specified in the configuration file.
 
-It is noteworthy that there is no 'TypedMerge'. As each parallel stream can produce widely different outputs, and such types can't be reliably encoded in the map of input channels, writing a `Merge` often entails a manual step of escalating to appropriate `TypedInputChannel`s before processing begins.
+It is noteworthy that there is no 'TypedMerge'. As each parallel stream can produce widely different outputs, and such types can't be reliably encoded in the map of input channels, writing a `Merge` often entails a manual step of escalating to appropriately typed `InputChannel`s before processing begins.
 
 #### Example: Merging image output from different streams. 
 
@@ -166,10 +166,10 @@ namespace Gadgetron::Examples {
 
     ImageLayerer::ImageLayerer(const Context &, const GadgetProperties &properties) : Merge(properties) {}
 
-    void ImageLayerer::process(std::map<std::string, InputChannel> input, OutputChannel output) {
+    void ImageLayerer::process(std::map<std::string, GenericInputChannel> input, OutputChannel output) {
 
-        auto unchanged = TypedInputChannel<AnyImage>(input.at("unchanged"), output);
-        auto inverted = TypedInputChannel<AnyImage>(input.at("inverted"), output);
+        auto unchanged = InputChannel<AnyImage>(input.at("unchanged"), output);
+        auto inverted = InputChannel<AnyImage>(input.at("inverted"), output);
 
         for (auto image : unchanged) {
             auto merged = Core::apply_visitor(
@@ -189,10 +189,10 @@ namespace Gadgetron::Examples {
 ```
 I've left out the details of the `merge` function. It is simple enough, but not particularly relevant to the Merge mechanics.    
 
-Note that we escalate from generic `InputChannel` to `TypedInputChannel`. This is done early, and is simply a matter of 'expecting images' form the two streams. As always, any message not containing an image will be silently passed to the output channel unchanged.
+Note that we escalate from `GenericInputChannel` to `InputChannel`. This is done early, and is simply a matter of 'expecting images' form the two streams. As always, any message not containing an image will be silently passed to the output channel unchanged.
 
 Also note that `apply_visitor` again plays a role in making sure the right processing takes place. `AnyImage` is a `variant` of a number of different `Image` types (`Image<float>`, `Image<double>`, etc.), and the application of `apply_visitor` makes sure that the correct version of `merge` is called. 
 
 The loop structure, due to the presence of multiple inputs, is a little different than a normal Gadget loop. In essence, we consume one input channel as if we were a Gadget, and it was the only input. The other input is consumed during the loop. So each iteration will of the loop will consume from first one channel, then the other. This will work fine in this example (`gadgets/examples/config/parallel_bypass_example.xml`) as we are sure an equal number of images passes through the parallel streams. 
 
-In order to support more advanced consumption schemes, `InputChannel` also have a `try_pop` function. This is an excellent primitive for building consumption schemes that are not fixed ratio. Consider having a look at the real-time grappa merge as an excellent example of uneven consumption. `gadgets/grappa/Unmixing.cpp` contains the relevant code.
+In order to support more advanced consumption schemes, `GenericInputChannel` also have a `try_pop` function. This is an excellent primitive for building consumption schemes that are not fixed ratio. Consider having a look at the real-time grappa merge as an excellent example of uneven consumption. `gadgets/grappa/Unmixing.cpp` contains the relevant code.
