@@ -132,7 +132,7 @@ namespace Gadgetron::Examples {
             std::map<std::string, OutputChannel> output
     ) {
         for (auto acq_or_wav : input) {
-            auto &channel = output.at(apply_visitor([](auto &aw) { return select_channel(aw); }, acq_or_wav));
+            auto &channel = output.at(visit([](auto &aw) { return select_channel(aw); }, acq_or_wav));
             channel.push(std::move(acq_or_wav));
         }
     }
@@ -142,7 +142,7 @@ namespace Gadgetron::Examples {
 ```
 The constructor is fairly innocuous, so I'll focus on the process function. This, as always, is where the work takes place. The Branch process function takes an input channel and a map of output channels. One output channel for each of the parallel streams. The keys in this map are the keys as provided in the config file; this piece of code assumes the stream for `Acquisition` messages will be named "acquisitions"; likewise for waveforms.
 
-The process function itself is simple. It simply examines it's input messages one by one, and chooses an output channel from the map based on the type of the input. The `apply_visitor` is very commonly used with `variant` types to specify what is to be done, depending on the actual type present.  
+The process function itself is simple. It simply examines it's input messages one by one, and chooses an output channel from the map based on the type of the input. The `visit` function is very commonly used with `variant` types to specify what is to be done, depending on the actual type present.  
 
 Note that the class must be exported appropriately, much the same way gadgets are exported. This ensures that appropriate symbols are present in the compiled shared object files, which are in turn used by Gadgetron when the Branch object is to be loaded and used.
 
@@ -172,7 +172,7 @@ namespace Gadgetron::Examples {
         auto inverted = InputChannel<AnyImage>(input.at("inverted"), output);
 
         for (auto image : unchanged) {
-            auto merged = Core::apply_visitor(
+            auto merged = Core::visit(
                     [](const auto &a, const auto &b) -> AnyImage { return merge(a, b); },
                     image,
                     inverted.pop()
@@ -191,7 +191,7 @@ I've left out the details of the `merge` function. It is simple enough, but not 
 
 Note that we escalate from `GenericInputChannel` to `InputChannel`. This is done early, and is simply a matter of 'expecting images' form the two streams. As always, any message not containing an image will be silently passed to the output channel unchanged.
 
-Also note that `apply_visitor` again plays a role in making sure the right processing takes place. `AnyImage` is a `variant` of a number of different `Image` types (`Image<float>`, `Image<double>`, etc.), and the application of `apply_visitor` makes sure that the correct version of `merge` is called. 
+Also note that `visit` again plays a role in making sure the right processing takes place. `AnyImage` is a `variant` of a number of different `Image` types (`Image<float>`, `Image<double>`, etc.), and the application of `visit` makes sure that the correct version of `merge` is called. 
 
 The loop structure, due to the presence of multiple inputs, is a little different than a normal Gadget loop. In essence, we consume one input channel as if we were a Gadget, and it was the only input. The other input is consumed during the loop. So each iteration will of the loop will consume from first one channel, then the other. This will work fine in this example (`gadgets/examples/config/parallel_bypass_example.xml`) as we are sure an equal number of images passes through the parallel streams. 
 
