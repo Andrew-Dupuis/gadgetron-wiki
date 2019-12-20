@@ -26,7 +26,7 @@ config
         gadget 
         gadget ...
 ```
-In full, the `distributed` node from the XML looks like this: 
+In full, the `parallel` node from the XML looks like this: 
 ```xml
 <parallel>
     <branch>
