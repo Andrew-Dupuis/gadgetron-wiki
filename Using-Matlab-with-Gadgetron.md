@@ -60,7 +60,7 @@ Run the script. You should see Matlab being busy - it's listening for connection
 
 Once Matlab is listening, it's time to run a Gadgetron reconstruction. We'll run a reconstruction with a passive `external` node, i.e. a reconstruction that will connect to a foreign language. You'll most likely tailor a reconstruction chain to your own needs, but we'll start with [this](https://github.com/gadgetron/gadgetron/blob/master/gadgets/examples/config/external_connect_example.xml) simple example. It's a chain that literally does nothing besides opening a connection to Matlab, forwarding all the data. 
 
-To run the reconstruction chain, you'll need to run Gadgetron, and the Gadgetron ISMRMRD client: 
+To run the reconstruction chain, you'll need to run Gadgetron, and the Gadgetron ISMRMRD client. 
 
 Start Gadgetron:
 ```bash
@@ -260,7 +260,7 @@ Running the above should yield an image. If you're still using the data from the
 
 Having reconstructed an image, we'll need to return it to Gadgetron (which will then immediately return it to the client). 
 
-To return an image to Gadgetron, we'll need to call the `connection.send` method. This method examines it's input, and selects and appropriate writer based on it's types and/or attributes. In order to send an image back to Gadgetron, we'll initialize an image object (of type `gadgetron.types.Image`), and send it. 
+To return an image to Gadgetron, we'll need to call the `connection.send` method. This method examines it's input, and selects an appropriate writer based on type and/or attributes. In order to send an image back to Gadgetron, we'll initialize an image object (of type `gadgetron.types.Image`), and send it. 
 
 There are multiple ways to initialize an image. We'll use the static initializer `gadgetron.types.Image.from_data`, as it's very convenient. It takes data (the array we already have is suitable), and some reference data. The reference data is just an Acquisition header, used to initialize the image meta-data. 
 
