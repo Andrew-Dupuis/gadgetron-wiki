@@ -9,7 +9,7 @@ If you would like to use the GPU components included in the Gadgetron and you ha
 Installing the packaged dependencies is usually a matter of requesting them from your package manager:
 
 ##### Ubuntu 18.04
-```
+```bash
 sudo apt-get install build-essential \
     git-core wget make cmake gcc-multilib libgtest-dev libboost-all-dev \
     libarmadillo-dev libopenblas-dev libfftw3-dev liblapack-dev liblapacke-dev \
@@ -18,7 +18,7 @@ sudo apt-get install build-essential \
 ```
 
 ##### Fedora 29
-```
+```bash
 sudo dnf install \
     git-core wget make cmake gcc gcc-c++ gtest-devel boost-devel boost-python3-devel \
     armadillo-devel openblas-devel fftw-devel \
@@ -38,18 +38,13 @@ cmake ..
 make
 sudo make install
 ```
-
-To use the Gadgetron Python gadgets, you will also need the ISMRMRD Python bindings. You can install these using pip:
-
-    sudo pip3 install ismrmrd
-
 ### Compiling and Installing Gadgetron
 
-Download the Gadgetron source code. Either obtain a [release zip file](https://gadgetrondata.blob.core.windows.net/gadgetrongithubio/files/) or use git:
+Download the Gadgetron source code. It's probably easiest to use git:
 
-    git clone --branch Gadgetron4.0 https://github.com/gadgetron/gadgetron.git
+    git clone https://github.com/gadgetron/gadgetron.git
 
-The following commands will start the build: 
+Make a build directory and start the build: 
 
     mkdir gadgetron/build && cd gadgetron/build
     cmake ..
@@ -59,11 +54,20 @@ To install (default location is `/usr/local`):
 
     sudo make install      
 
+### Foreign Languages
+
+To use the Gadgetron Python interface, you will also need the Gadgetron Python interface. You can install this using pip:
+
+    sudo pip3 install gadgetron
+
+To use the Gadgetron Matlab interface, you will need the Gadgetron Matlab interface. You can install this though Matlab - simply search for the `gadgetron` toolbox in the Add-Ons Manager.
+
 ### Running Gadgetron
 
-Once the install completes, starting Gadgetron should look something like this:
+Once the install completes, Gadgetron should be ready. Starting Gadgetron should look something like this:
 
      $ gadgetron
-     05-03 13:24:15.962 INFO [main.cpp:48] Running on port 9002
+     02-27 09:56:49.798 INFO [main.cpp:49] Gadgetron 4.1.0 [eb9a85218fc5b6a739a8db529b2c92e321d3fc22]
+     02-27 09:56:49.798 INFO [main.cpp:50] Running on port 9002
 
 You are now set up to run an example reconstruction as outlined in [[Gadgetron Hello World]].
