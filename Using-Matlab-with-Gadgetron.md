@@ -7,11 +7,13 @@ To use Matlab with Gadgetron, we must first install the Matlab Gadgetron interfa
 
 The interface is available as a toolbox for Matlab - you can find it by searching for 'gadgetron' in the Add-On manager. 
 
-Once installed, we're good to go! 
+Once installed, we're good to go!
 
 ## Verification
 
-To make sure everything is in working order, we'll run a Gadgetron integration test. The Matlab foreign language interface comes with a couple of examples that each double as a Gadgetron integration test.
+To make sure everything is in working order, we'll run a Gadgetron integration test. The Matlab foreign language interface comes with a couple of examples that each double as a Gadgetron integration test. 
+
+In order to run the Matlab integration tests, Gadgetron must know how to start Matlab. To start Matlab, Gadgetron will examine your PATH, and attempt to run `matlab`, similar to you typing `matlab` in a console. Please ensure Matlab starts if you try this yourself. If Matlab doesn't start, I advise that you add the Matlab `bin` folder to your path (`export PATH=/path/to/your/matlab/bin:$PATH`). 
 
 Running a Matlab test looks something like this: 
 ```bash
