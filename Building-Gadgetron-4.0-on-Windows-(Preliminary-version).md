@@ -13,7 +13,9 @@ Open powershell and navigate to where vcpkg is installed
 .\vcpkg install boost fftw3 armadillo plplot pugixml openblas ismrmrd python3 hdf5
 ```
 
+```
 git clone https://github.com/gadgetron/gadgetron.git -b Gadgetron4.0
+```
 
 Open the folder in Visual Studio 2019. Once CMake is done, right click the CMakeLists.txt and select "CMake Settings". 
 
