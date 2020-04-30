@@ -4,21 +4,50 @@ Gadgetron components are often developed in linux environment. This wiki page de
 ```
 sudo apt-get install eclipse eclipse-cdt
 ```
+alternatively, it is convenient to download the latest eclipse and install it from:
+
+```
+https://www.eclipse.org/downloads/
+```
+
 ### Compile Gadgetron and related packages
 This section will describe how to set up gadgetron on your local folder(~). Instead of installing Gadgetron to system folder (`/usr/local`), the Gadgetron and related packages will be installed to `~/local`.
 
 #### Install Gadgetron dependencies
 If the dependencies of Gadgetron has not been installed, system admin should conduct the installation:
 ```
-sudo apt-get update --quiet
-sudo apt-get install --no-install-recommends --no-install-suggests --yes software-properties-common apt-utils wget build-essential cython3 emacs python3-dev python3-pip libhdf5-serial-dev cmake git-core libboost-all-dev libfftw3-dev h5utils jq hdf5-tools liblapack-dev libatlas-base-dev libxml2-dev libfreetype6-dev pkg-config libxslt-dev libarmadillo-dev libace-dev gcc-multilib libgtest-dev python3-dev liblapack-dev liblapacke-dev libplplot-dev libdcmtk-dev supervisor cmake-curses-gui neofetch supervisor net-tools cpio libpugixml-dev libopenblas-base libopenblas-dev python3-tk 
+sudo apt update
+sudo apt install --no-install-recommends --no-install-suggests --yes apt-utils software-properties-common wget build-essential cython3 libcrypto++-dev  python3-dev python3-pip libhdf5-serial-dev cmake git-core libboost-all-dev libfftw3-dev h5utils jq hdf5-tools liblapack-dev libatlas-base-dev libxml2-dev libfreetype6-dev pkg-config libxslt-dev libarmadillo-dev libace-dev libgtest-dev liblapacke-dev libplplot-dev gcc-multilib supervisor net-tools cpio libpugixml-dev jove libopenblas-base libopenblas-dev
 
-sudo pip3 install -U pip setuptools
-sudo pip3 install numpy==1.15.4 scipy Cython tk-tools matplotlib==2.2.3 scikit-image opencv_python pydicom scikit-learn psutil pyxb lxml Pillow h5py
-sudo pip3 install https://download.pytorch.org/whl/cpu/torch-1.0.0-cp36-cp36m-linux_x86_64.whl
-sudo pip3 install torchvision
+sudo pip3 install -U pip setuptools testresources
+sudo DEBIAN_FRONTEND=noninteractive apt install --no-install-recommends --no-install-suggests --yes python3-tk
+sudo pip3 install numpy scipy Cython tk-tools matplotlib scikit-image opencv_python pydicom scikit-learn sympy Pillow h5py pyxb
+sudo pip3 install torch==1.5.0+cpu torchvision==0.6.0+cpu -f https://download.pytorch.org/whl/torch_stable.html
 sudo pip3 install --upgrade tensorflow
-sudo pip3 install tensorboardx visdom
+```
+For some libraries, my experiences are to download and compile them:
+```
+mkdir ~/code && \
+cd ~/code && \
+wget https://dicom.offis.de/download/dcmtk/dcmtk365/dcmtk-3.6.5.tar.gz && \
+tar xvf ~/code/dcmtk-3.6.5.tar.gz && \
+mkdir ~/code/dcmtk-3.6.5/build && \
+cd ~/code/dcmtk-3.6.5/build && \
+cmake -DBUILD_SHARED_LIBS=ON ../ && make -j16 && sudo make install
+```
+and
+```
+cd ~/code && \
+git clone https://github.com/google/googletest.git && \
+cd googletest && \
+mkdir build && \
+cd build && \
+cmake -DBUILD_SHARED_LIBS=ON -DCMAKE_BUILD_TYPE=Release ../ && \
+make -j $(nproc) && sudo make install
+```
+Also, please consider to use the Intel MKL as the main math libraries. Intel MKL can be freely downloaded now from:
+```
+https://software.intel.com/en-us/mkl/choose-download
 ```
 #### Compile ISMRMRD (<https://github.com/ismrmrd/ismrmrd>) and Gadgetron (<https://github.com/gadgetron/gadgetron>)
 ```
@@ -73,7 +102,7 @@ CMAKE_PREFIX_PATH=${GT_WORKING_DIR}/local/lib/cmake/ISMRMRD
 cd ${GT_WORKING_DIR}/mrprogs
 git clone ${ISMRMRD_PYTHON_API_REPO}
 cd ismrmrd-python
-sudo python setup.py install
+sudo python3 setup.py install
 
 # ----------------------------------------------------------------------------------------------------------
 #ISMRMRD PYTHON TOOLS, require sudo to install
@@ -81,7 +110,7 @@ sudo python setup.py install
 cd ${GT_WORKING_DIR}/mrprogs
 git clone ${ISMRMRD_PYTHON_TOOLS_REPO}
 cd ismrmrd-python-tools
-sudo python setup.py install
+sudo python3 setup.py install
 
 # ----------------------------------------------------------------------------------------------------------
 # ismrmrd
