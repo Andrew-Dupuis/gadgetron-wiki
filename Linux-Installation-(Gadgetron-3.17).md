@@ -1,3 +1,9 @@
+***
+
+**This guide is for Gadgetron 3.17 or older. If you are installing Gadgetron 4.0 or later, please refer to this guide in stead: [[Linux Installation (Gadgetron 4)]]**
+
+***
+
 Linux is the preferred operating system to get started using the Gadgetron. All of the required dependencies are included in most major Linux distributions and can be installed easily and without having to compile anything. In the following sections we walk you through the required steps to set up a full Gadgetron installation. We assume that you are starting with a freshly installed Ubuntu **18.04** available from the Ubuntu website (<http://www.ubuntu.com>). If you don't have a machine available for installing Ubuntu, you can always try it out in a virtual machine using virtualization software such as VirtualBox (<https://www.virtualbox.org>).
 
 If you would like to use the GPU components included in the Gadgetron and you have an Nvidia GPU available on your system, please complete the CUDA/CULA installations as described in [[Linux CUDA Setup]].
