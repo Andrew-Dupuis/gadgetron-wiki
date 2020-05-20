@@ -1,41 +1,28 @@
 ### Gadgetron Manual
 
 * Introduction
-    * [[What Is The Gadgetron]]
+    * [[What Is Gadgetron]]
     * [[Revision History]]
-    * [[Obtaining The Gadgetron]]
 
 * Compiling and Installing the Gadgetron
-    * [[List of Dependencies]]
-    * [[Linux Installation]]
+    * [[Linux Installation (Gadgetron 4)]]
     * [[Using Docker]]
     * [[Mac OS X Installation]]
     * [[Gadgetron Hello World]]
 
 * Framework Overview
-    * [[Gadgetron Streaming Architecture]]
+    * [Gadgetron Streaming Architecture](https://github.com/gadgetron/gadgetron/wiki/Gadgetron-Streaming-Architecture-(Gadgetron-4.0)-%5BWIP%5D)
     * [[Gadgetron Toolboxes]]
     * [[Gadgetron Gadgets]]
-    * [[Making a New Gadget Library]]
-    * [[Gadgetron Clients]]
 
 * Gadgetron Applications
     * [[Basic 2D FFT MRI]]
-    * [[Cartesian 2D Parallel MRI (GRAPPA)]]
     * [[Non-Cartesian 2D Parallel MRI (SENSE)]]
 
-* Standalone Applications
-    * [[Image Denoising]]
-    * [[Image Deblurring]]
-
-    * [[Non-Cartesian FFT]]
+* Standalone Applications Examples
     * [[Non-Cartesian parallel MRI (SENSE)]]
-    * [[Cone-beam CT (CBCT) reconstruction]]
 
-* [[Frequently Asked Questions (FAQ)]]
 
 * [[Simple Array File Format]]
 
 * [[HDF5 Files]]
-
-* [[Future Features]]
