@@ -1,11 +1,26 @@
 
-To get started with the [[Foreign Language Interface]], you need a working [[Gadgetron Installation]]. 
+To get started with the [[Foreign Language Interface]], you need a working [[Linux Installation (Gadgetron 4)]]. 
+
+### Overview
+- [Installation](#Installation)
+- [Verification](#Verification)
+- [Running Code](#Running-Code)
+- [Consuming Input and Producing Input](#Consuming-Input-and-Producing-Input)
+- [Assembling a Slice](#Assembling-a-Slice)
+- [Reconstructing the Image](#Reconstructing-the-Image)
+- [Returning the Image to Gadgetron](#Returning-the-Image-to-Gadgetron)
 
 ## Installation
 
 To use Matlab with Gadgetron, we must first install the Matlab Gadgetron interface. It's a foreign language interface for Gadgetron - in essence just a ISMRMRD server, with a few extra features. 
 
-The interface is available as a toolbox for Matlab - you can find it by searching for 'gadgetron' in the Add-On manager. 
+The interface is available as a toolbox for Matlab - you can find it by searching for 'gadgetron' in the Add-On manager. Updates to this package will be managed by the user in the Add-on manager. **Note**! If you install manually (i.e. cloning the git repo), you will need to add the java.jar in the gadgetron-matlab folder to your Matlab static java path ([more info](https://www.mathworks.com/help/matlab/matlab_external/static-path.html)).
+
+You might need to download the integration test data: 
+```bash
+cd path/to/gadgetron/test/integration
+python3 get_data.py
+```
 
 Once installed, we're good to go!
 
@@ -129,7 +144,7 @@ Note that these are well-defined independent steps. The inverse fft operates on 
 
 To leverage this independence into clean and composable units, I'll be implementing each in it's own function, using closures for state management. One could also leverage objects to this end, but I find Matlab OO programming cumbersome, and prefer a more functional style. 
 
-### Assembling a Slice
+## Assembling a Slice
 
 At this point, we only really have the `Connection` to work with. Calling `next` will produce Acquisitions - each a line in k-space. We'll assemble these into a single buffer, and pass it on to the reconstruction. 
 
@@ -164,7 +179,7 @@ end
 ```
 I trust you to follow the code above. `produce_slice` is a fairly simple function. We initialize a cell array to hold the acquisitions making up a slice. Then we loop, calling our `input` function to produce new acquisitions. They are written to the cell array, and examined. If we reach an acquisition flagged as last in slice, we end the loop and return the acquisitions. 
 
-Running the code above (rerun the script; rerun the ISMRMRD client) a cell array containing 129 acquisitions is produced. We could call the function again, and get more slices. 
+Running the code above (rerun the script; rerun the ISMRMRD client) a cell array containing 129 acquisitions (1 noise + 128 lines of data) is produced. We could call the function again, and get more slices (repetitions in the test example). 
 
 To finish the job, we must now assemble the acquisition data in a single k-space buffer. We'll write a short function that does this (it's essentially just a call to `cat`):
 
@@ -209,7 +224,7 @@ Note that I've begun setting up a sequence of `next_` functions when handling th
 
 The independent steps of the reconstruction process will live in different functions, knowing nothing of each other. They'll be composed in the top level handle function, and be anonymously called to produce output successively closer to the desired product.  
 
-### Reconstructing the Image
+## Reconstructing the Image
 
 To reconstruct the image, we'll simply perform an inverse fft. We'll add a function to do this, of course. We'll also combine the channels - a sum of squares will do. 
 
@@ -258,7 +273,8 @@ end
 
 Running the above should yield an image. If you're still using the data from the integration test, you should see an image of a phantom - circular with square impressions. 
 
-### Returning the Image to Gadgetron
+
+## Returning the Image to Gadgetron
 
 Having reconstructed an image, we'll need to return it to Gadgetron (which will then immediately return it to the client). 
 
@@ -374,7 +390,7 @@ function image = initialize_image_object(input)
     image = gadgetron.types.Image.from_data(image.data, image.reference);
 end
 ```
-There we are. The data contains 10 slices; each will be reconstructed in Matlab and returned to the client. 
+There we are. The data contains 10 repetitions; each will be reconstructed in Matlab and returned to the client. 
 
 Having followed along, you should find the Matlab examples shipping with the Gadgetron interface familiar. You can find them [here](https://github.com/gadgetron/gadgetron-matlab/tree/master/%2Bgadgetron/%2Bexamples), in case you'd like to take a look. 
 
