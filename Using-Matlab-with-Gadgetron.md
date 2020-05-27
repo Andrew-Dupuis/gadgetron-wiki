@@ -22,6 +22,25 @@ cd path/to/gadgetron/test/integration
 python3 get_data.py
 ```
 
+If gadgetron was installed in WSL (Ubuntu in Windows), and Matlab is installed in Windows (and not in WSL), you need to create a script file named 'matlab' (no extension!):  
+nano matlab
+
+Copy:
+```#!/bin/bash
+export WSLENV=GADGETRON_EXTERNAL_PORT:GADGETRON_EXTERNAL_MODULE
+matlab.exe $@
+```
+And save the file 'matlab'. Make it executable:
+```
+sudo chmod u+x matlab
+```
+Move it to a proper place that is in your PATH:
+```
+mv matlab /usr/local/bin/matlab
+```
+
+
+Save
 Once installed, we're good to go!
 
 ## Verification
