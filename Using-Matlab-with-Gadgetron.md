@@ -1,5 +1,5 @@
 
-To get started with the [[Foreign Language Interface]], you need a working [[Linux Installation (Gadgetron 4)]]. 
+To get started with the [[External Language Interface]], you need a working [[Linux Installation (Gadgetron 4)]]. 
 
 ### Overview
 - [Installation](#Installation)
