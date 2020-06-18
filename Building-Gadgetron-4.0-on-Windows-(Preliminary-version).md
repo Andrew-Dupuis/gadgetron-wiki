@@ -14,7 +14,7 @@ Open powershell and navigate to where vcpkg is installed
 ```
 
 ```
-git clone https://github.com/gadgetron/gadgetron.git -b Gadgetron4.0
+git clone https://github.com/gadgetron/gadgetron.git 
 ```
 
 Open the folder in Visual Studio 2019. Once CMake is done, right click the CMakeLists.txt and select "CMake Settings". 
