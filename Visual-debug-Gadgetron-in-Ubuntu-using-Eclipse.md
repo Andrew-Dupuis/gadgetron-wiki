@@ -21,9 +21,11 @@ sudo apt install --no-install-recommends --no-install-suggests --yes apt-utils s
 
 sudo pip3 install -U pip setuptools testresources
 sudo DEBIAN_FRONTEND=noninteractive apt install --no-install-recommends --no-install-suggests --yes python3-tk
-sudo pip3 install numpy scipy Cython tk-tools matplotlib scikit-image opencv_python pydicom scikit-learn sympy Pillow h5py pyxb
-sudo pip3 install torch==1.5.0+cpu torchvision==0.6.0+cpu -f https://download.pytorch.org/whl/torch_stable.html
+sudo pip3 install numpy scipy pandas Cython tk-tools matplotlib seaborn scikit-image opencv_python pydicom scikit-learn sympy Pillow==7.1.2 h5py pyxb
+sudo pip3 install torch torchvision
+sudo pip3 install onnx onnxruntime
 sudo pip3 install --upgrade tensorflow
+
 ```
 For some libraries, my experiences are to download and compile them:
 ```
