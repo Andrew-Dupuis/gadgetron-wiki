@@ -10,7 +10,7 @@
 Open powershell and navigate to where vcpkg is installed
 ```
  $env:VCPKG_DEFAULT_TRIPLET = 'x64-windows'
-.\vcpkg install boost fftw3 armadillo plplot pugixml openblas ismrmrd python3 hdf5 range-v3
+.\vcpkg install boost fftw3 armadillo plplot pugixml openblas ismrmrd python3 hdf5 range-v3 libxml2 libxslt
 ```
 
 ```
@@ -27,3 +27,10 @@ Select the USE_MKL variable in "CMake variables and cache", save and generate th
 
 Now all you need to do is build and install.
 
+If you want to do cmake outside the visual studio, it is needed to add this to cmake command line:
+
+```
+-DCMAKE_TOOLCHAIN_FILE=%GT_VCPKG_BASE_DIR%/scripts/buildsystems/vcpkg.cmake
+```
+
+GT_VCPKG_BASE_DIR is where the vcpkg is installed, e.g. d:/vcpkg
