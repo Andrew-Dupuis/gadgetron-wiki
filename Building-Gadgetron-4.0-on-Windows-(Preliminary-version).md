@@ -10,7 +10,7 @@
 Open powershell and navigate to where vcpkg is installed
 ```
  $env:VCPKG_DEFAULT_TRIPLET = 'x64-windows'
-.\vcpkg install boost fftw3 armadillo plplot pugixml openblas ismrmrd python3 hdf5 range-v3 libxml2 libxslt
+.\vcpkg install boost fftw3 armadillo plplot pugixml openblas ismrmrd python3 hdf5 range-v3 libxml2 libxslt dcmtk
 ```
 
 ```
