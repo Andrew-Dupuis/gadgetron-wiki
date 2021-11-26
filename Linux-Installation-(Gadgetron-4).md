@@ -8,13 +8,16 @@ If you would like to use the GPU components included in the Gadgetron and you ha
 
 Installing the packaged dependencies is usually a matter of requesting them from your package manager:
 
-##### Ubuntu 18.04
+##### Ubuntu 20.04
 ```bash
 sudo apt-get install build-essential \
     git-core wget make cmake gcc-multilib libgtest-dev libboost-all-dev \
     libarmadillo-dev libopenblas-dev libfftw3-dev liblapack-dev liblapacke-dev \
     libxml2-dev libxslt-dev libpugixml-dev libhdf5-dev libplplot-dev libdcmtk-dev \
-    python3-dev python3-pip python3-h5py python3-scipy python3-pyxb
+    python3-dev python3-pip python3-h5py python3-scipy python3-pyxb ninja-build \
+    librocksdb-dev
+    googletest googletest-tools librange-v3-dev nlohmann-json3-dev libboost-all-dev
+
 ```
 
 ##### Fedora 29
@@ -36,9 +39,9 @@ Some Gadgetron dependencies are not currently available though package managers.
 ```
 git clone https://github.com/ismrmrd/ismrmrd.git 
 mkdir ismrmrd/build && cd ismrmrd/build 
-cmake ..
-make
-sudo make install
+cmake ..  -DCMAKE_INSTALL_PREFIX=~/.local/ -G Ninja
+ninja
+ninja install
 ```
 ### Compiling and Installing Gadgetron
 
@@ -49,12 +52,9 @@ Download the Gadgetron source code. It's probably easiest to use git:
 Make a build directory and start the build: 
 
     mkdir gadgetron/build && cd gadgetron/build
-    cmake ..
-    make -j $(nproc)
-
-To install (default location is `/usr/local`):
-
-    sudo make install      
+    cmake ..  -DCMAKE_INSTALL_PREFIX=~/.local/ -G Ninja
+    ninja
+    ninja install
 
 ### Integration Tests
 
@@ -64,9 +64,10 @@ Currently, most of the data is provided as Siemens data files. In order to run t
 ```
 git clone https://github.com/ismrmrd/siemens_to_ismrmrd.git 
 mkdir siemens_to_ismrmrd/build && cd siemens_to_ismrmrd/build 
-cmake ..
-make
-sudo make install
+cmake .. -DCMAKE_INSTALL_PREFIX=~/.local/ -G Ninja
+ninja
+ninja install
+
 ```
 To download the test data, run the `get_data.py` script in the Gadgetron `test/integration` folder. The integration test data suite is pretty expansive - it's a ~10 GiB download at the time of writing. 
 ```
